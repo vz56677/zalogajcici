@@ -10,14 +10,8 @@
 
 **Cilj:** Omogućiti čitatelju koji prvi put vidi projekt da u dvije ili tri rečenice prepozna aplikaciju, njezine ciljane korisnike i glavnu svrhu.
 
-[Opis projekta.]
-
-<details>
-<summary><strong>Sažet pregled projekta</strong></summary>
-
 Projekt Spasi Zalogaj je aplikacija čiji je cilj "spasiti" višak hrane koju bi prodajna mjesta bacaila u otpad, uz promoviranje akcija doniranja hrane. Prodajna mjesta objavljuju svoje proizvode "viška" koje mogu prodati građanima po sniženoj cijeni ili donirati humanitarnim organizacijama odobravanjem zahtjeva za preuzimanje. Građani i humanitarne organizacije mogu pretraživati ponude i poslati zahtjev za preuzimanjem - građani plaćaju proizvode unutar aplikacije dok humanitarne organizacije samo pošalju zahtjev. Humanitarne organizacije također kreiraju akcije doniranja hrane na koje se kupci mogu prijaviti i označiti proizvode za donaciju.
 
-</details>
 
 **Aplikacija i osnovno postavljanje:** [README repozitorija](../README.md#quick-start)  
 **Javno dostupna aplikacija:** pogledajte [README – Postavljanje](../README.md#deployment)
