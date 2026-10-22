@@ -40,7 +40,7 @@
 | F-032 | Sustav omogućuje prodajnim mjestima uređivanje i brisanje ponuda | Nizak | Odluka tima | Prodajna mjesta za svaku vlastitu objavljenu ponudu imaju mogućnost brisanja ponude ili uređivanja informacija uz kriterij da već ne postoje rezervacije za istu. |
 | F-033 | Sustav ne dozvoljava objavu ponuda prodajnim mjestima bez aktivnog članstva | Srednji | Odluka tima | Prodajnim mjestima koja nemaju aktivno članstvo (nisu uplatili članarinu za određeno razdoblje) nije omogućena objava ponuda. |
 | F-034 | Sustav omogućuje administratoru upravljanje korisnicima | Nizak | Odobreni zadatak | Administratori imaju ovlasti za blokiranje i brisanje korisnika/profila. |
-| F-035 | Sustav omogućuje administratoru uklanjanje neprimjerenog sadržaja | Nizak | Administratori imaju ovlasti za uklanjanje neprimjerenih komentara, ponuda ili humanitarnih akcija. |
+| F-035 | Sustav omogućuje administratoru uklanjanje neprimjerenog sadržaja | Nizak | Odobreni zadatak | Administratori imaju ovlasti za uklanjanje neprimjerenih komentara, ponuda ili humanitarnih akcija. |
 
 ## 2.2 Nefunkcijski zahtjevi
 
