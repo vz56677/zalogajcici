@@ -36,7 +36,7 @@
 | F-028 | Sustav omogućuje administratoru određivanje cijene članarina  | Srednji | Odobreni zadatak | Administratori imaju ovlasti za izmjenu iznosa članarina. |
 | F-029 | Sustav omogućuje korisnicima prijavu u profil korištenjem vanjskih servisa za autentifikaciju | Visok | Odobreni zadatak | Korisnicima koji imaju postojeći profil omogućena je prijava u svoj korisnički profil pomoću vanjskih servisa za autentifikaciju. |
 | F-030 | Dodatna opcija plaćanja gotovinom prilikom preuzimanja | Nizak | Odluka tima - odobreno od asistentice | Korisnicima je uz prije navedene metode plaćanja omogućen odabir plaćanja gotovinom prilikom preuzimanja narudžbe u poslovnici. | 
-| F-031 | Sustav omogućuje prijavljenim kupcima pregled vlastitih rezervacija | Nizak | Odluka tima | Prijavljenim korisnicima omogućen je pregled vlastitih rezervacija sa stanjem (aktivna, preuzeta, otkazana, istekla) i kodom |
+| F-031 | Sustav omogućuje prijavljenim kupcima pregled vlastitih rezervacija | Nizak | Odluka tima | Prijavljenim korisnicima omogućen je pregled vlastitih rezervacija sa stanjem i kodom |
 | F-032 | Sustav omogućuje prodajnim mjestima uređivanje i brisanje ponuda | Nizak | Odluka tima | Prodajna mjesta za svaku vlastitu objavljenu ponudu imaju mogućnost brisanja ponude ili uređivanja informacija uz kriterij da već ne postoje rezervacije za istu. |
 | F-033 | Sustav ne dozvoljava objavu ponuda prodajnim mjestima bez aktivnog članstva | Srednji | Odluka tima | Prodajnim mjestima koja nemaju aktivno članstvo (nisu uplatili članarinu za određeno razdoblje) nije omogućena objava ponuda. |
 | F-034 | Sustav omogućuje administratoru upravljanje korisnicima | Nizak | Odobreni zadatak | Administratori imaju ovlasti za blokiranje i brisanje korisnika/profila. |
@@ -63,10 +63,19 @@
 
 **Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
 
-| ID uloge ili aktera | Odnos prema sustavu | Relevantni zahtjevi |
-| --- | --- | --- |
-|  |  |  |
+| ID dionika | Odnos prema sustavu | Relevantni zahtjevi |
+| D-01 | Kupci | F-001: Registracija računa, F-002: Odabir uloge, F-003: Pregled ponuda, F-008: Filtriranje ponuda, F-009: Prikaz lokacije i udaljenosti, F-010: Rezervacija, F-011: Odabir načina plaćanja i plaćanje, F-012: Potvrda i kod za preuzimanje, F-014: Otkazivanje, F-015: Recenziranje prodajnih mjesta, F-024: Prijava u humanitarne akcije, F-025: Evidentiranje donacija, F-027: Pretplata na obavijesti, F-029: Prijava u profil, F-030: Plaćanje gotovinom, F-031: Pregled vlastitih rezervacija |
+| D-02 | Prodajna mjesta | F-001: Registracija računa, F-002: Odabir uloge, F-004: Plaćanje članarine, F-005: Javni profil prodajnog mjesta, F-006: Objava ponuda, F-007: Objava paketa iznenađenja, F-013: Verifikacija koda za preuzimanje, F-016: Odgovor na recenzije, F-017: Označavanje ponuda za donaciju, F-020: Prihvaćanje ili odbijanje zahtjeva, F-023: Kreiranje humanitarnih akcija, F-029: Prijava u profil, F-032: Uređivanje i brisanje ponuda, F-033: Onemogućena objava ponuda bez članstva  |
+| D-03 | Humanitarne organizacije | F-018, F-019, F-021, F-023, F-026 |
+| D-04 | Administratori sustava | F-022, F-028, F-034, F-035 |
+| D-05 | Pružatelji vanjskih usluga | F-001, F-004, F-009, F-011, F-029 |
+| D-06 | Zaposlenici prodajnih mjesta | F-013 |
 
+| ID aktera | Odnos prema sustavu | Relevantni zahtjevi |
+| A-01 | Kupac | F-001, F-003, F-008, F-010, F-011, F-014, F-015, F-024, F-025, F-027 |
+| A-02 | Predstavnik prodajnog mjesta | F-004, F-005, F-006, F-007, F-013, F-016, F-017, F-020, F-023, F-033 |
+| A-03 | Predstavnik humanitarne organizacije | F-018, F-019, F-021, F-023, F-026 |
+| A-04 | Administrator sustava | F-022, F-028, F-034, F-035 | 
 <details>
 <summary><strong>Akteri i povezani zahtjevi</strong></summary>
 
