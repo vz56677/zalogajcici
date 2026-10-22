@@ -6,7 +6,7 @@ Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih
 
 Rasprodani ili istekli proizvodi automatski se uklanjaju iz aplikacije. Izvan opsega projekta su dostava i obrada plaćanja (prepušteno vanjskim servisima).
 
-
+ 
 ## 1.1 Problem i cilj projekta
 Prehrambeni objekti bacaju još ispravnu hranu kojoj se bliži rok trajanja, a kupci i humanitarne organizacije nemaju jednostavan način da za nju saznaju na vrijeme. Zbog toga hrana propada, a objekti gube prihod.
 Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupce i humanitarne organizacije kako bi se hrana kojoj se bliži rok trajanja iskoristila umjesto bacanja. Aplikacija omogućuje trgovinama da objave proizvode i pakete iznenađenja po sniženoj cijeni ili ih namijene donaciji, kupcima da ih pronađu, rezerviraju, plate i preuzmu, a humanitarnim organizacijama da zatraže donirane proizvode.
