@@ -1,21 +1,16 @@
 # 1. Opseg projekta
 
-**Cilj:** Objasniti odobreni projektni zadatak vlastitim riječima tima. Čitatelj treba razumjeti problem, ciljane korisnike, cilj projekta i njegove granice bez prethodnog čitanja detaljnih zahtjeva.
+Cilj projekta je izraditi aplikaciju koja smanjuje bacanje hrane kojoj se bliži rok trajanja. Prehrambene ustanove se prijavljuju u aplikaciju i objavljuju proizvode s kratkim rokom trajanja po sniženoj cijeni. Postoje samostalni proizvodi i paketi iznenađenja čiji sadržaj nije poznat unaprijed. Pojedine proizvode ustanove mogu namijeniti isključivo donaciji humanitarnim organizacijama.
+
+Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih rezervirati i platiti te preuzeti do zadanog roka. Nakon plaćanja dobivaju potvrdu i kod koji prodavač potvrđuje pri preuzimanju. Humanitarne organizacije imaju zasebnu ulogu: pregledavaju ponude namijenjene donacijama i od ustanova traže određenu količinu. Administrator upravlja sustavom i odobrava profile humanitarnih organizacija i ustanova.
+
+Rasprodani ili istekli proizvodi automatski se uklanjaju iz aplikacije. Izvan opsega projekta su dostava i obrada plaćanja (prepušteno vanjskim servisima).
+
 
 ## 1.1 Problem i cilj projekta
+Prehrambeni objekti bacaju još ispravnu hranu kojoj se bliži rok trajanja, a kupci i humanitarne organizacije nemaju jednostavan način da za nju saznaju na vrijeme. Zbog toga hrana propada, a objekti gube prihod.
+Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupce i humanitarne organizacije kako bi se hrana kojoj se bliži rok trajanja iskoristila umjesto bacanja. Aplikacija omogućuje trgovinama da objave proizvode i pakete iznenađenja po sniženoj cijeni ili ih namijene donaciji, kupcima da ih pronađu, rezerviraju, plate i preuzmu, a humanitarnim organizacijama da zatraže donirane proizvode.
 
-**Cilj:** Jasno razgraničiti problem koji se rješava od predloženog rješenja i stvarne koristi za korisnika.
-
-[Problem, cilj i očekivana korist vlastitim riječima tima.]
-
-<details>
-<summary><strong>Očekivane koristi i potkrepljujući dokazi</strong></summary>
-
-**Primjer — CrisisMap:** „Tijekom teških vremenskih prilika građaninu mogu trebati prijave kriznih događaja relevantne za njegovu lokaciju. CrisisMap ima za cilj prikazati lokacijski relevantne prijave kriznih događaja na karti kako bi ih građanin mogao pronaći na jednom mjestu.” Time su navedeni problem, ciljani korisnik, predložena mogućnost i očekivana korist. Ne tvrdi se da je izmjereno smanjenje vremena reagiranja niti da aplikacija ima integraciju sa službom za hitne intervencije. Tim i dalje mora opisati opseg odobren za vlastiti projekt.
-
-„Aplikacija smanjuje vrijeme odgovora na krizni događaj za 30 % na temelju simulacija.” Broj očekivanu korist čini konkretnijom, ali odmah zahtijeva provjeru: **gdje je simulacija i kako je postotak izračunan?** Ako takav dokaz ne postoji, očekivanu korist navedite bez brojčanog rezultata.
-
-</details>
 
 ## 1.2 Ciljani korisnici i dionici
 
@@ -23,24 +18,13 @@
 
 | Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
 | --- | --- |
-|  |  |
-
-<details>
-<summary><strong>Korisnici, dionici i neobavezna persona</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
-| --- | --- |
-| Građanin | Pronaći informacije o obližnjim kriznim događajima i podnijeti prijavu kriznog događaja s lokacijom. |
-| Koordinator pomoći | Pregledati prijave relevantne za područje i dostupne resurse, ako je koordinacija unutar odobrenog opsega. |
+|Kupci (privatne osobe) | Pronaći i rezervirati hranu po sniženoj cijeni, platiti putem aplikacije i preuzeti je do zadanog roka.|
+| Prehrambene ustanove| Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.
+|Zaposlenici ustanova|Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.|
+|Humanitarne organizacije|	Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.
+|Administrator	|Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.
+|Ocjenjivači projekta|	Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.
 | Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva osiguravanje anonimnosti prijavitelja i zaštitu osobnih podataka (npr. usklađenost s GDPR-om). Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava. |
-
-Riječ je o dvjema različitim potrebama, a ne o dvjema izmišljenim biografijama. Akter komunicira s aplikacijom; demonstrator na kolegiju kojem je rezultat zanimljiv ne mora biti akter aplikacije. Koristite uloge i ovlasti iz svojeg odobrenog zadatka. Persona je neobavezna i korisna je kada pomaže riješiti konkretno projektno pitanje.
-
-**Neobavezni primjer persone:** Ana, koordinatorica pomoći, treba aktualne informacije o resursima kako bi mogla rasporediti pomoć. To može pomoći kada tim odlučuje koje informacije koordinator treba vidjeti prve. Personu opišite samo ako objašnjava projektnu odluku; popis izmišljenih biografija nije obavezni rezultat kolegija.
-
-</details>
 
 ## 1.3 Granice projekta
 
