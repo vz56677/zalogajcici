@@ -19,11 +19,11 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 | Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
 | --- | --- |
 |Kupci (privatne osobe) | Pronaći i rezervirati hranu po sniženoj cijeni, platiti putem aplikacije i preuzeti je do zadanog roka.|
-| Prehrambene ustanove| Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.
+| Prehrambene ustanove| Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.|
 |Zaposlenici ustanova|Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.|
-|Humanitarne organizacije|	Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.
-|Administrator	|Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.
-|Ocjenjivači projekta|	Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.
+|Humanitarne organizacije|	Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.|
+|Administrator	|Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.|
+|Ocjenjivači projekta|	Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.|
 | Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva osiguravanje anonimnosti prijavitelja i zaštitu osobnih podataka (npr. usklađenost s GDPR-om). Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava. |
 
 ## 1.3 Granice projekta
