@@ -61,37 +61,30 @@
 
 ## 2.3 Dionici i akteri
 
-**Cilj:** Utvrditi uloge koje utječu na zahtjeve i razlikovati dionike od aktera koji komuniciraju s aplikacijom.
+Dionici: 
 
 | ID dionika | Odnos prema sustavu | Relevantni zahtjevi |
+| --- | --- | --- |
 | D-01 | Kupci | F-001: Registracija računa, F-002: Odabir uloge, F-003: Pregled ponuda, F-008: Filtriranje ponuda, F-009: Prikaz lokacije i udaljenosti, F-010: Rezervacija, F-011: Odabir načina plaćanja i plaćanje, F-012: Potvrda i kod za preuzimanje, F-014: Otkazivanje, F-015: Recenziranje prodajnih mjesta, F-024: Prijava u humanitarne akcije, F-025: Evidentiranje donacija, F-027: Pretplata na obavijesti, F-029: Prijava u profil, F-030: Plaćanje gotovinom, F-031: Pregled vlastitih rezervacija |
 | D-02 | Prodajna mjesta | F-001: Registracija računa, F-002: Odabir uloge, F-004: Plaćanje članarine, F-005: Javni profil prodajnog mjesta, F-006: Objava ponuda, F-007: Objava paketa iznenađenja, F-013: Verifikacija koda za preuzimanje, F-016: Odgovor na recenzije, F-017: Označavanje ponuda za donaciju, F-020: Prihvaćanje ili odbijanje zahtjeva, F-023: Kreiranje humanitarnih akcija, F-029: Prijava u profil, F-032: Uređivanje i brisanje ponuda, F-033: Onemogućena objava ponuda bez članstva  |
-| D-03 | Humanitarne organizacije | F-018, F-019, F-021, F-023, F-026 |
-| D-04 | Administratori sustava | F-022, F-028, F-034, F-035 |
-| D-05 | Pružatelji vanjskih usluga | F-001, F-004, F-009, F-011, F-029 |
-| D-06 | Zaposlenici prodajnih mjesta | F-013 |
+| D-03 | Humanitarne organizacije |  F-001: Registracija računa, F-002: Odabir uloge, F-018: Pregled donacijskih ponuda, F-019: Zahtjev za preuzimanje hrane, F-021: Javni profil humanitarne organizacije, F-023: Kreiranje humanitarnih akcija, F-026: Evidencija zaprimljenih donacija, F-029: Prijava u profil |
+| D-04 | Administratori sustava | F-022: Odobravanje profila organizacija, F-028: Određivanje cijena članarina, F-034: Upravljanje korisnicima, F-035: Uklanjanje neprimjerenog sadržaja |
+| D-05 | Pružatelji vanjskih usluga | F-001: Registracija računa, F-004: Plaćanje članarine, F-009: Prikaz lokacije i udaljenosti, F-011: Odabir načina plaćanja, F-029: Prijava u profil |
+| D-06 | Zaposlenici prodajnih mjesta | F-013: Verifikacija koda za preuzimanje |
+
+Akteri: 
 
 | ID aktera | Odnos prema sustavu | Relevantni zahtjevi |
-| A-01 | Kupac | F-001, F-003, F-008, F-010, F-011, F-014, F-015, F-024, F-025, F-027 |
-| A-02 | Predstavnik prodajnog mjesta | F-004, F-005, F-006, F-007, F-013, F-016, F-017, F-020, F-023, F-033 |
-| A-03 | Predstavnik humanitarne organizacije | F-018, F-019, F-021, F-023, F-026 |
-| A-04 | Administrator sustava | F-022, F-028, F-034, F-035 | 
-<details>
-<summary><strong>Akteri i povezani zahtjevi</strong></summary>
+| --- | --- | --- | 
+| A-01 | Kupac | F-001: Registracija računa, F-002: Odabir uloge, F-003: Pregled ponuda, F-008: Filtriranje ponuda, F-009: Prikaz lokacije i udaljenosti, F-010: Rezervacija, F-011: Odabir načina plaćanja i plaćanje, F-012: Potvrda i kod za preuzimanje, F-014: Otkazivanje, F-015: Recenziranje prodajnih mjesta, F-024: Prijava u humanitarne akcije, F-025: Evidentiranje donacija, F-027: Pretplata na obavijesti, F-029: Prijava u profil, F-030: Plaćanje gotovinom, F-031: Pregled vlastitih rezervacija |
+| A-02 | Predstavnik prodajnog mjesta | F-001: Registracija računa, F-002: Odabir uloge, F-004: Plaćanje članarine, F-005: Javni profil prodajnog mjesta, F-006: Objava ponuda, F-007: Objava paketa iznenađenja, F-013: Verifikacija koda za preuzimanje, F-016: Odgovor na recenzije, F-017: Označavanje ponuda za donaciju, F-020: Prihvaćanje ili odbijanje zahtjeva, F-023: Kreiranje humanitarnih akcija, F-029: Prijava u profil, F-032: Uređivanje i brisanje ponuda, F-033: Onemogućena objava ponuda bez članstva |
+| A-03 | Predstavnik humanitarne organizacije | F-001: Registracija računa, F-002: Odabir uloge, F-018: Pregled donacijskih ponuda, F-019: Zahtjev za preuzimanje hrane, F-021: Javni profil humanitarne organizacije, F-023: Kreiranje humanitarnih akcija, F-026: Evidencija zaprimljenih donacija, F-029: Prijava u profil |
+| A-04 | Administrator sustava | F-022: Odobravanje profila organizacija, F-028: Određivanje cijena članarina, F-034: Upravljanje korisnicima, F-035: Uklanjanje neprimjerenog sadržaja |
+| A-05 | Pružatelj autentifikacije (OAuth 2.0) | F-001: Registracija računa, F-029: Prijava u profil |
+| A-06 | Servis za plaćanje (Paypal) | F-004: Plaćanje članarine, F-011: Odabir načina plaćanja i plaćanje |
+| A-07 | Servis za karte (Google Maps) | F-009: Prikaz lokacije i udaljenosti
 
-**Primjer — akteri aplikacije CrisisMap:**
 
-| ID aktera | Uloga | Obuhvaćeni funkcijski zahtjevi |
-| --- | --- | --- |
-| A-01 | Koordinator pomoći | F-003: Pregled resursa; F-004: Podnošenje prijave kriznog događaja. |
-| A-02 | Građanin | F-001: Izrada računa; F-005: Primanje obavijesti. |
-| A-03 | Administrator sustava | NF-1.2: Provođenje sigurnosnih pravila; upravljanje korisnicima. |
-| A-04 | Posjetitelj | F-007: Pregled prijava na karti. |
-| A-05 | Moderator | F-008: Odobravanje ili odbijanje prijava. |
-
-**Odgovornosti aktera:** Uloga aktera treba biti povezana s interakcijom, a ne samo s nazivom. Provjerite podnosi li koordinator pomoći u odobrenom zadatku doista prijave kriznih događaja. Poveznica administratora s NF-1.2 navodi sigurnosni aspekt, ali sama po sebi ne opisuje obrazac uporabe; navedite stvarnu radnju administratora ili izostavite ulogu ako je nema. Nastavnici zainteresirani za rezultat mogu biti dionici, a da nisu akteri aplikacije. Tablica je polazište za razmišljanje, a ne potvrđen opis ovlasti u CrisisMapu.
-
-</details>
 
 ---
 
