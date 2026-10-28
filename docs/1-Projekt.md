@@ -29,27 +29,21 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
 
-**Uključeno:** [Glavne mogućnosti.]  
-**Izvan opsega ili odgođeno:** [Navedite funkcionalnosti koje su namjerno izostavljene ili prebačene u buduće verzije, uz kratko inženjersko ili vremensko obrazloženje.] 
-**Vanjske ovisnosti:** [Navedite nužne vanjske usluge, API-je, baze podataka ili izvore informacija bez kojih sustav ne može funkcionirati (npr. Google Maps, platni pristupnici, vanjski pružatelj identiteta (OAuth)).]
+**Uključeno:** 
+Korisnička strana:
+Izrada korisničkog računa, oporavak računa u slučaju zaboravljene lozinke slanjem mail-a, moguća promjena osobnih podataka korisniku. Korisnik može pregledavati sve aktivne ponude i donacije od strane humanitarnih organizacija i prodavača. Korisnik može sortirati proizvode prema blizini, cijeni, datumu i vremenu isteka ponude. Korisnik se može javiti za preuzimanje aktivne ponude. Korisnik, za sve trenutno aktivne ponude za koje se prijavio, može otkazati preuzimanje i zatražiti povrat novaca (ne vrijedi unutar sat vremena od preuzimanja).
 
-<details>
-<summary><strong>Primjer početne granice projekta</strong></summary>
+Prodavačka strana:
+Prodavač/trgovina može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, OIB, logo, lokaciju. Prodavač može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Prodavač može otkazati ponudu koja nije rezervirana. Humanitarna organizacija može iznijeti ponudu za proizvode koji se nude za besplatno darivanje popunjavanjem slike, opisa, lokacije i roka preuzimanja.
 
-**Primjer — CrisisMap:**  
-**Uključeno:** Podnošenje prijave kriznog događaja s lokacijom i pregled prijava na karti.  
-**Isključeno:** Automatsko angažiranje hitnih službi; prikaz prijave ne odobrava niti pokreće službenu intervenciju.  
-**Vanjska ovisnost:** Pružatelj kartografskih usluga omogućuje prikaz karte; aplikacija ostaje odgovorna za vlastite podatke o prijavama.
+**Izvan opsega ili odgođeno:** 
+U opsegu projekta nije omogućavanje plaćanja i provođenje transakcija od korisnika prema prodavaču zbog složenosti provođenja i testiranja izvedbe transakcija te vremenskog ograničenja.
+Nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
+U slučaju daljnjeg održavanja i unaprjeđenja
 
-Ovo je konkretna granica jer razdvaja prikaz informacija od službenog odgovora hitnih službi i određuje koji sustav osigurava kartu. Izuzeće i ovisnost dio su **nastavnog scenarija**, a ne tvrdnja o tome što objavljena aplikacija stvarno implementira; te činjenice određuju odobreni opseg i stvarna aplikacija tima.
+**Vanjske ovisnosti:** 
+Projekt ovisi o vanjskom pružatelju identiteta OAuth, Google mapsu i organizaciji tima i o svim članovima tima zasebno
 
-**Drugi primjer korisne granice:** U prvoj implementaciji usredotočite se na koordinaciju odgovora na poplavu. Navedite vrste događaja ili korisnika koje pokriva odobreni projekt umjesto obećavanja svih mogućih kriznih procesa. Predviđanje pomoću umjetne inteligencije ili obuku u virtualnoj stvarnosti navedite kao budući rad samo ako predstavljaju smislen sljedeći korak, a ne kao pretpostavljene funkcionalnosti prve inačice.
-
-Tvrdnja poput „modularna arhitektura omogućuje brzo postavljanje u novim regijama” zahtijeva stvarno projektno uporište. Ovdje nemojte obećavati prilagodljivost samo zato što zvuči kao poželjna korist projekta.
-
-Ovaj pregled zadržite na razini opsega: navedite glavnu mogućnost i njezinu granicu bez popisivanja svakog zahtjeva ili projektne pojedinosti. Ono što je stvarno dovršeno i ono što je ostalo nedovršeno navedite u završnim rezultatima, a ne u ovom početnom opisu.
-
-</details>
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
