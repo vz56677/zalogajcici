@@ -6,8 +6,8 @@ Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih
 
 Rasprodani ili istekli proizvodi automatski se uklanjaju iz aplikacije. Izvan opsega projekta su dostava i obrada plaćanja (prepušteno vanjskim servisima).
 
- 
 ## 1.1 Problem i cilj projekta
+
 Prehrambeni objekti bacaju još ispravnu hranu kojoj se bliži rok trajanja, a kupci i humanitarne organizacije nemaju jednostavan način da za nju saznaju na vrijeme. Zbog toga hrana propada, a objekti gube prihod.
 Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupce i humanitarne organizacije kako bi se hrana kojoj se bliži rok trajanja iskoristila umjesto bacanja. Aplikacija omogućuje trgovinama da objave proizvode i pakete iznenađenja po sniženoj cijeni ili ih namijene donaciji, kupcima da ih pronađu, rezerviraju, plate i preuzmu, a humanitarnim organizacijama da zatraže donirane proizvode.
 
@@ -15,51 +15,41 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 
 **Cilj:** Utvrditi osobe, uloge i organizacije čije potrebe i interesi određuju projektni zadatak.
 
-| Skupina korisnika ili dionika | Potreba ili interes relevantan za ovaj projekt |
-| --- | --- |
-|Kupci (privatne osobe) | Pronaći i rezervirati hranu po sniženoj cijeni, platiti putem aplikacije i preuzeti je do zadanog roka.|
-| Prehrambene ustanove| Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.|
-|Zaposlenici ustanova|Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.|
-|Humanitarne organizacije|	Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.|
-|Administrator	|Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.|
-|Ocjenjivači projekta|	Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.|
+| Skupina korisnika ili dionika                              | Potreba ili interes relevantan za ovaj projekt                                                                                                                                |
+| ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kupci (privatne osobe)                                     | Pronaći i rezervirati hranu po sniženoj cijeni, platiti putem aplikacije i preuzeti je do zadanog roka.                                                                       |
+| Prehrambene ustanove                                       | Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.                                                     |
+| Zaposlenici ustanova                                       | Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.                                                                                                           |
+| Humanitarne organizacije                                   | Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.                                                                                                    |
+| Administrator                                              | Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.                                                                        |
+| Ocjenjivači projekta                                       | Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.                                                                                                                  |
 | Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva osiguravanje anonimnosti prijavitelja i zaštitu osobnih podataka (npr. usklađenost s GDPR-om). Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava. |
 
 ## 1.3 Granice projekta
 
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
 
-**Uključeno:** 
+**Uključeno:**
 Korisnička strana:
 Izrada korisničkog računa, oporavak računa u slučaju zaboravljene lozinke slanjem mail-a, moguća promjena osobnih podataka korisniku. Korisnik može pregledavati sve aktivne ponude i donacije od strane humanitarnih organizacija i prodavača. Korisnik može sortirati proizvode prema blizini, cijeni, datumu i vremenu isteka ponude. Korisnik se može javiti za preuzimanje aktivne ponude. Korisnik, za sve trenutno aktivne ponude za koje se prijavio, može otkazati preuzimanje i zatražiti povrat novaca (ne vrijedi unutar sat vremena od preuzimanja).
 
 Prodavačka strana:
 Prodavač/trgovina može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, OIB, logo, lokaciju. Prodavač može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Prodavač može otkazati ponudu koja nije rezervirana. Humanitarna organizacija može iznijeti ponudu za proizvode koji se nude za besplatno darivanje popunjavanjem slike, opisa, lokacije i roka preuzimanja.
 
-**Izvan opsega ili odgođeno:** 
+**Izvan opsega ili odgođeno:**
 U opsegu projekta nije omogućavanje plaćanja i provođenje transakcija od korisnika prema prodavaču zbog složenosti provođenja i testiranja izvedbe transakcija te vremenskog ograničenja.
 Nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
 U slučaju daljnjeg održavanja i unaprjeđenja
 
-**Vanjske ovisnosti:** 
+**Vanjske ovisnosti:**
 Projekt ovisi o vanjskom pružatelju identiteta OAuth, Google mapsu i organizaciji tima i o svim članovima tima zasebno
-
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
 **Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
 
-[U dvije do četiri rečenice opišite jedan postojeći postupak ili relevantno rješenje, što ono već omogućuje i koja konkretna potreba motivira ovaj projekt. Činjenične tvrdnje o vanjskim proizvodima ili praksama potkrijepite izvorom.]
-
-<details>
-<summary><strong>Postojeći pristupi i opravdanost projekta</strong></summary>
-
-**Primjer — CrisisMap:** „Nakon teškog vremenskog događaja građanin će možda morati provjeriti izvor meteoroloških upozorenja i zaseban izvor lokalnih prijava. Predloženi prikaz na karti u CrisisMapu objedinjuje prijave kriznih događaja relevantne za odabranu lokaciju. Aplikacija ne zamjenjuje službena upozorenja ni hitne službe.” Time se objašnjava potreba i namjeravana granica projekta bez tvrdnje da su svi postojeći kanali neučinkoviti. Prva je rečenica **primjer korisničkog scenarija**, a ne izmjeren nalaz o stvarnim korisnicima. Ako tim navodi konkretnu službu upozoravanja ili konkurentski proizvod, treba navesti izvor. Pregled konkurencije i snimke zaslona nisu obavezni.
-
-Ako je postojeće rješenje stvarno utjecalo na projekt, usporedite samo relevantnu funkcionalnost, primjerice jasnoću karte ili potrebnu integraciju. Izbjegavajte unaprijed zadani broj proizvoda ili tablicu kriterija koji nisu povezani s odobrenim zadatkom.
-
-</details>
+Građanin koji želi kupiti višak hrane po sniženoj cijeni može se o dostupnosti i uvjetima preuzimanja raspitivati izravno u pojedinim prodajnim mjestima, dok humanitarna organizacija može zasebno kontaktirati ta mjesta radi dogovora o donaciji. Takav pristup omogućuje izravan dogovor, ali može zahtijevati više pojedinačnih kontakata kako bi se pronašla odgovarajuća hrana i uskladilo preuzimanje. SpasiZalogaj objedinjuje pregled dostupnih ponuda, rezervacije i zahtjeve za donacije na jednom mjestu, čime olakšava povezivanje prodajnih mjesta s kupcima i humanitarnim organizacijama te organizaciju preuzimanja viška hrane.
 
 ---
 
->**Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
+> **Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
