@@ -1,0 +1,6 @@
+header a{color:#fff;margin-right:12px}
+header span{display:flex;align-items:center}
+p a{color:#2e7d32}
+.cd{display:none;flex-direction:column;gap:10px}.reg .cd{display:flex}
+.grid button{margin-top:10px;width:100%}
+.code{font:700 22px monospace;letter-spacing:.1em}
