@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>My reservations</title><link rel="stylesheet" href="style.css"></head>
+<body><header><b>SpasiZalogaj</b><a href="main.html">Back</a></header>
+<div id="g" class="grid"></div>
+<script>
+    const e=s=>new Option(s).innerHTML;
+    const load=()=>fetch('/api/reservations').then(r=>r.ok?r.json():Promise.reject(location='index.html')).then(j=>g.innerHTML=j.map(x=>`<div class="card"><h3>${e(x.store)}</h3><p>${e(x.address)}</p><p>${x.items.map(i=>e(i.name)+' × '+i.qty).join('<br>')}</p><p class="code">${e(x.code)}</p><small>${e(x.status)} · Pick up by ${e(x.pickupUntil)} · ${x.total} €</small>${x.canCancel?`<button data-id="${x.id}">Cancel</button>`:''}</div>`).join('')||'<p>No reservations yet.</p>');
+    g.onclick=async ev=>{const id=ev.target.dataset.id;if(id){await fetch('/api/reservations/'+id+'/cancel',{method:'POST'});load()}};
+    load();
+</script></body></html>
