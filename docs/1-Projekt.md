@@ -11,9 +11,9 @@
 <details>
 <summary><strong>Očekivane koristi i potkrepljujući dokazi</strong></summary>
 
-**Primjer — CrisisMap:** „Tijekom teških vremenskih prilika građaninu mogu trebati prijave kriznih događaja relevantne za njegovu lokaciju. CrisisMap ima za cilj prikazati lokacijski relevantne prijave kriznih događaja na karti kako bi ih građanin mogao pronaći na jednom mjestu.” Time su navedeni problem, ciljani korisnik, predložena mogućnost i očekivana korist. Ne tvrdi se da je izmjereno smanjenje vremena reagiranja niti da aplikacija ima integraciju sa službom za hitne intervencije. Tim i dalje mora opisati opseg odobren za vlastiti projekt.
+Buy Back: Kupac mođe biti onemogućen doći do proizvoda prije njegovog isteka roka trajanja, zbog daljeg puta, administrativnih odgovornosti ili slično. U slučaju toga, kupac može prijaviti nevaljani proizvod i poništiti transakciju. 
 
-„Aplikacija smanjuje vrijeme odgovora na krizni događaj za 30 % na temelju simulacija.” Broj očekivanu korist čini konkretnijom, ali odmah zahtijeva provjeru: **gdje je simulacija i kako je postotak izračunan?** Ako takav dokaz ne postoji, očekivanu korist navedite bez brojčanog rezultata.
+Product Verification: Pri postvljanju hrane ili drugog proizvoda, potrebno je navesti datum isteka roka trajanja. Na ovaj način se spriječava kupnja koja se čini povoljno ali vremenski nije izvediva, i kupac dobiva opciju pronalaženja samo proizvoda koji su u željenom stanju.
 
 </details>
 
@@ -45,6 +45,8 @@ Riječ je o dvjema različitim potrebama, a ne o dvjema izmišljenim biografijam
 ## 1.3 Granice projekta
 
 **Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
+
+
 
 **Uključeno:** [Glavne mogućnosti.]  
 **Izvan opsega ili odgođeno:** [Navedite funkcionalnosti koje su namjerno izostavljene ili prebačene u buduće verzije, uz kratko inženjersko ili vremensko obrazloženje.] 
