@@ -6,10 +6,18 @@ import java.time.OffsetDateTime;
 import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjesto;
 import jakarta.persistence.*;
 
+@Entity
+@Table(name="ponuda")
 public class Ponuda {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private ProdajnoMjesto prodajnoMjesto; //@ManyToOne???
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "prodajno_mjesto_id")
+    private ProdajnoMjesto prodajnoMjesto;
+    @Enumerated(EnumType.STRING)
     private VrstaPonude vrsta;
+    @Enumerated(EnumType.STRING)
     private NamjenaPonude namjena = NamjenaPonude.PRODAJA;
     private String naziv;
     private String kategorija;
@@ -19,6 +27,7 @@ public class Ponuda {
     private BigDecimal prodajnaCijena;
     private BigDecimal raspolozivo;
     private String jedinicaMjere = "kom";
+    @Column(name="objavljeno_u")
     private OffsetDateTime objavljenoU = OffsetDateTime.now();
     private OffsetDateTime preuzimanjeOd;
     private OffsetDateTime preuzimanjeDo;
