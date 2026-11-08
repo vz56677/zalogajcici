@@ -6,6 +6,7 @@ import java.time.OffsetDateTime;
 import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjesto;
 import jakarta.persistence.*;
 
+
 @Entity
 @Table(name="ponuda")
 public class Ponuda {
@@ -116,4 +117,5 @@ public class Ponuda {
     public boolean isAktivna() {
         return aktivna;
     }
+
 }
