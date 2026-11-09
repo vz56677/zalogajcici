@@ -55,7 +55,7 @@ class PonudaRepositoryTest {
         entityManager.clear(); // zaboravi objekte u memoriji, da citanje ide u bazu
         Ponuda ucitana = ponudaRepository.findById(id).orElseThrow();
 
-        // provjera (assertEquals zbog npr. 3.5 i 3.50)
+        // provjera (assertEquals; zbog npr. 3.5 i 3.50 se koristi i .compareTo)
         assertEquals("Testna ponuda", ucitana.getNaziv());
         assertEquals(VrstaPonude.PROIZVOD, ucitana.getVrsta());
         assertEquals(0, new BigDecimal("3.50").compareTo(ucitana.getProdajnaCijena()));
