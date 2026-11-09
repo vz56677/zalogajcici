@@ -1,0 +1,57 @@
+@startuml
+!pragma layout smetana
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam linetype polyline
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #EDF5FF
+skinparam classBorderColor #526981
+skinparam packageStyle rectangle
+title SpasiZalogaj — Potvrda preuzimanja rezervacije
+
+package "Aplikacijski sloj" {
+  class RezervacijaService <<ApplicationService>> {
+    + potvrdiPreuzimanje(kod: String, mjestoId: Long, korisnikId: Long): void
+  }
+}
+package "Domenski sloj" {
+  interface RezervacijaRepository <<Repository>> {
+    + pronadiPoKodu(kod: String): Optional<Rezervacija>
+    + imaPristupMjestu(korisnikId: Long, mjestoId: Long): boolean
+    + imaPotvrdenoOnlinePlacanje(rezervacijaId: Long): boolean
+    + spremiPreuzimanjeAkoValjano(rezervacija: Rezervacija): boolean
+  }
+  class Rezervacija <<Entity>> {
+    - id: Long
+    - prodajnoMjestoId: Long
+    - kodPreuzimanja: String [0..1]
+    - status: StatusRezervacije
+    - rokPreuzimanja: Instant
+    - potvrda: PotvrdaPreuzimanja [0..1]
+    + potvrdiPreuzimanje(sada: Instant, korisnikId: Long): void
+  }
+  class PotvrdaPreuzimanja <<ValueObject>> {
+    - vrijeme: Instant {readOnly}
+    - potvrdioId: Long {readOnly}
+  }
+  enum StatusRezervacije {
+    CEKA_UPLATU
+    AKTIVNA
+    PREUZETA
+    OTKAZANA
+    ISTEKLA
+  }
+}
+
+RezervacijaService ..> RezervacijaRepository : dohvaća i sprema
+RezervacijaService ..> Rezervacija : pokreće promjenu
+RezervacijaRepository ..> Rezervacija : učitava i sprema
+Rezervacija "1" *-- "0..1" PotvrdaPreuzimanja : sadrži
+Rezervacija ..> StatusRezervacije : tip statusa
+
+note right of Rezervacija
+  AKTIVNA → PREUZETA
+  samo ako sada ≤ rokPreuzimanja.
+end note
+@enduml
