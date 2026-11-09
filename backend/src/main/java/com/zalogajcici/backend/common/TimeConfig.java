@@ -7,6 +7,7 @@ import java.time.Clock;
 
 @Configuration
 public class TimeConfig {
+    //U servisu koristi OffsetDateTime.now(clock)
     @Bean
     public Clock clock() {
         return Clock.systemDefaultZone();
