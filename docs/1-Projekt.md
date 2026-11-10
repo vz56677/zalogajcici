@@ -36,13 +36,14 @@ Izrada korisničkog računa, oporavak računa u slučaju zaboravljene lozinke sl
 Prodavačka strana:
 Prodavač/trgovina može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, OIB, logo, lokaciju. Prodavač može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Prodavač može otkazati ponudu koja nije rezervirana. Humanitarna organizacija može iznijeti ponudu za proizvode koji se nude za besplatno darivanje popunjavanjem slike, opisa, lokacije i roka preuzimanja.
 
+Ostalo:
+Potrebno je ralizirati relacijsku bazu podataka, ugraditi i osposobiti vanjske sustave. Potrebno je napraviti aplikaciju koja se može prilagoditi uređaju tj. skalirati s obzirom na ekran (mobitel / stolno računalo). 
+
 **Izvan opsega ili odgođeno:**
-U opsegu projekta nije omogućavanje plaćanja i provođenje transakcija od korisnika prema prodavaču zbog složenosti provođenja i testiranja izvedbe transakcija te vremenskog ograničenja.
-Nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
-U slučaju daljnjeg održavanja i unaprjeđenja
+U opsegu projekta nije omogućavanje plaćanje gotovinom, već će svaka transakcija od korisnika prema prodavaču biti isključivo uz pomoć kartičnog plaćanja ili usluge paypal. Također nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
 
 **Vanjske ovisnosti:**
-Projekt ovisi o vanjskom pružatelju identiteta OAuth, Google mapsu i organizaciji tima i o svim članovima tima zasebno
+Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth (identifikacija korisnika), Google maps (prikaz lokacije i karta) i SendGrid (slanje mailova korisnicima).
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
