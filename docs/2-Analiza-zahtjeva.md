@@ -52,24 +52,24 @@ Dionici:
 
 | ID dionika | Odnos prema sustavu | Relevantni zahtjevi |
 | --- | --- | --- |
-| D-01 | Kupci | F-001: Registracija računa, F-002: Odabir uloge, F-003: Pregled ponuda, F-008: Filtriranje ponuda, F-009: Prikaz lokacije i udaljenosti, F-010: Rezervacija, F-011: Odabir načina plaćanja i plaćanje, F-012: Potvrda i kod za preuzimanje, F-014: Otkazivanje, F-015: Recenziranje prodajnih mjesta, F-024: Prijava u humanitarne akcije, F-025: Evidentiranje donacija, F-027: Pretplata na obavijesti, F-029: Prijava u profil, F-030: Plaćanje gotovinom, F-031: Pregled vlastitih rezervacija |
-| D-02 | Prodajna mjesta | F-001: Registracija računa, F-002: Odabir uloge, F-004: Plaćanje članarine, F-005: Javni profil prodajnog mjesta, F-006: Objava ponuda, F-007: Objava paketa iznenađenja, F-013: Verifikacija koda za preuzimanje, F-016: Odgovor na recenzije, F-017: Označavanje ponuda za donaciju, F-020: Prihvaćanje ili odbijanje zahtjeva, F-023: Kreiranje humanitarnih akcija, F-029: Prijava u profil, F-032: Uređivanje i brisanje ponuda, F-033: Onemogućena objava ponuda bez članstva  |
-| D-03 | Humanitarne organizacije |  F-001: Registracija računa, F-002: Odabir uloge, F-018: Pregled donacijskih ponuda, F-019: Zahtjev za preuzimanje hrane, F-021: Javni profil humanitarne organizacije, F-023: Kreiranje humanitarnih akcija, F-026: Evidencija zaprimljenih donacija, F-029: Prijava u profil |
-| D-04 | Administratori sustava | F-022: Odobravanje profila organizacija, F-028: Određivanje cijena članarina, F-034: Upravljanje korisnicima, F-035: Uklanjanje neprimjerenog sadržaja |
-| D-05 | Pružatelji vanjskih usluga | F-001: Registracija računa, F-004: Plaćanje članarine, F-009: Prikaz lokacije i udaljenosti, F-011: Odabir načina plaćanja, F-029: Prijava u profil |
-| D-06 | Zaposlenici prodajnih mjesta | F-013: Verifikacija koda za preuzimanje |
+| D-01 | Kupci | F-001: Registracija i prijava, F-002: Pregled i filtriranje ponuda, F-007: Prikaz lokacije i udaljenosti, F-008: Rezervacija i plaćanje, F-009: Kod za preuzimanje, F-010: Otkazivanje rezervacije, F-011: Recenziranje prodajnih mjesta, F-018: Prijava u humanitarne akcije, F-019: Evidentiranje donacija, F-021: Pretplata na obavijesti, F-023: Pregled vlastitih rezervacija |
+| D-02 | Prodajna mjesta | F-001: Registracija i prijava, F-003: Plaćanje članarine, F-004: Javni profil prodajnog mjesta, F-005: Objava ponude, F-006: Objava paketa iznenađenja, F-009: Verifikacija koda za preuzimanje, F-011: Odgovor na recenzije, F-012: Označavanje ponuda za donaciju, F-014: Prihvaćanje ili odbijanje zahtjeva, F-017: Kreiranje humanitarnih akcija, F-020: Evidencija zaprimljenih donacija, F-024: Uređivanje i brisanje ponuda, F-025: Blokada objave bez članstva  |
+| D-03 | Humanitarne organizacije |  F-001: Registracija i prijava, F-013: Pregled donacijskih ponuda i zahtjev za hranu, F-015: Javni profil organizacije, F-017: Kreiranje humanitarnih akcija, F-020: Evidencija zaprimljenih donacija |
+| D-04 | Administratori sustava | F-016: Odobravanje profila organizacija, F-022: Određivanje cijena članarina, F-026: Upravljanje korisnicima i sadržajem |
+| D-05 | F-001: Registracija i prijava, F-003: Plaćanje članarine, F-007: Prikaz lokacije i udaljenosti, F-008: Rezervacija i plaćanje, F-010: Otkazivanje rezervacije (povrat novca) |
+| D-06 | Zaposlenici prodajnih mjesta | F-009: Verifikacija koda za preuzimanje |
 
 Akteri: 
 
 | ID aktera | Odnos prema sustavu | Relevantni zahtjevi |
 | --- | --- | --- | 
-| A-01 | Kupac | F-001: Registracija računa, F-002: Odabir uloge, F-003: Pregled ponuda, F-008: Filtriranje ponuda, F-009: Prikaz lokacije i udaljenosti, F-010: Rezervacija, F-011: Odabir načina plaćanja i plaćanje, F-012: Potvrda i kod za preuzimanje, F-014: Otkazivanje, F-015: Recenziranje prodajnih mjesta, F-024: Prijava u humanitarne akcije, F-025: Evidentiranje donacija, F-027: Pretplata na obavijesti, F-029: Prijava u profil, F-030: Plaćanje gotovinom, F-031: Pregled vlastitih rezervacija |
-| A-02 | Predstavnik prodajnog mjesta | F-001: Registracija računa, F-002: Odabir uloge, F-004: Plaćanje članarine, F-005: Javni profil prodajnog mjesta, F-006: Objava ponuda, F-007: Objava paketa iznenađenja, F-013: Verifikacija koda za preuzimanje, F-016: Odgovor na recenzije, F-017: Označavanje ponuda za donaciju, F-020: Prihvaćanje ili odbijanje zahtjeva, F-023: Kreiranje humanitarnih akcija, F-029: Prijava u profil, F-032: Uređivanje i brisanje ponuda, F-033: Onemogućena objava ponuda bez članstva |
-| A-03 | Predstavnik humanitarne organizacije | F-001: Registracija računa, F-002: Odabir uloge, F-018: Pregled donacijskih ponuda, F-019: Zahtjev za preuzimanje hrane, F-021: Javni profil humanitarne organizacije, F-023: Kreiranje humanitarnih akcija, F-026: Evidencija zaprimljenih donacija, F-029: Prijava u profil |
-| A-04 | Administrator sustava | F-022: Odobravanje profila organizacija, F-028: Određivanje cijena članarina, F-034: Upravljanje korisnicima, F-035: Uklanjanje neprimjerenog sadržaja |
-| A-05 | Pružatelj autentifikacije (OAuth 2.0) | F-001: Registracija računa, F-029: Prijava u profil |
-| A-06 | Servis za plaćanje (Paypal) | F-004: Plaćanje članarine, F-011: Odabir načina plaćanja i plaćanje |
-| A-07 | Servis za karte (Google Maps) | F-009: Prikaz lokacije i udaljenosti
+| A-01 | Kupac | F-001: Registracija i prijava, F-002: Pregled i filtriranje ponuda, F-007: Prikaz lokacije i udaljenosti, F-008: Rezervacija i plaćanje, F-009: Kod za preuzimanje, F-010: Otkazivanje rezervacije, F-011: Recenziranje prodajnih mjesta, F-018: Prijava u humanitarne akcije, F-019: Evidentiranje donacija, F-021: Pretplata na obavijesti, F-023: Pregled vlastitih rezervacija |
+| A-02 | Predstavnik prodajnog mjesta | F-001: Registracija i prijava, F-003: Plaćanje članarine, F-004: Javni profil prodajnog mjesta, F-005: Objava ponude, F-006: Objava paketa iznenađenja, F-009: Verifikacija koda za preuzimanje, F-011: Odgovor na recenzije, F-012: Označavanje ponuda za donaciju, F-014: Prihvaćanje ili odbijanje zahtjeva, F-017: Kreiranje humanitarnih akcija, F-020: Evidencija zaprimljenih donacija, F-024: Uređivanje i brisanje ponuda, F-025: Blokada objave bez članstva |
+| A-03 | Predstavnik humanitarne organizacije | F-001: Registracija i prijava, F-013: Pregled donacijskih ponuda i zahtjev za hranu, F-015: Javni profil organizacije, F-017: Kreiranje humanitarnih akcija, F-020: Evidencija zaprimljenih donacija |
+| A-04 | Administrator sustava | F-016: Odobravanje profila organizacija, F-022: Određivanje cijena članarina, F-026: Upravljanje korisnicima i sadržajem |
+| A-05 | Pružatelj autentifikacije (OAuth 2.0) | F-001: Registracija računa i prijava |
+| A-06 | Servis za plaćanje (Paypal) | F-003: Plaćanje članarine, F-008: Rezervacija i plaćanje, F-010: Otkazivanje rezervacije (povrat novca) |
+| A-07 | Servis za karte (Google Maps) | F-007: Prikaz lokacije i udaljenosti
 
 
 
@@ -82,16 +82,15 @@ Akteri:
 | ID | Tip | Opis ograničenja ili pretpostavke | Izvor | Inženjerska posljedica / Provjera |
 | --- | --- | --- | --- | --- |
 | C-01 | Ograničenje | Odobreni zadatak zahtijeva registraciju i prijavu računa pomoću vanjskih OAuth servisa za autentifikaciju. Sustav ne pohranjuje lozinke.  | Odobreni zadatak | Prijava ide preko Googlea: korisnik se prijavi na Googleovoj stranici, Google vrati backendu njegov jedinstveni ID (sub) i e-poštu, a backend po tom ID-ju pronađe korisnika u bazi ili ga kreira i preusmjeri na odabir uloge. Tablica korisnika nema stupac za lozinku, nego sprema ID kod Googlea, e-poštu, ulogu i status profila. Provjera: testnim zahtjevima potvrditi da prijavljeni korisnik može izvršiti radnje svoje uloge, a da se zahtjevi bez prijave ili izvan ovlasti odbijaju. Pregledom sheme baze potvrditi da tablica korisnika ne sadrži lozinke. |
-| C-02 | Ograničenje | Plaćanje se obavlja putem vanjskih servisa. | Odobreni zadatak |  Sustav ne obrađuje i ne pohranjuje podatke o karticama, nego samo identifikator i status transakcije. Uspješnost plaćanja potvrđuje se na poslužitelju, a ne samo na klijentu. Neuspjelo plaćanje vodi rezervaciju u definirano stanje (NF-09). Provjera: uspješno, odbijeno i prekinuto plaćanje testirati PayPal testnim (sandbox) računima i testnim karticama. |
-| C-03 | Ograničenje | Sva komunikacija između klijenta i poslužitelja odvija se preko HTTPS-a. | Odobreni zadatak, sigurnost |  Sustav se postavlja na platformu koja automatski osigurava HTTPS. Adrese za preusmjeravanje (redirect URI) OAuth-a i servisa za plaćanje moraju biti HTTPS adrese. Provjera pregledom mrežnog prometa.|
-| C-04 | Ograničenje | Sustav je web aplikacija koja se koristi u pregledniku na računalima i mobilnim uređajima (NF-01, NF-04)| Odobreni zadatak | Potreban je responzivan raspored sučelja. Zaposlenik prodajnog mjesta QR kod skenira kamerom mobitela izravno u pregledniku, pomoću gotove JavaScript biblioteke za čitanje QR kodova. Preglednik dopušta pristup kameri samo preko HTTPS-a i uz dozvolu korisnika. Ako kamera nije dostupna ili skeniranje ne uspije, zaposlenik kod upisuje ručno. Provjera: aplikaciju otvoriti na mobitelu i računalu te na mobitelu skenirati i ručno upisati kod za preuzimanje. |
+| C-02 | Ograničenje | Plaćanje se obavlja putem vanjskih servisa. | Odobreni zadatak |  Sustav ne obrađuje i ne pohranjuje podatke o karticama, nego samo identifikator i status transakcije. Uspješnost plaćanja potvrđuje se na poslužitelju, a ne samo na klijentu. Neuspjelo plaćanje vodi rezervaciju u definirano stanje (NF-06). Provjera: uspješno, odbijeno i prekinuto plaćanje testirati PayPal testnim (sandbox) računima i testnim karticama. |
+| C-03 | Ograničenje | Sva komunikacija između klijenta i poslužitelja odvija se preko HTTPS-a. | Sigurnost |  Sustav se postavlja na platformu koja automatski osigurava HTTPS. Adrese za preusmjeravanje (redirect URI) OAuth-a i servisa za plaćanje moraju biti HTTPS adrese. Provjera pregledom mrežnog prometa.|
+| C-04 | Ograničenje | Sustav je web aplikacija koja se koristi u pregledniku na računalima i mobilnim uređajima (NF-04)| Odobreni zadatak | Potreban je responzivan raspored sučelja. Zaposlenik prodajnog mjesta QR kod skenira kamerom mobitela izravno u pregledniku, pomoću gotove JavaScript biblioteke za čitanje QR kodova. Preglednik dopušta pristup kameri samo preko HTTPS-a i uz dozvolu korisnika. Ako kamera nije dostupna ili skeniranje ne uspije, zaposlenik kod upisuje ručno. Provjera: aplikaciju otvoriti na mobitelu i računalu te na mobitelu skenirati i ručno upisati kod za preuzimanje. |
 | C-05 | Ograničenje | Ponuda se može uređivati ili brisati samo ako za nju ne postoje rezervacije. | Odluka tima | Postojanje rezervacija provjerava se na poslužitelju u istoj transakciji kao izmjena. U sučelju se akcije za takve ponude onemogućuju. |
-| C-06 | Ograničenje | Uz online plaćanje podržano je plaćanje gotovinom pri preuzimanju. | Odluka tima | Sustav mora razlikovati plaćene i neplaćene rezervacije. Kod za preuzimanje izdaje se i za neplaćene rezervacije, a prodajno mjesto pri verifikaciji koda potvrđuje i naplatu. |
-| AS-01 | Pretpostavka | Kartično plaćanje i povrat novca mogu se obaviti putem istog vanjskog servisa, uključujući povrat. | Pretpostavaka o vanjskim servisima | Provjeriti u sandbox okruženju plaćanje karticom bez PayPal računa i povrat za otkazanu rezervaciju. |
+| AS-01 | Pretpostavka | Kartično plaćanje i povrat novca mogu se obaviti putem istog vanjskog servisa. | Pretpostavaka o vanjskim servisima | Provjeriti u sandbox okruženju plaćanje karticom bez PayPal računa i povrat za otkazanu rezervaciju. |
 | AS-02 | Pretpostavka | Kupci dopuštaju pregledniku pristup lokaciji radi izračuna udaljenosti. | Pretpostavaka o okolini | Testirati scenarij odbijanja dozvole. Tada ponuditi ručni unos lokacije ili prikaz ponuda bez udaljenosti. |
 | AS-03 | Pretpostavka | Zaposlenici prodajnih mjesta koriste račun predstavnika prodajnog mjesta i nisu zaseban akter u sustavu. | Pretpostavaka o okolini | Potvrditi s asistenticom. Ako su potrebni zasebni računi zaposlenika, dodati podulogu s ovlašću samo za verifikaciju koda. |
 | AS-04 | Pretpostavka | Administrator vjerodostojnost humanitarne organizacije provjerava izvan sustava (npr. uvidom u Registar udruga). Sustav se ne povezuje s javnim registrima. | Procjena tima | Potvrditi s asistenticom. U profil organizacije uključiti podatke potrebne za ručnu provjeru (npr. OIB). |
-|  |  |  |  |  |
+
 
 ---
 
@@ -101,20 +100,8 @@ Akteri:
 
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
-|  |  |  |  |
-
-<details>
-<summary><strong>Primjer značajne promjene</strong></summary>
-
-**Primjer scenarija — odluka tijekom pregleda CrisisMapa:**
-
-| Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
-| --- | --- | --- | --- |
-| [Datum pregleda] | F-004, NF-01 | Dodati ručni odabir lokacije kada korisnik odbije geolokaciju preglednika; bez toga građanin ne može podnijeti prijavu kriznog događaja s lokacijom. | [Poveznica na stvarnu bilješku pregleda ili zadatak tima] |
-
-**Razlog promjene:** Zapis navodi zahvaćene stavke i objašnjava razlog iz perspektive korisnika, a zatim upućuje na dokaz odluke. Nakon stvarne odluke ažurirajte trenutačne zahtjeve; stilska izmjena teksta ne zahtijeva zapis u dnevniku promjena. Trenutačni red zadataka držite u alatu za praćenje zadataka.
-
-</details>
+| 30.10.2026. | F-008 (prvotno F-030) | Uklonjena opcija plaćanja gotovinom pri preuzimanju, ostaje samo opcija plaćanja online (PayPal ili kartično). Opcija nije potrebna za ostvarenje cilja sustava. | Odluka tima nakon razgovora s asistenticom na laboratorijskoj vježbi. |
+| 30.10.2026. | F-001, F-002, F-008, F-009, F-011, F-013, F-026 | Spojeni zahtjevi koji opisuju dijelove iste korisničke radnje. Smanjen broj zahtjeva s 35 na 26. Zbog preglednije liste bez preklapanja | Razgovor s asistenticom na laboratorijskoj vježbi. |
 
 ---
 
@@ -124,22 +111,39 @@ Akteri:
 
 | ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
 | --- | --- | --- | --- |
-| F-001 | [UC-001] | [Komponenta, modul ili drugo mjesto realizacije] | [ST-01, CT-01 ili druga provjera] |
-|  |  |  |  |
+| F-001 | UC-001 | Spring Security OAuth2 (Google); korisnik (Korisnik, KorisnikRepository) | na čekanju: #40 i scenarij 401 iz #43|
+| F-002 | UC-002 | ponuda (Ponuda, PonudaRepository); GET /api/ponude | PonudaRepositoryTest |
+| F-003 | UC-007 | Vanjski servis za plaćanje (A-06) | na čekanju (nije u opsegu M1) |
+| F-004 | UC-001 (korak 4) | prodajnomjesto (ProdajnoMjesto) | Na čekanju |
+| F-005 | UC-008 | ponuda; POST /api/ponude | Na čekanju: scenarij objave iz #43 |
+| F-006 | UC-008 | ponuda (VrstaPonude) | Na čekanju |
+| F-007 | UC-002 | Web-klijent i Google Maps (A-07) | Na čekanju |
+| F-008 | UC-003 | rezervacija (Rezervacija, StavkaRezervacije); zaliha (ZalihaService) | RezervacijaTest, ZalihaServiceTest, ZalihaIstodobnostTest |
+| F-009 | UC-004 | rezervacija | Na čekanju |
+| F-010 | UC-005 | Rezervacija, status OTKAZANA | RezervacijaTest (prijelazi stanja) |
+| F-011 | UC-006 | Na čekanju: modul nije započet | Na čekanju |
+| F-012 | UC-008 | ponuda (NamjenaPonude) | Na čekanju |
+| F-013 | UC-009 | Na čekanju | Na čekanju |
+| F-014 | UC-010 | Na čekanju | Na čekanju |
+| F-015 | UC-001, UC-011 | korisnik (StatusOdobrenja)	| Na čekanju |
+| F-016 | UC-011 | korisnik (StatusOdobrenja) | Na čekanju |
+| F-017 | UC-012 | Na čekanju | Na čekanju |
+| F-018 | UC-013 | Na čekanju | Na čekanju |
+| F-019 | UC-013 | Na čekanju | Na čekanju |
+| F-020 | UC-012 | Na čekanju | Na čekanju |
+| F-021 | Nema zasebnog obrasca (3.3) | Na čekanju | Na čekanju |
+| F-022 | UC-014 | Na čekanju | Na čekanju |
+| F-023 | UC-005 | rezervacija; GET /api/rezervacije/moje | Na čekanju |
+| F-024 | UC-008 | ponuda | Na čekanju |
+| F-025 | UC-007, UC-008 | Provjera članstva pri objavi ponude | Na čekanju |
+| F-026 | UC-014 | Na čekanju | Na čekanju |
+| NF-01 | NF-01 | GET /api/ponude; upiti u PonudaRepository | Na čekanju: mjerenje vremena odziva na postavljenoj aplikaciji |
+| NF-02 | Nema zasebnog obrasca | Hosting s HTTPS-om (#42) | Na čekanju |
+| NF-03 | UC-001 | OAuth2 prijava; tablica korisnika bez stupca za lozinku | Pregled sheme db/zalogajcici.sql |
+| NF-04 | Svi obrasci uporabe sa sučeljem | Web-klijent: prilagodljivi CSS (src/assets/app.css), donja traka na mobitelu i bočna na računalu (components/ui.js) | Na čekanju: ručna provjera na mobitelu i računalu |
+| NF-05 | Svi obrasci uporabe sa sučeljem | Tekstovi u web-klijentu; poruke grešaka iz backenda na hrvatskom | Na čekanju: ručna provjera sučelja i poruka grešaka |
+| NF-06 | UC-003, UC-007 | Vanjski servis za plaćanje (A-06); aplikacija ne pohranjuje podatke kartica | Na čekanju (nije u opsegu M1) |
 
-<details>
-<summary><strong>Sljedivost zahtjeva do obrazaca uporabe i ispitivanja</strong></summary>
-
-**Primjer — poveznice zahtjeva CrisisMapa:**
-
-| ID zahtjeva | Obrazac uporabe / ponašanje | Arhitekturna realizacija | Ispitivanje / provjera |
-| --- | --- | --- | --- |
-| F-004 | UC-002 Podnošenje prijave kriznog događaja | Web-klijent; API za prijave; usluga za prijave | ST-01 Valjano podnošenje prijave; ST-02 Nedostaje obavezna lokacija; ST-03 Dopuštenje geolokacije odbijeno |
-| F-005 | Odabir primatelja obavijesti | Proces za obavijesti | CT-06 Primatelji obavijesti; potpuna dostava obavijesti nije pokrivena ovom provjerom |
-
-**Pokrivenost i dokazi:** CT-06 provjerava odabir primatelja za F-005, ali sam po sebi ne dokazuje da je obavijest stvarno dostavljena; ako projekt zahtijeva potpunu dostavu od početka do kraja, za taj dio treba postojati zasebna provjera. Svaki redak pokazuje gdje je zahtjev opisan kao ponašanje, gdje je ostvaren u sustavu i gdje se nalazi dokaz njegove provjere. Zahtjev ne mora imati zaseban obrazac uporabe ako ne opisuje korisničku interakciju; tada navedite relevantno ponašanje, arhitekturni element ili drugi prikladan način realizacije. U svojem projektu koristite stvarne nazive komponenata, modula i provjera iz dokumentacije i implementacije. Nedostajuću poveznicu ostavite praznom ili označite kao *na čekanju* uz kratak razlog. Stvarni rezultati ispitivanja bilježe se uz ispitne slučajeve; ova tablica pokazuje gdje ih pronaći.
-
-</details>
 
 ---
 
