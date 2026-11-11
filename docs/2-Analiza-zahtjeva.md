@@ -101,7 +101,6 @@ Akteri:
 | Datum | ID zahtjeva | Promjena i razlog | Dogovoreno s / dokaz |
 | --- | --- | --- | --- |
 | 30.10.2026. | F-008 (prvotno F-030) | Uklonjena opcija plaćanja gotovinom pri preuzimanju, ostaje samo opcija plaćanja online (PayPal ili kartično). Opcija nije potrebna za ostvarenje cilja sustava. | Odluka tima nakon razgovora s asistenticom na laboratorijskoj vježbi. |
-| 30.10.2026. | F-001, F-002, F-008, F-009, F-011, F-013, F-026 | Spojeni zahtjevi koji opisuju dijelove iste korisničke radnje. Smanjen broj zahtjeva s 35 na 26. Zbog preglednije liste bez preklapanja | Razgovor s asistenticom na laboratorijskoj vježbi. |
 
 ---
 
