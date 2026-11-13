@@ -84,7 +84,7 @@ class PonudaRepositoryTest {
         entityManager.flush();
 
         // Napravi
-        List<Long> idevi = ponudaRepository.findAktivne(SADA).stream()
+        List<Long> idevi = ponudaRepository.findAktivne(SADA, NamjenaPonude.PRODAJA).stream()
                 .map(Ponuda::getId)
                 .toList();
 

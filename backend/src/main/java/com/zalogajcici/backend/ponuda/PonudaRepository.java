@@ -12,13 +12,17 @@ import java.util.Optional;
 
 public interface PonudaRepository extends JpaRepository<Ponuda, Long> {
 
+    //join fetch rjesava problem: (lazy + open-in-view=false)
     @Query("""
-        select p from Ponuda p
+        select p from Ponuda p join fetch p.prodajnoMjesto
         where p.aktivna = true
             and p.preuzimanjeDo > :sada
             and p.raspolozivo > 0
+            and p.namjena = :namjena
+        order by p.preuzimanjeDo
         """)
-    List<Ponuda> findAktivne(@Param("sada") OffsetDateTime sada);
+    List<Ponuda> findAktivne(@Param("sada") OffsetDateTime sada,
+                             @Param("namjena") NamjenaPonude namjena);
 
 
     //sigurno kod istodobnih rezervacija: provjera i oduzimanje događaju se u istoj SQL naredbi
