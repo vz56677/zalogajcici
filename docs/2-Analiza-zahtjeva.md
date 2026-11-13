@@ -7,7 +7,7 @@
 | ID | Opis | Prioritet | Izvor | Kriteriji prihvaćanja |
 | --- | --- | --- | --- | --- |
 | F-001 | Sustav omogućuje neregistriranom korisniku registraciju računa i registriranom prijavu pomoću vanjskih servisa za autentifikaciju | Visok | Odobreni zadatak | Neregistrirani korisnici mogu se registrirati i napraviti račun u sustavu pomoću vanjskih servisa za autentifikaciju. Kod prve registracije omogućuje se odabir uloge (Kupac, humanitarna organizacija ili prodajno mjesto) i unos podataka profila (ime, email, kontakt za kupca i humanitarnu organizaciju, naziv, vrstu, adresu, kontakt za prodajno mjesto). Korisnicima koji imaju postojeći korisnički račun omogućena je prijava u isti. Registrirani korisnik nakon prijave dolazi na početnu stranicu svoje uloge, dok se blokiranom korisniku prijava odbija. |
-| F-002 | Sustav omogućuje pregled svih ponuda hrane i paketa iznenađenja trenutno dostupnih kupcima (izuzev ponuda namijenjenih humanitarnim organizacijama). | Visok | Odobreni zadatak | Kupac na početnoj stranici može pregledavati ponude objavljene od strane prodajnih mjesta s prikazom naziva, cijene i roka vremena za preuzimanje, osim onih namijenjenih isključivo humanitarnim akcijama. |
+| F-002 | Sustav omogućuje pregled svih ponuda hrane i paketa iznenađenja trenutno dostupnih kupcima (izuzev ponuda namijenjenih humanitarnim organizacijama). | Visok | Odobreni zadatak | Kupac na početnoj stranici može pregledavati ponude objavljene od strane prodajnih mjesta s prikazom naziva, cijene i roka vremena za preuzimanje, osim onih namijenjenih isključivo humanitarnim organizacijama. |
 | F-003 | Sustav omogućuje prodajnim mjestima plaćanje članarine za korištenje platforme | Visok | Odobreni zadatak | Prodajna mjesta mogu plaćati mjesečnu ili godišnju članarinu za korištenje platforme putem PayPala ili kreditnih kartica korištenjem vanjskih servisa |
 | F-004 | Sustav omogućuje prodajnim mjestima izradu javnih profila prodajnih mjesta i upravljajne istim | Srednji | Odobreni zadatak | Prodajna mjesta imaju javne profile na kojima su dostupne njihove osnovne informacije (naziv, adresa, kontakt, radno vrijeme, logo te popis trenutno dostupnih proizvoda) |
 | F-005 | Sustav omogućuje prodajnim mjestima objavu ponude proizvoda. | Visok | Odobreni zadatak | Prodajna mjesta mogu objaviti ponudu hrane u kojoj je naveden naziv proizvoda, kategorija, količina, redovna i snižena cijena/informacija o doniranju, rok upotrebe i vrijeme do kojeg je moguće preuzimanje. Također je moguća objava fotografija proizvoda ili paketa. |
@@ -24,7 +24,7 @@
 | F-016 | Sustav omogućava administratoru odobravanje aktivacije profila organizacije | Visok | Odobreni zadatak | Nakon izrade javnih profila humanitarnih organizacija administrator sustava odobrava ili odbija aktivaciju istih. Odobreni profili postaju javni i organizacije mogu slati zahtjeve za donacije i kreirati humanitarne akcije, dok odbijenim profilima to nije moguće. |
 | F-017 | Sustav omogućuje prodajnim mjestima i humanitarnim organizacijama kreiranje akcija prikupljanja i doniranja hrane | Visok | Odobreni zadatak | Prodajna mjesta i humanitarne organizacije mogu kreirati humanitarne akcije za koje je potrebno definirati naziv, opis, lokaciju, datum početka i završetka te popis potrebnih vrsta proizvoda |
 | F-018 | Sustav omogućuje kupcima prijavu za sudjelovanje u humanitarnim akcijama | Srednji | Odobreni zadatak | Kupac na stranici akcije koja još traje odabire prijavu, sustav ga evidentira kao sudionika i organizator ga vidi na popisu sudionika. Prijava nije moguća za akciju kojoj je prošao datum završetka, a isti kupac ne može se prijaviti dvaput. |
-| F-019 | Sustav omogućuje kupcima evidentiranje proizvoda koje doniraju | Nizak | Odobreni zadatak | Sudionici (kupci) prijavljeni za humanitarnu akciju može odabrati proizvode koje planira donijeti s popisa vrsta potrebnih proizvoda. Humanitarna organizacija vidi te najave na pregledu akcija. |
+| F-019 | Sustav omogućuje kupcima evidentiranje proizvoda koje doniraju | Nizak | Odobreni zadatak | Sudionici (kupci) prijavljeni za humanitarnu akciju može odabrati proizvode koje planira donijeti s popisa vrsta potrebnih proizvoda. Humanitarna organizacija(organizator akcije) vidi te najave na pregledu akcija. |
 | F-020 | Sustav omogućuje organizatorima humanitarnih akcija evidenciju zaprimljenih donacija | Srednji | Odobreni zadatak | Organizatori humanitarnih akcija nakon primitka mogu evidentirati proizvode koji su stvarno zaprimljeni u donaciji |
 | F-021 | Sustav omogućuje kupcima pretplatu na obavijesti | Nizak | Odobreni zadatak | Kupci se mogu pretplatiti za dobivanje obavijesti o novim ponudama odabranih prodajnih mjesta ili kategorija putem e-pošte |
 | F-022 | Sustav omogućuje administratoru određivanje cijene članarina  | Srednji | Odobreni zadatak | Administratori imaju ovlasti za postavljanje iznosa mjesečnih i godišnjih članarina. Nova cijena odnosi se na uplate nakon izmjene, već plaćena razdoblja se ne mijenjaju. |
@@ -32,7 +32,7 @@
 | F-024 | Sustav omogućuje prodajnim mjestima uređivanje i brisanje ponuda | Nizak | Odluka tima | Prodajna mjesta za svaku vlastitu objavljenu ponudu imaju mogućnost brisanja ponude ili uređivanja informacija uz kriterij da već ne postoje rezervacije za istu. |
 | F-025 | Sustav ne dozvoljava objavu ponuda prodajnim mjestima bez aktivnog članstva | Srednji | Odluka tima | Prodajnim mjestima koja nemaju aktivno članstvo (nisu uplatili članarinu za određeno razdoblje) nije omogućena objava ponuda. |
 | F-026 | Sustav omogućuje administratoru upravljanje korisnicima i sadržajem | Nizak | Odobreni zadatak | Administratori imaju ovlasti za blokiranje i brisanje korisnika/profila kao i za uklanjanje neprimjerenih komentara, ponuda ili humanitarnih akcija. |
-| F-027 | Sustav omogućuje filtriranje ponuda | Srednji | Odobreni zadatak |  Sve dostupne ponude mogu se filtrirati prema kategoriji, udaljenosti od svoje lokacije,  rasponu cijene i vremenu preuzimanja ili prema kombinaciji više filtera. |
+| F-027 | Sustav omogućuje kupcu filtriranje ponuda | Srednji | Odobreni zadatak |  Sve dostupne ponude kupci filtrirati prema kategoriji, udaljenosti od svoje lokacije,  rasponu cijene i vremenu preuzimanja ili prema kombinaciji više filtera. |
 
 ## 2.2 Nefunkcijski zahtjevi
 
@@ -59,8 +59,7 @@ Dionici:
 | D-04 | Humanitarne organizacije: žele doći do hrane namijenjene donaciji i organizirati akcije prikupljanja. Aplikaciju u njihovo ime koristi predstavnik organizacije (A-03). | F-013: Pregled donacijskih ponuda i slanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija. |
 | D-05 | Krajnji primatelji donirane hrane: imaju korist od hrane koju organizacije preuzmu. Ne koriste aplikaciju i nisu akteri. | F-012: Označavanje ponuda za donaciju; F-013: Pregled donacijskih ponuda i slanje zahtjeva. |
 | D-06 | Vlasnik platforme: želi naplatiti članarine i održavati vjerodostojan sadržaj. Aplikaciju u njegovo ime koristi administrator (A-04). | F-022: Određivanje cijena članarina; F-016: Odobravanje profila organizacija; F-026: Upravljanje korisnicima i sadržajem. |
-| D-07 | Ocjenjivači projekta (nositelj kolegija i asistentica): žele dokumentiran i funkcionalan sustav koji ispunjava odobreni zadatak. Nisu akteri aplikacije. | Svi zahtjevi u 2.1 i 2.2. |
-| D-08 | Agencija za zaštitu osobnih podataka (AZOP): zahtijeva obradu osobnih podataka u skladu s GDPR-om. Ne koristi aplikaciju, ali određuje ograničenja sustava. | NF-03: Bez pohrane lozinki; NF-06: Sigurno plaćanje. |
+| D-07 | Agencija za zaštitu osobnih podataka (AZOP): zahtijeva obradu osobnih podataka u skladu s GDPR-om. Ne koristi aplikaciju, ali određuje ograničenja sustava. | NF-03: Bez pohrane lozinki; NF-06: Sigurno plaćanje. |
 
 Akteri: 
 
@@ -73,7 +72,7 @@ Akteri:
 | A-05 | Pružatelj autentifikacije (Google, OAuth 2.0) | F-001: Potvrda identiteta pri registraciji i prijavi. |
 | A-06 | Servis za plaćanje (PayPal) | F-003: Naplata članarine; F-008: Naplata rezervacije; F-010: Povrat novca pri otkazivanju. |
 | A-07 | Servis za karte (Google Maps) | F-007: Prikaz karte i lokacija prodajnih mjesta. |
-| A-08 | Servis za slanje e-pošte (Sengrid) | F-009: Slanje potvrde rezervacije i koda za preuzimanje; F-021: Slanje obavijesti o novim ponudama pretplaćenim kupcima. |
+| A-08 | Servis za slanje e-pošte (SendGrid) | F-009: Slanje potvrde rezervacije i koda za preuzimanje; F-021: Slanje obavijesti o novim ponudama pretplaćenim kupcima. |
 
 
 
@@ -141,7 +140,8 @@ Akteri:
 | F-024 | UC-008 | ponuda | Na čekanju |
 | F-025 | UC-007, UC-008 | Provjera članstva pri objavi ponude | Na čekanju |
 | F-026 | UC-014 | Na čekanju | Na čekanju |
-| NF-01 | NF-01 | GET /api/ponude; upiti u PonudaRepository | Na čekanju: mjerenje vremena odziva na postavljenoj aplikaciji |
+| F-027 | UC-002 | ponuda; GET /api/ponude (parametri filtera) | Na čekanju |
+| NF-01 | UC-002 | GET /api/ponude; upiti u PonudaRepository | Na čekanju: mjerenje vremena odziva na postavljenoj aplikaciji |
 | NF-02 | Nema zasebnog obrasca | Hosting s HTTPS-om (#42) | Na čekanju |
 | NF-03 | UC-001 | OAuth2 prijava; tablica korisnika bez stupca za lozinku | Pregled sheme db/zalogajcici.sql |
 | NF-04 | Svi obrasci uporabe sa sučeljem | Web-klijent: prilagodljivi CSS (src/assets/app.css), donja traka na mobitelu i bočna na računalu (components/ui.js) | Na čekanju: ručna provjera na mobitelu i računalu |
@@ -161,19 +161,3 @@ Akteri:
 | Demo 2 | [Povratna informacija] | [Odluka; vidi odjeljak 2.5] |
 | Završni pregled | [Povratna informacija] | [Odluka; vidi odjeljak 2.5] |
 
-<details>
-<summary><strong>Odluke o zahtjevima nakon pregleda</strong></summary>
-
-**Primjer scenarija — pregled zahtjeva CrisisMapa:**
-
-| Kontrolna točka | Povratna informacija ili nalaz | Odluka o zahtjevu ili opsegu |
-| --- | --- | --- |
-| Iteracija 1 | Demonstracija pokazuje da odbijanje pristupa lokaciji preglednika onemogućuje podnošenje prijave. | Dogovoriti ručni odabir lokacije; ažurirati F-004 i primjer NF-01 te razlog zabilježiti u odjeljku 2.5. |
-
-**Odluka povezana s povratnom informacijom:** Zapis povezuje opaženo ponašanje s konkretnom promjenom zahtjeva i izbjegava zapisnik cijelog sastanka. Zapišite samo stvarne povratne informacije i odluke za kontrolne točke. Konzultacije u nekom drugom tjednu ne stvaraju dodatnu obaveznu predaju.
-
-</details>
-
----
-
->**Završna provjera:** Zahtjevi su aktualni, provjerljivi i povezani. Svaki važan zahtjev moguće je pratiti od njegova opisa i ponašanja preko mjesta realizacije u sustavu do odgovarajućeg ispitivanja ili druge provjere. Poveznice koriste stvarne identifikatore i nazive iz projektne dokumentacije.
