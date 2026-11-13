@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class Controller {
 
     //defaultni kontroler za testiranje ispravnosti projekta
-    @GetMapping("/")
+    //@GetMapping("/")
+    @GetMapping("/api/health")
     public String home() {
         return "Backend is running";
     }
