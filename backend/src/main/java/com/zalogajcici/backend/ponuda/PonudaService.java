@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.List;
 
 @Service
 public class PonudaService {
@@ -66,6 +67,34 @@ public class PonudaService {
         provjeriObjavu(p, sada);
 
         return PonudaOdgovor.iz(ponude.save(p));
+    }
+
+    //GET /api/ponude
+    //TODO: kada se napravi prijava, dodati i donacije za humanitarne organizacija
+    @Transactional(readOnly = true)
+    public List<PonudaOdgovor> aktivne() {
+        OffsetDateTime sada = OffsetDateTime.now(clock);
+        return ponude.findAktivne(sada, NamjenaPonude.PRODAJA).stream()
+                .map(PonudaOdgovor::iz)
+                .toList();
+    }
+
+    //GET /api/ponude/{id}
+    @Transactional(readOnly = true)
+    //TODO: kada se napravi prijava umjesto NamjenaPonude.PRODAJA provjeriti ulogu korisnika (kupac/org)
+    public PonudaOdgovor jedna(Long ponudaId) {
+        OffsetDateTime sada = OffsetDateTime.now(clock);
+        Ponuda p = ponude.findAktivnaById(sada, ponudaId)
+                .orElseThrow(this::nijePronadena);
+
+        if (p.getNamjena() != NamjenaPonude.PRODAJA) {
+            throw nijePronadena();
+        }
+        return PonudaOdgovor.iz(p);
+    }
+
+    private BusinessException nijePronadena() {
+        return new BusinessException(HttpStatus.NOT_FOUND, "PONUDA_NE_POSTOJI", "Ponuda ne postoji.");
     }
 
     // Pravila objave (F-005, F-012, UC-008 5a). Ne idu u konstruktor jer rasprodana ili istekla
