@@ -84,7 +84,7 @@ class PonudaRepositoryTest {
         entityManager.flush();
 
         // Napravi
-        List<Long> idevi = ponudaRepository.findAktivne(SADA).stream()
+        List<Long> idevi = ponudaRepository.findAktivne(SADA, NamjenaPonude.PRODAJA).stream()
                 .map(Ponuda::getId)
                 .toList();
 
@@ -94,6 +94,33 @@ class PonudaRepositoryTest {
         assertFalse(idevi.contains(rasprodana.getId()), "rasprodana ponuda ne smije biti u rezultatu");
     }
 
+    //---------prikaz ponuda: obicni kupci ne vide donacije------------------
+
+
+    @Test
+    void findAktivneNeVracaDonacijeKadSeTraziProdaja() {
+        // Pripremi
+        ProdajnoMjesto mjesto = novoMjesto(noviProdavac());
+        Ponuda prodaja = ponudaRepository.save(
+                novaPonuda(mjesto, new BigDecimal("5"), SADA.plusHours(2)));
+        Ponuda donacija = ponudaRepository.save(
+                novaDonacija(mjesto, new BigDecimal("5"), SADA.plusHours(2)));
+        entityManager.flush();
+
+        // Napravi
+        List<Long> zaKupce = ponudaRepository.findAktivne(SADA, NamjenaPonude.PRODAJA).stream()
+                .map(Ponuda::getId)
+                .toList();
+        List<Long> zaOrganizacije = ponudaRepository.findAktivne(SADA, NamjenaPonude.DONACIJA).stream()
+                .map(Ponuda::getId)
+                .toList();
+
+        // Provjeri
+        assertTrue(zaKupce.contains(prodaja.getId()), "prodajna ponuda mora biti vidljiva kupcima");
+        assertFalse(zaKupce.contains(donacija.getId()), "donacija ne smije biti vidljiva kupcima (F-002)");
+        assertTrue(zaOrganizacije.contains(donacija.getId()), "donacija mora biti vidljiva organizacijama");
+        assertFalse(zaOrganizacije.contains(prodaja.getId()), "prodajna ponuda ne smije biti među donacijama");
+    }
     //-----------------pomocne funkcije------------------------
 
     private Korisnik noviProdavac() {
@@ -114,5 +141,12 @@ class PonudaRepositoryTest {
         return new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda", "Pekara",
                 new BigDecimal("9.00"), new BigDecimal("3.50"), raspolozivo,
                 preuzimanjeDo.minusHours(3), preuzimanjeDo);
+    }
+
+    private Ponuda novaDonacija(ProdajnoMjesto mjesto, BigDecimal raspolozivo, OffsetDateTime preuzimanjeDo) {
+        return new Ponuda(mjesto, VrstaPonude.PROIZVOD, NamjenaPonude.DONACIJA,
+                "Testna donacija", "Pekara", null, null,
+                new BigDecimal("9.00"), BigDecimal.ZERO, raspolozivo,
+                null, SADA, preuzimanjeDo.minusHours(3), preuzimanjeDo, null);
     }
 }

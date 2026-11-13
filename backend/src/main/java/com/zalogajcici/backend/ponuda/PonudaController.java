@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/ponude")
 public class PonudaController {
@@ -18,5 +20,15 @@ public class PonudaController {
     public ResponseEntity<PonudaOdgovor> objavi(@RequestHeader("Korisnik-Id") Long korisnikId,
                                                 @RequestBody ObjaviPonuduZahtjev zahtjev) {
         return ResponseEntity.status(HttpStatus.CREATED).body(ponudaService.objavi(korisnikId, zahtjev));
+    }
+
+    @GetMapping
+    public List<PonudaOdgovor> aktivne() {
+        return ponudaService.aktivne();
+    }
+
+    @GetMapping("/{id}")
+    public PonudaOdgovor jedna(@PathVariable Long id) {
+        return ponudaService.jedna(id);
     }
 }

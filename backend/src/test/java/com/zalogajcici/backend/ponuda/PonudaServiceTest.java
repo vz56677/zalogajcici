@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
@@ -160,5 +161,101 @@ class PonudaServiceTest {
                 sada.plusHours(1), sada.plusHours(3), null);
 
         assertEquals("PAKET_CIJELI_KOMADI", kodGreske(() -> ponudaService.objavi(prodavac.getId(), z)));
+    }
+
+    //-----------------testovi za prikaz ponuda------------------
+
+    //-----------------popis aktivnih ponuda--------------------
+
+    @Test
+    void aktivneVracajuSamoProdajnePonudeKojeNisuIstekle() {
+        ProdajnoMjesto mjesto = novoMjesto(noviKorisnik(UlogaKorisnika.PRODAVAC));
+        Ponuda aktivna = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "5", sada.plusHours(2));
+        Ponuda istekla = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "5", sada.minusHours(1));
+        Ponuda rasprodana = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "0", sada.plusHours(2));
+        Ponuda donacija = spremiPonudu(mjesto, NamjenaPonude.DONACIJA, "5", sada.plusHours(2));
+
+        List<Long> idevi = ponudaService.aktivne().stream()
+                .map(PonudaOdgovor::id)
+                .toList();
+
+        // "sadrzi / ne sadrzi", jer lokalna baza moze imati i druge ponude (npr. iz seed.sql)
+        assertTrue(idevi.contains(aktivna.getId()));
+        assertFalse(idevi.contains(istekla.getId()), "istekla se ne prikazuje (NF-08)");
+        assertFalse(idevi.contains(rasprodana.getId()), "rasprodana se ne prikazuje (NF-08)");
+        assertFalse(idevi.contains(donacija.getId()), "kupci ne vide donacije (F-002)");
+    }
+
+    @Test
+    void aktivneSuPoredaneOdOnihKojeUskoroIsticu() {
+        ProdajnoMjesto mjesto = novoMjesto(noviKorisnik(UlogaKorisnika.PRODAVAC));
+        Ponuda kasnija = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "5", sada.plusHours(5));
+        Ponuda ranija = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "5", sada.plusHours(1));
+
+        List<Long> idevi = ponudaService.aktivne().stream()
+                .map(PonudaOdgovor::id)
+                .toList();
+
+        assertTrue(idevi.indexOf(ranija.getId()) < idevi.indexOf(kasnija.getId()));
+    }
+
+    //-----------------trazena ponuda po ID-u--------------------
+
+    @Test
+    void postojecaPonudaVracaSeIspravno() {
+        Korisnik prodavac = noviKorisnik(UlogaKorisnika.PRODAVAC);
+        ProdajnoMjesto mjesto = novoMjesto(prodavac);
+        PonudaOdgovor ponuda = ponudaService.objavi(prodavac.getId(), ispravanProizvod(mjesto.getId()));
+
+        PonudaOdgovor odgovor = ponudaService.jedna(ponuda.id());
+
+        assertEquals(ponuda.id(), odgovor.id());
+        assertEquals("Kroasan", odgovor.naziv());
+        assertEquals(mjesto.getId(), odgovor.prodajnoMjesto().id());
+        assertEquals("Pekara", odgovor.prodajnoMjesto().naziv()); // podaci o mjestu stigli su uz ponudu
+
+    }
+
+    @Test
+    void nepostojecaPonudaJe404() {
+        assertEquals("PONUDA_NE_POSTOJI", kodGreske(() -> ponudaService.jedna(-1L)));
+    }
+
+    @Test
+    void isteklaPonudaJe404() {
+        ProdajnoMjesto mjesto = novoMjesto(noviKorisnik(UlogaKorisnika.PRODAVAC));
+        Ponuda istekla = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "5", sada.minusHours(1));
+
+        assertEquals("PONUDA_NE_POSTOJI", kodGreske(() -> ponudaService.jedna(istekla.getId())));
+    }
+
+    @Test
+    void donacijaJe404ZaKupca() {
+        ProdajnoMjesto mjesto = novoMjesto(noviKorisnik(UlogaKorisnika.PRODAVAC));
+        Ponuda donacija = spremiPonudu(mjesto, NamjenaPonude.DONACIJA, "5", sada.plusHours(2));
+
+        assertEquals("PONUDA_NE_POSTOJI", kodGreske(() -> ponudaService.jedna(donacija.getId())));
+    }
+
+    @Test
+    void rasprodanaPonudaSeIpakVraca() {
+        // namjerna odluka: kupac na stranici ponude vidi "rasprodano", a ne 404
+        ProdajnoMjesto mjesto = novoMjesto(noviKorisnik(UlogaKorisnika.PRODAVAC));
+        Ponuda rasprodana = spremiPonudu(mjesto, NamjenaPonude.PRODAJA, "0", sada.plusHours(2));
+
+        PonudaOdgovor odgovor = ponudaService.jedna(rasprodana.getId());
+
+        assertEquals(0, BigDecimal.ZERO.compareTo(odgovor.raspolozivo()));
+    }
+
+    //----------------pomocne funkcije--------------------------------
+
+    private Ponuda spremiPonudu(ProdajnoMjesto mjesto, NamjenaPonude namjena,
+                                String kolicina, OffsetDateTime preuzimanjeDo) {
+        BigDecimal cijena = namjena == NamjenaPonude.DONACIJA ? BigDecimal.ZERO : new BigDecimal("1.00");
+        return ponudaRepository.save(new Ponuda(mjesto, VrstaPonude.PROIZVOD, namjena,
+                "Kroasan", "Pekara", null, null,
+                new BigDecimal("2.50"), cijena, new BigDecimal(kolicina),
+                null, sada.minusDays(1), preuzimanjeDo.minusHours(3), preuzimanjeDo, null));
     }
 }
