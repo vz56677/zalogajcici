@@ -2,15 +2,15 @@
 
 **Cilj:** Definirati arhitekturni stil, dekompoziciju programa na podsustave i module, organizaciju podataka te dinamičko ponašanje tijekom izvođenja. Arhitektura predstavlja temelj za implementaciju i ažurira se pri svakoj važnijoj promjeni projektnih odluka.
 
-| Arhitekturni pogled | Ključno inženjersko pitanje | Primijenjeni model ili dijagram |
-| :--- | :--- | :--- |
-| **Strategija rješenja** | Koji stil i temeljne odluke određuju program? | Tablica odluka (odjeljak 4.1) |
-| **Struktura podsustava** | Koji su glavni dijelovi i kako komuniciraju? | Dijagram komponenata |
-| **Model podataka** | Kako su strukturirani trajni podaci programa? | Relacijski ER dijagram |
-| **Struktura koda** | Kako su dodijeljene odgovornosti i ključne klase? | Reprezentativni dijagram razreda |
-| **Dinamičko ponašanje** | Kako moduli surađuju pri obradi ključnih transakcija? | sekvencijski dijagram |
-| **Stanja sustava** | Kako ključni domenski objekt mijenja svoja stanja? | Dijagram stanja |
-| **Fizički razmještaj** | Na kojim se izvršnim čvorovima program izvodi? | Dijagram razmještaja (poglavlje 6) |
+| Arhitekturni pogled      | Ključno inženjersko pitanje                           | Primijenjeni model ili dijagram    |
+| :----------------------- | :---------------------------------------------------- | :--------------------------------- |
+| **Strategija rješenja**  | Koji stil i temeljne odluke određuju program?         | Tablica odluka (odjeljak 4.1)      |
+| **Struktura podsustava** | Koji su glavni dijelovi i kako komuniciraju?          | Dijagram komponenata               |
+| **Model podataka**       | Kako su strukturirani trajni podaci programa?         | Relacijski ER dijagram             |
+| **Struktura koda**       | Kako su dodijeljene odgovornosti i ključne klase?     | Reprezentativni dijagram razreda   |
+| **Dinamičko ponašanje**  | Kako moduli surađuju pri obradi ključnih transakcija? | sekvencijski dijagram              |
+| **Stanja sustava**       | Kako ključni domenski objekt mijenja svoja stanja?    | Dijagram stanja                    |
+| **Fizički razmještaj**   | Na kojim se izvršnim čvorovima program izvodi?        | Dijagram razmještaja (poglavlje 6) |
 
 ---
 
@@ -20,25 +20,12 @@ Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano
 
 **Cilj:** Objasniti nekoliko arhitekturnih odluka koje najviše utječu na rješenje i navesti njihove projektno specifične razloge.
 
-| Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
-| --- | --- | --- |
-|  |  |  |
-
-Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako važna odluka ima ADR, dovoljno je u tablici navesti njegov ID.
-
-<details>
-<summary><strong>Primjer arhitekturnih odluka i kompromisa</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Odluka | Razmatrana alternativa | Projektno specifično obrazloženje i kompromis |
-| --- | --- | --- |
-| Klijent u pregledniku i jedan poslužiteljski API | Više zasebno postavljenih poslužiteljskih usluga | Klijent prikazuje kartu, dok poslužiteljski sustav provjerava i pohranjuje prijave. Jedan poslužiteljski sustav upravljiv je za ovaj opseg; njegov kvar može privremeno prekinuti rad s prijavama. Obrazloženje je u ADR-01. |
-| Relacijska pohrana prijava | Dokumentno orijentirana pohrana | Prijave imaju prepoznatljive veze s korisnicima i lokacijama. Relacijska shema te veze čini eksplicitnima, ali zahtijeva migracije kada se shema promijeni. |
-
-**Analiza primjera:** Obje odluke navode razlog vezan uz aplikaciju za prijavljivanje kriznih događaja i priznaju kompromis. Odluka o poslužiteljskom sustavu upućuje na ADR-01 umjesto ponavljanja cijele usporedbe. Moduli unutar jedne aplikacije koja se postavlja kao cjelina nisu zasebne mikrousluge. U vlastitoj tablici navedite alternative koje je tim doista razmatrao.
-
-</details>
+| Odluka                                                                        | Razmatrana alternativa                                             | Projektno specifično obrazloženje i kompromis                                                                                                                                                 |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Klijent-poslužitelj arhitektura (Spring Boot REST API + React/Native klijent) | Više zasebnih mikrousluga ili klasični server-side rendering (MVC) | Za opseg aplikacije, monolitna Spring Boot struktura je lakše održiva i brža za razvoj; kompromis je što se aplikacija skalira u komadu, te zato padom jednog servisa pada cijela aplikacija. |
+| Relacijaska baza podataka (PostgreSQL)                                        | Dokumentno-orijentirana baza podataka (MongoDB)                    | Podaci koje je potrebno spremiti u bazu su skloni relacijskom modelu baze podataka. Relacijska baza podataka osigurava dosljednost.                                                           |
+| Vanjska autentifikacija (OAuth)                                               | Vlastiti sustav upravljanja računima i kozinkama| Korištenje OAuth provjere skraćuje vrijeme prijave i povećava sigurnost, dok je kompromis ovisnost o vanjskom servisu.|| Korištenje e-mail servisa (SendGrid API) | Slanje e-mailova putem vlastitog SMTP poslužitelja | Korištenje SendGrida osigurava visoku pouzdanost isporuke, dok je kompromis ovisnost o vanjskom servisu. |
+| Integracija servisa za karte (Google Maps API) | Korištenje besplatnih alternativnih rješenja (npr. OpenStreetMap / Leaflet) | Google Maps nudi bogatiji ekosustav, napredne funkcije i poznato korisničko sučelje, uz kompromis ovisnosti o Googleovoj licenci i troškova pri većem broju korištenja. |
 
 ## 4.2 Gradivni blokovi i UML dijagram komponenata
 
@@ -48,8 +35,8 @@ Objasnite glavne arhitekturne odluke bez ponavljanja popisa tehnologija. Ako va�
 **PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]
 
 | Komponenta | Odgovornost | Razlog za ovu granicu |
-| --- | --- | --- |
-|  |  |  |
+| ---------- | ----------- | --------------------- |
+|            |             |                       |
 
 Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dijelove s različitim odgovornostima; planiranu bazu podataka aplikacije smjestite unutar granice, a usluge trećih strana izvan nje. Važne veze označite podatkom ili uslugom koja njima prolazi. Logička komponenta može biti modul unutar jedne poslužiteljske aplikacije: zaseban pravokutnik ne znači zasebno postavljenu uslugu. Tijekom implementacije ažurirajte dijagram kada se promijene odgovornosti ili veze. U završnoj inačici čitatelj treba moći povezati njegove dijelove s kodom. Dijagram razmještaja odgovara na pitanje gdje se ti dijelovi stvarno izvode.
 
@@ -64,15 +51,14 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **PlantUML izvor:** [izvor](./puml/4-1-crisismap-system-CMP.puml)
 
-| Dio | Odgovornost | Razlog za ovu granicu |
-| --- | --- | --- |
-| Web-klijent | Prikazuje prijave i prikuplja podatke za novu prijavu. | Korisnička interakcija odvojena je od pravila prijave i trajne pohrane. |
-| API za prijave | Prihvaća zahtjeve za rad s prijavama i vraća odgovore. | Odgovornosti izložene putem HTTP-a odvojene su od obrade prijava. |
-| Usluga za prijave | Primjenjuje pravila prijave i pristupa pohranjenim prijavama. | Pravila provjere valjanosti i pohrane prijava imaju jasno mjesto odgovornosti. |
+| Dio                  | Odgovornost                                                                                     | Razlog za ovu granicu                                                          |
+| -------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Web-klijent          | Prikazuje prijave i prikuplja podatke za novu prijavu.                                          | Korisnička interakcija odvojena je od pravila prijave i trajne pohrane.        |
+| API za prijave       | Prihvaća zahtjeve za rad s prijavama i vraća odgovore.                                          | Odgovornosti izložene putem HTTP-a odvojene su od obrade prijava.              |
+| Usluga za prijave    | Primjenjuje pravila prijave i pristupa pohranjenim prijavama.                                   | Pravila provjere valjanosti i pohrane prijava imaju jasno mjesto odgovornosti. |
 | Proces za obavijesti | Određuje korisnike koji trebaju primiti obavijest i traži od vanjskog pružatelja da je pošalje. | Obrada obavijesti odvojena je od odgovaranja na korisnikov zahtjev za prijavu. |
 
 **Analiza primjera:** Vanjska granica odvaja predloženi sustav od pružatelja kartografskih usluga i pružatelja obavijesti. Unutarnja granica grupira API za prijave, uslugu za prijave i proces za obavijesti unutar jedne poslužiteljske aplikacije; njihovi zasebni simboli prikazuju predložene odgovornosti, a ne neovisno postavljene usluge. PostgreSQL pohranjuje podatke aplikacije, dok pružatelj kartografskih usluga osigurava kartografske pločice. Strelice sažimaju ovisnosti, a ne redoslijed transakcije; taj redoslijed prikazuje sekvencijski dijagram. Izostavite proces za obavijesti i Firebase Cloud Messaging ako obavijesti nisu dio odobrenog opsega. Pružatelja prijave u sustav uključite samo ako to zahtijeva odobreni zadatak. Kako implementacija napreduje, ispravite svaku predloženu granicu koja se pokaže netočnom; završni dijagram mora odgovarati onome što je tim izgradio. Jedan koherentan prikaz komponenata korisniji je od nekoliko gotovo jednakih inačica s proturječnim vezama.
-
 </details>
 
 ## 4.3 Model podataka i oblikovanje razreda
@@ -81,47 +67,46 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ### 4.3.1 ER dijagram i model podataka
 
-**Cilj:** Prikazati važne pohranjene entitete, njihove identifikatore i veze te dovoljno atributa za razumijevanje podataka aplikacije. ER dijagram odvojen je od reprezentativnog UML dijagrama razreda u nastavku.
+Cilj: Prikazati važne pohranjene entitete, njihove identifikatore i veze te dovoljno atributa za razumijevanje podataka aplikacije. ER dijagram odvojen je od reprezentativnog UML dijagrama razreda u nastavku.
 
-**ER dijagram:** [Ugradite čitljiv dijagram projekta.]  
-**Izvor dijagrama:** [Poveznica na njegov izvor.]  
-**Implementacija:** [Navedite gdje je odgovarajući model podataka definiran u projektu.]
+**ER dijagram:**
 
-<details>
-<summary><strong>Jedna prijava poplave i povezani podaci</strong></summary>
+![ER dijagram ponude, rezervacije i preuzimanja hrane](assets/diagrams/4.3.1-spasizalogaj-ERD.svg)
 
-**Primjer — CrisisMap:** Ana putem svojeg korisničkog računa podnosi prijavu poplave `R-104`. Odabire lokaciju na karti i označava razinu ozbiljnosti kao visoku. Građanin može podnijeti više prijava; svaka prijava pripada jednoj kategoriji kriznog događaja, primjerice *Poplava*. Aplikacija pohranjuje prijavu i njezine koordinate. Kartografske pločice dolaze od vanjskog pružatelja i nisu entiteti u modelu podataka aplikacije.
+**Izvor dijagrama:** [PlantUML](puml/4.3.1-spasizalogaj-ERD.puml)  
+**Implementacija:** [PostgreSQL skripta](../db/zalogajcici.sql)
 
-![ER dijagram podataka sustava CrisisMap](./assets/diagrams/4-2-crisismap-data-ERD.svg)
+<details open>
+<summary><strong>Primjer rezervacije i povezanih podataka</strong></summary>
 
-**Slika 4.2. ER dijagram podataka sustava CrisisMap**
+Prodavač objavljuje ponudu pekarskog paketa na svojem prodajnom mjestu. Kupac rezervira dva paketa. Jedna stavka povezuje rezervaciju s ponudom te pamti količinu i jediničnu cijenu u trenutku rezerviranja. Online plaćanje evidentira se u tablici `uplata`. Pri preuzimanju se na rezervaciji bilježe status `PREUZETA`, vrijeme i korisnik koji je potvrdio preuzimanje.
 
-**PlantUML izvor:** [izvor](./puml/4-2-crisismap-data-ERD.puml)
-
-**Analiza primjera:** `R-104` ima jednog autora i jednu kategoriju; Ana i kategorija *Poplava* mogu biti povezane s više prijava. Dijagram prikazuje veze bez prepisivanja svih stupaca baze podataka ili pisanja drugog tabličnog opisa za svaki entitet. Ako aplikacija prihvaća i **anonimne** prijave, tu mogućnost prikažite u vezi s entitetom `Citizen`. Ako su kategorije fiksne vrijednosti, a ne pohranjeni zapisi, nemojte izmišljati tablicu kategorija. Završni ER dijagram usporedite s modelom trajne pohrane i objasnite samo razlike važne za razumijevanje projekta.
+**Analiza primjera.** Svaka rezervacija ima jednog kupca i jedno prodajno mjesto. Složeni strani ključevi stavke osiguravaju da ponuda i rezervacija pripadaju istom prodajnom mjestu. Par `(rezervacija_id, ponuda_id)` identificira stavku, pa se dva paketa iz iste ponude bilježe količinom 2 u jednom retku. Baza dopušta rezervaciju s nula stavki, a aplikacija pri izradi treba zahtijevati barem jednu. Tablica `pristup_mjestu` povezuje dodatne ovlaštene korisnike s prodajnim mjestom.
 
 </details>
 
+Rezervacije se plaćaju isključivo online. Način online plaćanja (PayPal ili kartica) bilježi se u atributu `uplata.nacin`. Veza s tablicom `uplata` prikazana je za rezervacije. U punoj shemi uplata može pripadati rezervaciji ili članarini.
+
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
-**Cilj:** Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
+Cilj: Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
 
-**Dijagram razreda:** [Ugradite čitljiv UML dijagram razreda za reprezentativni dio oblikovanja.]  
-**PlantUML izvor:** [Poveznica na odgovarajuću `.puml` datoteku.]  
-**Referenca na kod pri završnom pregledu:** [Poveznica na odgovarajuću implementaciju.]
+Odabrano područje je **potvrda preuzimanja unaprijed online plaćene rezervacije** (F-009). Predstavnik prodajnog mjesta unosi ili skenira kod. Backend provjerava rezervaciju i ovlasti te evidentira preuzimanje. ER dijagram iz prethodnog odjeljka prikazuje podatke na kojima se taj postupak temelji. UML dijagram prikazuje koje će provjere obavljati pojedini razredi prije pohrane potvrde.
 
-<details>
-<summary><strong>Oblikovanje odgovornosti prijave i dopuštenih promjena</strong></summary>
+![UML dijagram razreda za potvrdu preuzimanja](assets/diagrams/4.3.2-preuzimanje-CD.svg)
 
-**Primjer — CrisisMap:** Prijava sadrži pravila za promjenu vlastitog statusa. Razred tijeka rada koordinira podnošenje i pregled, dok sučelje repozitorija opisuje potrebne operacije trajne pohrane. Dijagram predlaže te odgovornosti prije implementacije.
+**Slika 4.3. Dijagram razreda za potvrdu preuzimanja rezervacije.** [PlantUML izvor](puml/4.3.2-preuzimanje-CD.puml)
 
-![Dijagram razreda za obradu prijava kriznih događaja](./assets/diagrams/4-3-crisismap-domain-CD.svg)
+**Referenca na kod pri završnom pregledu.** Poveznica na odgovarajuće razrede i sučelje u repozitoriju dodaje se nakon implementacije.
 
-**Slika 4.3. Dijagram razreda za obradu prijava kriznih događaja**
+<details open>
+<summary><strong>Podjela odgovornosti pri preuzimanju</strong></summary>
 
-**PlantUML izvor:** [izvor](./puml/4-3-crisismap-domain-CD.puml)
+`RezervacijaService` prima kod preuzimanja, identifikator odabranog prodajnog mjesta i identifikator prijavljenog korisnika. Dohvaća rezervaciju prema kodu, provjerava pripada li odabranom mjestu, ima li korisnik pristup kao vlasnik ili ovlašteni korisnik te je li online plaćanje potvrđeno. Nakon provjera poziva domensku operaciju i traži pohranu rezultata.
 
-**Analiza primjera:** `DisasterReport` sadrži dopuštena pravila promjene stanja pa tijek rada ne može prešutno odobriti već odbijenu prijavu. `ReportWorkflow` koordinira operaciju bez preuzimanja pravila prijelaza stanja same prijave; `ReportRepository` definira potrebne operacije pohrane. Kompozicija `Location` i odabrani tipovi prikazuju veze korisne za oblikovanje. Dijagram namjerno izostavlja stupce baze podataka i nepovezane razrede: ER model objašnjava pohranjene podatke, dok ovaj dijagram dodjeljuje programske odgovornosti i operacije. Ti su razredi odluka oblikovanja, a ne obavezni slojevi za svaki tim. Završnu implementaciju usporedite s početnim oblikovanjem i ažurirajte dijagram tamo gdje su se odluke promijenile; generiranje dijagrama iz koda tek na kraju ne može zamijeniti ovo početno modeliranje.
+`Rezervacija` upravlja vlastitim statusom. Operacija `potvrdiPreuzimanje()` dopušta prijelaz iz `AKTIVNA` u `PREUZETA` do isteka roka, uključujući točan trenutak roka. Pri prijelazu nastaje objekt `PotvrdaPreuzimanja` s vremenom i identifikatorom korisnika koji je potvrdio preuzimanje. Kompozicija pokazuje da rezervacija može sadržavati najviše jednu takvu potvrdu. U bazi se njezina dva podatka spremaju u stupce `preuzeta_u` i `preuzimanje_potvrdio_id` istog retka rezervacije.
+
+`RezervacijaRepository` definira operacije dohvata, provjera pristupa i plaćanja te uvjetnog spremanja. Pri spremanju se ponovno provjeravaju aktualni status i rok, a novi status i oba podatka potvrde upisuju se zajedno. Ako je rezervacija u međuvremenu već preuzeta, pokušaj se odbija.
 
 </details>
 
@@ -185,73 +170,49 @@ Pri završnom pregledu svaki prikazani prijelaz i uvjet usporedite s ponašanjem
 
 **Cilj:** Sačuvati razloge i obrazložiti odabrane važne arhitekturne odluke kada tablica u odjelku 4.1 nije dovoljna za očuvanje konteksta, razmatranih alternativa i prihvaćenih kompromisa.
 
-Napišite nekoliko ADR-a za važne odluke čije obrazloženje, alternative i kompromis treba sačuvati. Ostale arhitekturne odluke dovoljno je zabilježiti u tablici.
+### ADR-01: Centralizirana provjera korisničkih ovlasti
 
-**Detaljni zapis arhitekturne odluke (engl. Architecture Decision Record, ADR), kada odluka zahtijeva dodatno objašnjenje:**
+| Polje                  | Zapis odluke                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Kontekst i cilj        | Sustav SpasiZalogaj ima različite korisničke uloge (kupac, prodajno mjesto, humanitarna organizacija i administrator), pri čemu svaka uloga ima različite ovlasti. Pristup pojedinim funkcionalnostima dodatno ovisi o uvjetima poput aktivnog članstva prodajnog mjesta ili odobrenja profila humanitarne organizacije. Cilj je osigurati dosljednu i sigurnu provjeru korisničkih ovlasti u svim dijelovima sustava te spriječiti neovlašten pristup funkcionalnostima i podacima. |
+| Kriteriji odluke       | Zaštita osobnih podataka i administrativnih radnji; dosljedna provedba pravila na svim API zahtjevima; jednostavno održavanje i proširivanje korisničkih ovlasti.                                                                                                                                                                                                                                                                                                                    |
+| Razmatrane alternative | Provjera uloga samo u korisničkom sučelju: jednostavna, ali nesigurna jer se API može pozivati izravno. Zasebne provjere u svakoj funkcionalnosti: provode se na poslužitelju, ali povećavaju mogućnost dupliciranja i nedosljednosti. Centralizirana autorizacija: zajednički mehanizam za provjeru korisničkih ovlasti na poslužiteljskoj strani, uz dodatnu provjeru posebnih uvjeta za izvršavanje pojedinih radnji.                                                             |
+| Odluka i obrazloženje  | Predlaže se centralizirana autorizacija. Za autentifikaciju korisnika koristi se vanjski servis, dok aplikacija provjerava korisničke ovlasti na temelju uloge i dodatnih uvjeta pristupa. Time se smanjuje opasnost od različitih pravila pristupa u pojedinim funkcionalnostima. Kompromis su dodatni razvoj zajedničkog mehanizma i potreba za jasno definiranim pravilima ovlasti.                                                                                               |
+| Status                 | Predloženo.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
-### ADR-[ID]: [Naslov odluke]
+### ADR-02: Osiguravanje konzistentnosti podataka prilikom rezervacija
 
-| Polje | Zapis odluke |
-| --- | --- |
-| Kontekst i cilj | [Koji je arhitekturni problem učinio ovu odluku potrebnom?] |
-| Kriteriji odluke | [Što je timu stvarno bilo važno?] |
-| Razmatrane alternative | [Realne mogućnosti koje je tim razmotrio, ukratko.] |
-| Odluka i obrazloženje | [Odabrana mogućnost, zašto je odabrana i čega se tim odrekao.] |
-| Status | [Predloženo, prihvaćeno ili zamijenjeno; ako je primjenjivo, poveznica na novu odluku.] |
+| Polje                  | Zapis odluke                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kontekst i cilj        | Sustav SpasiZalogaj omogućuje korisnicima rezerviranje proizvoda i paketa hrane. Budući da više korisnika može istovremeno pokušati rezervirati posljednje raspoložive proizvode, potrebno je spriječiti rezerviranje količine veće od dostupne. Cilj je očuvati točnost podataka o zalihama i osigurati pouzdanost postupka rezerviranja.                                      |
+| Kriteriji odluke       | Očuvanje konzistentnosti podataka, sprječavanje dvostrukih rezervacija i pouzdanost postupka rezerviranja.                                                                                                                                                                                                                                                                      |
+| Razmatrane alternative | Odvojena provjera i ažuriranje količine: jednostavnija implementacija, ali postoji mogućnost da više korisnika istovremeno rezervira istu količinu. Transakcijska obrada rezervacija: provjera dostupnosti, umanjenje količine i stvaranje rezervacije provode se kao jedna cjelina, uz odgovarajuću zaštitu od istovremenih izmjena.                                           |
+| Odluka i obrazloženje  | Predlaže se transakcijska obrada rezervacija na poslužiteljskoj strani. Rezervacija se uspješno izvršava samo ako je tražena količina dostupna i promjena zalihe uspješno provedena. Ako neki korak ne uspije, cijela se operacija poništava. Time se sprječavaju dvostruke rezervacije, uz dodatnu složenost upravljanja transakcijama i vraćanja zaliha prilikom otkazivanja. |
+| Status                 | Predloženo.                                                                                                                                                                                                                                                                                                                                                                     |
 
-ADR pišite samo za odluku čije će obrazloženje ostati važno i nakon promjene implementacije. Značajna promjena odluke može se zabilježiti novim ADR-om koji zamjenjuje stari; rutinski odabiri alata ne trebaju detaljne zapise. Promjene dogovorenog opsega pripadaju zahtjevima i njihovoj povijesti promjena; povratna informacija o zadatku ostaje uz odgovarajući zadatak.
+### ADR-03: Odvojeno modeliranje rezervacija i uplata
 
-<details>
-<summary><strong>Odabir jednog poslužiteljskog sustava umjesto zasebno postavljenih usluga</strong></summary>
-
-**Primjer — CrisisMap, ADR-01:**
-
-| ID | Datum | Odluka | Razmatrana alternativa | Obrazloženje i kompromis | Status |
-| --- | --- | --- | --- | --- | --- |
-| ADR-01 | [Datum odluke] | Jedan poslužiteljski API za obradu prijava | Zasebno postavljene usluge za prijave i resurse | Manji napor postavljanja i integracije za odobreni opseg; kvar poslužiteljskog sustava može utjecati na obje funkcionalnosti. | Prihvaćeno |
-
-### ADR-01: Jedan poslužiteljski API za obradu prijava
-
-| Polje | Zapis odluke |
-| --- | --- |
-| Kontekst i cilj | Tim tijekom jednog semestra mora izraditi i javno postaviti prijavljivanje kriznih događaja i prikaz usmjeren na kartu. |
-| Kriteriji odluke | Tim može izraditi, integrirati, postaviti i objasniti rješenje; komponente i dalje imaju prepoznatljive odgovornosti. |
-| Razmatrane alternative | **Jedan poslužiteljski sustav:** moduli dijele aplikaciju koja se postavlja kao cjelina. **Zasebne usluge:** svaka se može izvoditi neovisno, ali zahtijeva dodatni rad na integraciji i postavljanju. |
-| Odluka i obrazloženje | Odabrati jedan poslužiteljski sustav s jasno odvojenim odgovornostima vezanim uz prijave. Time se smanjuje rad na postavljanju, uz prihvaćanje da kvar tog sustava može istodobno utjecati na rad s prijavama. |
-| Status | Prihvaćeno. |
-
-**Analiza primjera:** Strategija rješenja navodi trenutačni pristup; ADR-01 čuva alternative i kriterije koji su do njega doveli. Dijagrami komponenata i razmještaja trebaju odražavati odabrani pristup kako se sustav razvija. Zaseban ADR koristan je za važnu odluku, a ne za svaki odabir alata.
-
-</details>
+| Polje                  | Zapis odluke                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kontekst i cilj        | Sustav SpasiZalogaj omogućuje rezerviranje proizvoda i paketa hrane te podržava različite načine plaćanja, uključujući elektroničko plaćanje i plaćanje gotovinom prilikom preuzimanja. Budući da rezervacija ne mora biti odmah plaćena, potrebno je omogućiti zasebno evidentiranje rezervacija i pripadajućih uplata. Cilj je osigurati pregledno i pouzdano upravljanje rezervacijama neovisno o odabranom načinu plaćanja. |
+| Kriteriji odluke       | Preglednost podatkovnog modela, podrška različitim načinima plaćanja te jednostavnost održavanja i upravljanja podacima o rezervacijama i uplatama.                                                                                                                                                                                                                                                                             |
+| Razmatrane alternative | Jedinstveni model: podaci o rezervaciji i plaćanju pohranjuju se zajedno, što pojednostavljuje strukturu, ali otežava neovisno upravljanje uplatama. Odvojeni model: rezervacije i uplate pohranjuju se zasebno te se međusobno povezuju prema potrebi.                                                                                                                                                                         |
+| Odluka i obrazloženje  | Predlaže se odvojeno modeliranje rezervacija i uplata. Takav pristup omogućuje podršku različitim načinima plaćanja te jasnije razdvaja podatke o rezerviranim proizvodima od podataka o izvršenim uplatama. Time se olakšava daljnje proširivanje funkcionalnosti plaćanja, uz prihvaćanje složenijeg podatkovnog modela i potrebe za održavanjem konzistentnosti povezanih podataka.                                          |
+| Status                 | Predloženo.                                                                                                                                                                                                                                                                                                                                                                                                                     |
 
 ## 4.6 Zajednička pravila oblikovanja (engl. Cross-cutting concerns)
 
 **Cilj:** Prepoznati i opisati globalna pravila i mehanizme oblikovanja koji se primjenjujuju u više dijelova aplikacije, navesti gdje se planira primijeniti i ažurirati objašnjenje kako implementacija poprima konačan oblik. Uključite samo pravila koja su važna za ovaj projekt.
 
-**Implementirani mehanizmi:**
-
-| Aspekt | Mehanizam | Pravilo | Mjesto primjene |
-| --- | --- | --- | --- |
-| [Npr. Sigurnost] | [Npr. Autorizacija korisnika] | [Npr. Ovlasti se provjeravaju na poslužiteljskoj strani za svaki zaštićeni zahtjev; skrivanje elemenata korisničkog sučelja nije dovoljna zaštita.] | [Npr. Middleware za autorizaciju / zaštita API usmjernika.] |
-| [Npr. Validacija podataka] | [Npr. Provjera ulaznih podataka] | [Npr. Geoprostorni podaci, uključujući koordinate, provjeravaju se prije pohrane.] | [Npr. Sloj za obradu zahtjeva / odgovarajuća usluga.] |
-
-<details>
-<summary><strong>Primjer zajedničkih pravila i mehanizama</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Aspekt | Mehanizam | Pravilo | Mjesto primjene |
-| --- | --- | --- | --- |
-| Sigurnost | Autorizacija moderiranja prijava | Ovlasti moderatora provjeravaju se na poslužiteljskoj strani prije odobravanja ili odbijanja prijave; skrivanje gumba u korisničkom sučelju nije dovoljna zaštita. | Poslužiteljski dio funkcionalnosti za moderiranje prijava. |
-| Validacija podataka | Provjera lokacije prijave | Nedostajuće ili nevaljane koordinate odbijaju se prije pohrane prijave. | Obrada podnošenja prijave. |
-| Aspekt | Mehanizam | Pravilo | Mjesto primjene |
-| Upravljanje ovisnostima | Injektiranje ovisnosti | Objekt koji provodi poslovnu logiku ne stvara sam konkretnu implementaciju repozitorija, nego potrebnu ovisnost prima izvana. | `ReportWorkflow` prima implementaciju sučelja `ReportRepository` pri stvaranju objekta. |
-
-**Analiza primjera:** Prvi redak pokazuje sigurnosno pravilo koje se provodi neovisno o korisničkom sučelju, a drugi pravilo provjere podataka prije pohrane. U vlastitoj dokumentaciji navedite samo aspekte koji se stvarno primjenjuju u projektu te konkretno mjesto njihove primjene.
-
-Obrasci poput injektiranja ovisnosti (engl. Dependency Injection) ili repozitorija (engl. Repository) pripadaju ovdje samo kada ih kod stvarno koristi i kada objašnjavaju zajedničko pravilo oblikovanja. Tvrdnja „sustav koristi autentikaciju” sama po sebi ne govori čitatelju gdje se provjera provodi niti što štiti. Sigurnost, bilježenje događaja i obrada pogrešaka ne trebaju svaki zaseban pododjeljak po zadanom pravilu.
-
-</details>
+| Aspekt                         | Mehanizam                                     | Pravilo                                                                                                                                                                                                                            | Mjesto primjene                                                                          |
+| ------------------------------ | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Autentifikacija                | Vanjski servis za autentifikaciju (OAuth 2.0) | Korisnička prijava i registracija oslanjaju se na vanjski servis; aplikacija ne pohranjuje korisničke lozinke.                                                                                                                     | Prijava i registracija korisnika.                                                        |
+| Autorizacija                   | Zajednička provjera prava pristupa            | Korisničke ovlasti provjeravaju se na poslužiteljskoj strani prije izvršavanja zaštićenih radnji. Pristup pojedinim funkcionalnostima ovisi o korisničkoj ulozi i dodatnim uvjetima poput aktivnog članstva ili odobrenja profila. | Poslužiteljski API za upravljanje ponudama, rezervacijama, donacijama i administracijom. |
+| Validacija podataka            | Provjera ulaza i poslovnih pravila            | Pri objavi i rezervaciji provjeravaju se obvezni podaci, ispravnost količina i cijena te rokovi trajanja i preuzimanja. Nevaljani podaci ne smiju se pohraniti.                                                                    | Poslužiteljska obrada objave ponuda i rezervacija.                                       |
+| Konzistentnost                 | Transakcije za rezervacije                    | Provjera zalihe, umanjenje raspoložive količine i izrada rezervacije odvijaju se u transakciji. Neuspjeh bilo kojeg koraka ne smije ostaviti djelomično izvršenu rezervaciju.                                                      | Poslužiteljska logika za rezerviranje proizvoda i paketa hrane.                          |
+| Životni ciklus rezervacije     | Provjera statusa i jednokratnog koda          | Otkazivanje je dopušteno samo unutar zadanog roka; kod za preuzimanje veže se uz odgovarajuću rezervaciju i ne može se ponovno iskoristiti nakon potvrde preuzimanja.                                                              | Obrada rezervacija, otkazivanja i potvrđivanja preuzimanja.                              |
+| Integracije i obrada pogrešaka | Provjera elektroničkog plaćanja               | Kod elektroničkog plaćanja uspješnost transakcije provjerava se putem vanjskog servisa za plaćanje. U slučaju neuspješnog plaćanja ili nedostupnosti servisa korisniku se prikazuje odgovarajuća poruka o pogrešci.                | Poslužiteljska obrada elektroničkih plaćanja i korisničko sučelje.                       |
+| Prijenos i sučelje             | HTTPS i poruke na hrvatskom                   | Klijent i poslužitelj komuniciraju preko HTTPS-a; korisničke poruke, uključujući pogreške, prikazuju se na hrvatskom jeziku.                                                                                                       | Komunikacija između klijenta i poslužitelja te korisničko sučelje.                       |
 
 ## 4.7 Arhitekturni rizici i tehnički dug
 
@@ -259,37 +220,25 @@ Obrasci poput injektiranja ovisnosti (engl. Dependency Injection) ili repozitori
 
 **Tehnički rizici i dug**
 
-| Rizik ili kompromis | Posljedica | Odgovor na rizik  |
-| --- | --- | --- |
-| *Npr. Pohrana slika u lokalni file sustav* | *Pri ponovnom pokretanju kontejnera slike će biti izgubljene.* | *Prihvaćeni tehnički dug za demo verziju. U budućnosti planirana migracija na S3 (AWS).* |
-| *Npr. Nepostojanje paginacije na API-ju* | *Moguće usporenje klijenta pri dohvaćanju velike količine podataka iz baze.* | *Ograničen broj testnih unosa. Dodavanje paginacije ostavljeno za sljedeću iteraciju.* |
-|  |  |  |
+| Rizik ili kompromis                                      | Posljedica                                                                                                                                   | Odgovor na rizik                                                                                                                                             |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Istovremene rezervacije ograničenih količina hrane       | Ako više kupaca istovremeno rezervira posljednje dostupne proizvode, sustav može prihvatiti više rezervacija nego što ima raspoložive hrane. | Predviđa se transakcijska obrada rezervacija i provjera raspoloživih količina prije potvrde.                                                                 |
+| Ponovno korištenje ili podudaranje kodova za preuzimanje | Ako kod nije jedinstven ili se može iskoristiti više puta, može doći do pogrešnog ili neovlaštenog potvrđivanja preuzimanja.                 | Osigurati jedinstvene kodove, provjeravati njihovu valjanost i onemogućiti ponovno korištenje nakon preuzimanja.                                             |
+| Neusklađenost statusa rezervacije i plaćanja             | Rezervacija može biti pogrešno označena kao plaćena ili neplaćena, što može uzrokovati probleme pri preuzimanju proizvoda ili povratu novca. | Predviđa se provjera potvrde plaćanja putem vanjskog servisa i usklađivanje statusa rezervacije s evidentiranim uplatama.                                    |
+| Pogreške pri otkazivanju i povratu novca                 | Otkazivanje može ostaviti nepotrebno zauzetu količinu hrane ili dovesti do pogreške pri povratu već uplaćenog novca.                         | Uskladiti otkazivanje rezervacije, vraćanje raspoložive količine i povrat novca kada je primjenjivo te testirati neuspješne operacije.                       |
+| Ovisnost o vanjskom servisu za autentifikaciju           | Ako servis nije dostupan, korisnici se možda neće moći prijaviti ili registrirati.                                                           | Predvidjeti obradu nedostupnosti servisa i jasnu obavijest korisniku, bez označavanja neuspjele prijave kao uspješne.                                        |
+| Nedostupnost vanjskog servisa za plaćanje                | Korisnik ne može dovršiti elektroničko plaćanje, a uplata članarine može biti odgođena.                                                      | Prikazati odgovarajuću poruku o pogrešci i omogućiti siguran ponovni pokušaj. Za rezervacije hrane moguće je koristiti i plaćanje gotovinom pri preuzimanju. |
+| Nedostupnost kartografske usluge                         | Korisnici možda neće moći pregledavati lokacije prodajnih mjesta na karti i njihove udaljenosti.                                             | Prikazati poruku o pogrešci i omogućiti pregled osnovnih podataka i adresa prodajnih mjesta bez karte.                                                       |
+| Usporavanje pretraživanja s rastom broja ponuda          | Veći broj dostupnih ponuda može usporiti pretraživanje i filtriranje hrane.                                                                  | Optimizirati dohvat podataka i učestale filtre te prema potrebi uvesti straničenje rezultata.                                                                |
 
 **Poslovni ili domenski rizici, ako su značajni**
 
-| Rizik | Posljedica | Odgovor na rizik |
-| --- | --- | --- |
-| **Jedna instanca aplikacije obrađuje prijave** | Kvar poslužitelja (hostinga) privremeno onemogućuje nove prijave. | Prihvaćeno u okviru ograničenja projekta za kolegij; tim ne tvrdi da postoji automatsko prebacivanje na pričuvni sustav (failover). |
-| **Nedostupnost vanjskke kartografske usluge** | Prikaz karte može prestati raditi iako su pohranjene prijave u bazi i dalje dostupne. | Implementirana je korisniku vidljiva poruka o pogrešci uz alternativu pregleda prijava u tekstualnom obliku. |
-|  |  |  |
-
-<details>
-<summary><strong>Primjer tehničkih i domenskih rizika</strong></summary>
-
-**Primjer — CrisisMap, tehnički rizici:**
-
-| Rizik ili kompromis | Posljedica | Odgovor na rizik |
-| --- | --- | --- |
-| Jedna instanca aplikacije obrađuje podnošenje prijava. | Kvar smještaja aplikacije privremeno onemogućuje nove prijave. | Rizik je prihvaćen za opseg projekta; ne uvodi se pričuvna instanca ni automatsko prebacivanje. |
-| Vanjske kartografske usluge nisu dostupne. | Prikaz karte može prestati raditi iako su pohranjene prijave i dalje dostupne. | Karta se ne može prikazati, ali pohranjene prijave ostaju dostupne. | Aplikacija prikazuje poruku o nedostupnosti karte i omogućuje pregled prijava u tekstualnom obliku. |
-
-**Primjer — CrisisMap, domenski rizik:** Čitatelji mogu neprovjerenu prijavu građanina zamijeniti za službeno upozorenje. Tim može u sučelju jasno razlikovati status provjere prijave i uputiti korisnike na službene izvore.
-
-**Analiza primjera:** Prvi tehnički rizik prihvaća realistično ograničenje projekta kolegija; domenski se rizik odnosi na način na koji čitatelj tumači prijavu. Zabilježite ograničenje i realan odgovor koji pripadaju vašem projektu. Neostvarena obavezna funkcionalnost nije tehnički dug nego nedovršen opseg.
-
-</details>
+| Rizik                                            | Posljedica                                                                                                                              | Odgovor na rizik                                                                                                                                    |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Istek roka ponude ili preuzimanja                | Korisnik može pokušati rezervirati hranu koja više nije dostupna ili čije je vrijeme preuzimanja isteklo.                               | Skrivati neaktivne i rasprodane ponude te ponovno provjeriti njihovu dostupnost prilikom rezervacije.                                               |
+| Nepreuzimanje rezerviranih proizvoda             | Prodajno mjesto može ostati s pripremljenom hranom koju kupac nije preuzeo, čime se povećava mogućnost bacanja hrane i gubitka prihoda. | Predvidjeti jasno istaknuto vrijeme preuzimanja, potvrdu rezervacije i slanje podsjetnika kada je izvedivo; pratiti status nepreuzetih rezervacija. |
+| Neovlaštena objava ponuda ili pristup donacijama | Prodajno mjesto bez aktivnog članstva ili neodobrena humanitarna organizacija mogla bi pokušati koristiti zaštićene funkcionalnosti.    | Provjeravati korisničku ulogu, aktivnost članarine i odobrenje profila pri izvršavanju odgovarajućih radnji.                                        |
 
 ---
 
-
->**Završna provjera:** Usporedite dijagrame komponenata, podataka, razreda, sekvencijski dijagram i dijagram stanja s implementiranim kodom, ponašanjem aplikacije i stvarnim razmještajem. Ažurirajte zastarjele opise oblikovanja i objasnite svaku važnu razliku koja ostaje; poveznice na odgovarajući kod ili ispitivanja korisne su kada odgovaraju na konkretno pitanje.
+> **Završna provjera:** Usporedite dijagrame komponenata, podataka, razreda, sekvencijski dijagram i dijagram stanja s implementiranim kodom, ponašanjem aplikacije i stvarnim razmještajem. Ažurirajte zastarjele opise oblikovanja i objasnite svaku važnu razliku koja ostaje; poveznice na odgovarajući kod ili ispitivanja korisne su kada odgovaraju na konkretno pitanje.
