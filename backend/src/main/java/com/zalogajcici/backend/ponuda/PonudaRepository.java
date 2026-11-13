@@ -24,6 +24,16 @@ public interface PonudaRepository extends JpaRepository<Ponuda, Long> {
     List<Ponuda> findAktivne(@Param("sada") OffsetDateTime sada,
                              @Param("namjena") NamjenaPonude namjena);
 
+    //nema raspolozivo da kupac vidi "rasprodano" a ne 404, namjenu provjerava service
+    @Query("""
+        select p from Ponuda p join fetch p.prodajnoMjesto
+        where p.id = :id
+            and p.aktivna = true
+            and p.preuzimanjeDo > :sada
+        """)
+    Optional<Ponuda> findAktivnaById(@Param("sada") OffsetDateTime sada,
+                                     @Param("id") Long id);
+
 
     //sigurno kod istodobnih rezervacija: provjera i oduzimanje događaju se u istoj SQL naredbi
     @Modifying(flushAutomatically = true) //mijenjaju se podaci
@@ -61,4 +71,5 @@ public interface PonudaRepository extends JpaRepository<Ponuda, Long> {
         """)
     Optional<BigDecimal> dostupnaKolicina(@Param("id") Long id,
                                           @Param("sada") OffsetDateTime sada);
+
 }
