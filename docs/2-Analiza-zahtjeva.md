@@ -24,7 +24,7 @@
 | F-016 | Sustav omogućava administratoru odobravanje aktivacije profila organizacije | Visok | Odobreni zadatak | Nakon izrade javnih profila humanitarnih organizacija administrator sustava odobrava ili odbija aktivaciju istih. Odobreni profili postaju javni i organizacije mogu slati zahtjeve za donacije i kreirati humanitarne akcije, dok odbijenim profilima to nije moguće. |
 | F-017 | Sustav omogućuje prodajnim mjestima i humanitarnim organizacijama kreiranje akcija prikupljanja i doniranja hrane | Visok | Odobreni zadatak | Prodajna mjesta i humanitarne organizacije mogu kreirati humanitarne akcije za koje je potrebno definirati naziv, opis, lokaciju, datum početka i završetka te popis potrebnih vrsta proizvoda |
 | F-018 | Sustav omogućuje kupcima prijavu za sudjelovanje u humanitarnim akcijama | Srednji | Odobreni zadatak | Kupac na stranici akcije koja još traje odabire prijavu, sustav ga evidentira kao sudionika i organizator ga vidi na popisu sudionika. Prijava nije moguća za akciju kojoj je prošao datum završetka, a isti kupac ne može se prijaviti dvaput. |
-| F-019 | Sustav omogućuje kupcima evidentiranje proizvoda koje doniraju | Nizak | Odobreni zadatak | Sudionici (kupci) prijavljeni za humanitarnu akciju može odabrati proizvode koje planira donijeti s popisa vrsta potrebnih proizvoda. Humanitarna organizacija(organizator akcije) vidi te najave na pregledu akcija. |
+| F-019 | Sustav omogućuje kupcima evidentiranje proizvoda koje doniraju | Nizak | Odobreni zadatak | Sudionici (kupci) prijavljeni za humanitarnu akciju mogu odabrati proizvode koje planiraju donijeti s popisa vrsta potrebnih proizvoda. Humanitarna organizacija(organizator akcije) vidi te najave na pregledu akcija. |
 | F-020 | Sustav omogućuje organizatorima humanitarnih akcija evidenciju zaprimljenih donacija | Srednji | Odobreni zadatak | Organizatori humanitarnih akcija nakon primitka mogu evidentirati proizvode koji su stvarno zaprimljeni u donaciji |
 | F-021 | Sustav omogućuje kupcima pretplatu na obavijesti | Nizak | Odobreni zadatak | Kupci se mogu pretplatiti za dobivanje obavijesti o novim ponudama odabranih prodajnih mjesta ili kategorija putem e-pošte |
 | F-022 | Sustav omogućuje administratoru određivanje cijene članarina  | Srednji | Odobreni zadatak | Administratori imaju ovlasti za postavljanje iznosa mjesečnih i godišnjih članarina. Nova cijena odnosi se na uplate nakon izmjene, već plaćena razdoblja se ne mijenjaju. |
@@ -32,7 +32,7 @@
 | F-024 | Sustav omogućuje prodajnim mjestima uređivanje i brisanje ponuda | Nizak | Odluka tima | Prodajna mjesta za svaku vlastitu objavljenu ponudu imaju mogućnost brisanja ponude ili uređivanja informacija uz kriterij da već ne postoje rezervacije za istu. |
 | F-025 | Sustav ne dozvoljava objavu ponuda prodajnim mjestima bez aktivnog članstva | Srednji | Odluka tima | Prodajnim mjestima koja nemaju aktivno članstvo (nisu uplatili članarinu za određeno razdoblje) nije omogućena objava ponuda. |
 | F-026 | Sustav omogućuje administratoru upravljanje korisnicima i sadržajem | Nizak | Odobreni zadatak | Administratori imaju ovlasti za blokiranje i brisanje korisnika/profila kao i za uklanjanje neprimjerenih komentara, ponuda ili humanitarnih akcija. |
-| F-027 | Sustav omogućuje kupcu filtriranje ponuda | Srednji | Odobreni zadatak |  Sve dostupne ponude kupci filtrirati prema kategoriji, udaljenosti od svoje lokacije,  rasponu cijene i vremenu preuzimanja ili prema kombinaciji više filtera. |
+| F-027 | Sustav omogućuje kupcu filtriranje ponuda | Srednji | Odobreni zadatak |  Sve dostupne ponude kupci mogu filtrirati prema kategoriji, udaljenosti od svoje lokacije,  rasponu cijene i vremenu preuzimanja ili prema kombinaciji više filtera. |
 
 ## 2.2 Nefunkcijski zahtjevi
 
@@ -44,7 +44,7 @@
 | NF-03 | Sustav ne smije pohraniti lozinke, nego se autentifikacija odvija putem OAuth 2.0 protokola | Visok | Odobreni zadatak | Pregled koda i baze podataka kako bismo potvrdili da se lozinke ne zapisuju lokalno. |
 | NF-04 | Sučelje mora biti prilagođeno za prikaz na računalima i mobilnim uređajima | Visok | Korisničko iskustvo | Testni scenarij: Otvaranje aplikacije na mobilnom uređaju (do 360px) i računalu (1920px) radi provjere ispravnosti prikazivanja elemenata na različitim veličinama ekrana. |
 | NF-05 | Korisničko sučelje mora biti na hrvatskom jeziku, uključujući poruke o pogreškama i potvrde radnji. | Srednji | Odluka tima | Pregled korisničkog sučelja i provjera svih tekstualnih elemenata i poruka. |
-| NF-06 | Podaci o karticama i PayPal računima unose se isključivo na stranici vanjskih servisa za plaćanje (sustav ih ne prima niti sprema). Rezervacija se potvrđuje kad poslužitelj od servisa dobije potvrdu plaćanja. | Visok | Korisničko iskustvo | Pregled sheme baze kako bi se utvrdilo da se ne spremaju podaci kartica. U simuliranoj narudžbu (sandbox) provjeriti da rezervacija ostaje nepotvrđena kad plaćanje ne uspije ili se prekine te da se kupcu prikaže odgovarajuća poruka. |
+| NF-06 | Podaci o karticama i PayPal računima unose se isključivo na stranici vanjskih servisa za plaćanje (sustav ih ne prima niti sprema). Rezervacija se potvrđuje kad poslužitelj od servisa dobije potvrdu plaćanja. | Visok | Korisničko iskustvo | Pregled sheme baze kako bi se utvrdilo da se ne spremaju podaci kartica. U simuliranoj narudžbi (sandbox) provjeriti da rezervacija ostaje nepotvrđena kad plaćanje ne uspije ili se prekine te da se kupcu prikaže odgovarajuća poruka. |
 
 
 ## 2.3 Dionici i akteri
@@ -53,7 +53,7 @@ Dionici:
 
 | ID dionika | Odnos prema sustavu | Relevantni zahtjevi |
 | --- | --- | --- |
-| D-01 | Kupci: žele pronaći hranu po sniženoj cijeni u blizini, rezervirati je i preuzeti do zadanog roka. Koriste aplikaciju kao akter A-01. | F-002: Pregled ponuda; F-028: Filtriranje ponuda; F-008: Rezervacija i plaćanje; F-009: Kod za preuzimanje; F-010: Otkazivanje rezervacije. |
+| D-01 | Kupci: žele pronaći hranu po sniženoj cijeni u blizini, rezervirati je i preuzeti do zadanog roka. Koriste aplikaciju kao akter A-01. | F-002: Pregled ponuda; F-027: Filtriranje ponuda; F-008: Rezervacija i plaćanje; F-009: Kod za preuzimanje; F-010: Otkazivanje rezervacije. |
 | D-02 | Vlasnici prodajnih mjesta (trgovine, pekarnice, slastičarnice): žele prodati ili donirati višak hrane umjesto da je bace. Aplikaciju u njihovo ime koristi predstavnik prodajnog mjesta (A-02). | F-005: Objava ponude; F-006: Objava paketa iznenađenja; F-012: Označavanje ponuda za donaciju; F-003: Plaćanje članarine. |
 | D-03 | Zaposlenici prodajnih mjesta: žele brzo potvrditi preuzimanje rezervacije. Nisu zaseban akter, nego koriste račun prodajnog mjesta. | F-009: Verifikacija koda za preuzimanje. |
 | D-04 | Humanitarne organizacije: žele doći do hrane namijenjene donaciji i organizirati akcije prikupljanja. Aplikaciju u njihovo ime koristi predstavnik organizacije (A-03). | F-013: Pregled donacijskih ponuda i slanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija. |
@@ -65,9 +65,9 @@ Akteri:
 
 | ID aktera | Uloga | Obuhvaćeni funkcijski zahtjevi |
 | --- | --- | --- |
-| A-01 | Kupac | F-001: Registracija i prijava; F-027: Odabir uloge i unos podataka profila; F-002: Pregled ponuda; F-028: Filtriranje ponuda; F-007: Prikaz lokacije i udaljenosti; F-008: Rezervacija i plaćanje; F-009: Primanje koda za preuzimanje; F-010: Otkazivanje rezervacije; F-011: Recenziranje prodajnog mjesta; F-018: Prijava u humanitarnu akciju; F-019: Evidentiranje planiranih donacija; F-021: Pretplata na obavijesti; F-023: Pregled vlastitih rezervacija. |
-| A-02 | Predstavnik prodajnog mjesta | F-001: Registracija i prijava; F-027: Odabir uloge i unos podataka profila; F-003: Plaćanje članarine; F-004: Javni profil prodajnog mjesta; F-005: Objava ponude; F-006: Objava paketa iznenađenja; F-009: Verifikacija koda za preuzimanje; F-011: Odgovor na recenziju; F-012: Označavanje ponuda za donaciju; F-014: Prihvaćanje ili odbijanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija; F-024: Uređivanje i brisanje ponuda. |
-| A-03 | Predstavnik humanitarne organizacije | F-001: Registracija i prijava; F-027: Odabir uloge i unos podataka profila; F-015: Javni profil organizacije; F-013: Pregled donacijskih ponuda i slanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija. |
+| A-01 | Kupac | F-001: Registracija i prijava; F-002: Pregled ponuda; F-027: Filtriranje ponuda; F-007: Prikaz lokacije i udaljenosti; F-008: Rezervacija i plaćanje; F-009: Primanje koda za preuzimanje; F-010: Otkazivanje rezervacije; F-011: Recenziranje prodajnog mjesta; F-018: Prijava u humanitarnu akciju; F-019: Evidentiranje planiranih donacija; F-021: Pretplata na obavijesti; F-023: Pregled vlastitih rezervacija. |
+| A-02 | Predstavnik prodajnog mjesta | F-001: Registracija i prijava; F-003: Plaćanje članarine; F-004: Javni profil prodajnog mjesta; F-005: Objava ponude; F-006: Objava paketa iznenađenja; F-009: Verifikacija koda za preuzimanje; F-011: Odgovor na recenziju; F-012: Označavanje ponuda za donaciju; F-014: Prihvaćanje ili odbijanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija; F-024: Uređivanje i brisanje ponuda. |
+| A-03 | Predstavnik humanitarne organizacije | F-001: Registracija i prijava; F-015: Javni profil organizacije; F-013: Pregled donacijskih ponuda i slanje zahtjeva; F-017: Kreiranje humanitarne akcije; F-020: Evidencija zaprimljenih donacija. |
 | A-04 | Administrator sustava | F-016: Odobravanje profila organizacija; F-022: Određivanje cijena članarina; F-026: Upravljanje korisnicima i sadržajem. |
 | A-05 | Pružatelj autentifikacije (Google, OAuth 2.0) | F-001: Potvrda identiteta pri registraciji i prijavi. |
 | A-06 | Servis za plaćanje (PayPal) | F-003: Naplata članarine; F-008: Naplata rezervacije; F-010: Povrat novca pri otkazivanju. |
@@ -122,7 +122,7 @@ Akteri:
 | F-006 | UC-008 | ponuda (VrstaPonude) | Na čekanju |
 | F-007 | UC-002 | Web-klijent i Google Maps (A-07) | Na čekanju |
 | F-008 | UC-003 | rezervacija (Rezervacija, StavkaRezervacije); zaliha (ZalihaService) | RezervacijaTest, ZalihaServiceTest, ZalihaIstodobnostTest |
-| F-009 | UC-004 | rezervacija | Na čekanju |
+| F-009 | UC-004 | rezervacija, slanje koda e-poštom: SendGrid (A-08) | Na čekanju |
 | F-010 | UC-005 | Rezervacija, status OTKAZANA | RezervacijaTest (prijelazi stanja) |
 | F-011 | UC-006 | Na čekanju: modul nije započet | Na čekanju |
 | F-012 | UC-008 | ponuda (NamjenaPonude) | Na čekanju |
@@ -134,7 +134,7 @@ Akteri:
 | F-018 | UC-013 | Na čekanju | Na čekanju |
 | F-019 | UC-013 | Na čekanju | Na čekanju |
 | F-020 | UC-012 | Na čekanju | Na čekanju |
-| F-021 | Nema zasebnog obrasca (3.3) | Na čekanju | Na čekanju |
+| F-021 | Nema zasebnog obrasca (3.3) | Na čekanju: obavijesti, slanje e-pošte: SendGrid (A-08) | Na čekanju |
 | F-022 | UC-014 | Na čekanju | Na čekanju |
 | F-023 | UC-005 | rezervacija; GET /api/rezervacije/moje | Na čekanju |
 | F-024 | UC-008 | ponuda | Na čekanju |
