@@ -114,7 +114,7 @@ Akteri:
 | F-002 | UC-002 | ponuda (Ponuda, PonudaRepository); GET /api/ponude | PonudaRepositoryTest |
 | F-003 | UC-007 | Vanjski servis za plaćanje (A-06) | na čekanju (nije u opsegu M1) |
 | F-004 | UC-001 (korak 4) | prodajnomjesto (ProdajnoMjesto) | Na čekanju |
-| F-005 | UC-008 | ponuda; POST /api/ponude | Na čekanju: scenarij objave iz #43 |
+| F-005 | UC-008 | ponuda; POST /api/ponude (PonudaService.objavi) | PonudaServiceTest |
 | F-006 | UC-008 | ponuda (VrstaPonude) | Na čekanju |
 | F-007 | UC-002 | Web-klijent i Google Maps (A-07) | Na čekanju |
 | F-008 | UC-003 | rezervacija (Rezervacija, StavkaRezervacije); zaliha (ZalihaService) | RezervacijaTest, ZalihaServiceTest, ZalihaIstodobnostTest |
