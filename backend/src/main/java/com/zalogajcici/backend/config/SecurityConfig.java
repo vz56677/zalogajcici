@@ -26,7 +26,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/error", "/login/**", "/oauth2/**").permitAll()
+        http.authorizeHttpRequests(auth -> auth.requestMatchers("/", "/index.html", "/src/**", "/api/health" ,"/error", "/login/**", "/oauth2/**").permitAll()
         .requestMatchers("/api/me", "/api/me/uloga").authenticated()
         .requestMatchers("/api/prodavac/**").access((authentication, context) -> new AuthorizationDecision(currentUserService.hasRole(authentication.get(), UlogaKorisnika.PRODAVAC)))
         .requestMatchers("/api/kupac/**").access((authentication, context) -> new AuthorizationDecision(currentUserService.hasRole(authentication.get(), UlogaKorisnika.KUPAC)))
