@@ -27,8 +27,6 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 
 ## 1.3 Granice projekta
 
-**Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
-
 **Uključeno:**
 Korisnička strana:
 Izrada korisničkog računa, oporavak računa u slučaju zaboravljene lozinke slanjem mail-a, moguća promjena osobnih podataka korisniku. Korisnik može pregledavati sve aktivne ponude i donacije od strane humanitarnih organizacija i prodavača. Korisnik može sortirati proizvode prema blizini, cijeni, datumu i vremenu isteka ponude. Korisnik se može javiti za preuzimanje aktivne ponude. Korisnik, za sve trenutno aktivne ponude za koje se prijavio, može otkazati preuzimanje i zatražiti povrat novaca (ne vrijedi unutar sat vremena od preuzimanja).
@@ -47,10 +45,5 @@ Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth (ident
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
-**Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
 
 Građanin koji želi kupiti višak hrane po sniženoj cijeni može se o dostupnosti i uvjetima preuzimanja raspitivati izravno u pojedinim prodajnim mjestima, dok humanitarna organizacija može zasebno kontaktirati ta mjesta radi dogovora o donaciji. Takav pristup omogućuje izravan dogovor, ali može zahtijevati više pojedinačnih kontakata kako bi se pronašla odgovarajuća hrana i uskladilo preuzimanje. SpasiZalogaj objedinjuje pregled dostupnih ponuda, rezervacije i zahtjeve za donacije na jednom mjestu, čime olakšava povezivanje prodajnih mjesta s kupcima i humanitarnim organizacijama te organizaciju preuzimanja viška hrane.
-
----
-
-> **Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
