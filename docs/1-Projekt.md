@@ -1,8 +1,8 @@
 # 1. Opseg projekta
 
-Cilj projekta je izraditi aplikaciju koja smanjuje bacanje hrane kojoj se bliži rok trajanja. Prodajna mjesta se prijavljuju u aplikaciju i objavljuju proizvode s kratkim rokom trajanja po sniženoj cijeni. Postoje samostalni proizvodi i paketi iznenađenja čiji sadržaj nije poznat unaprijed. Pojedine proizvode ustanove mogu namijeniti isključivo donaciji humanitarnim organizacijama.
+Cilj projekta je izraditi aplikaciju koja smanjuje bacanje hrane kojoj se bliži rok trajanja. Prodajna mjesta se prijavljuju u aplikaciju i objavljuju proizvode s kratkim rokom trajanja po sniženoj cijeni. Postoje samostalni proizvodi i paketi iznenađenja čiji sadržaj nije poznat unaprijed. Pojedine proizvode prodajna mjesta mogu namijeniti isključivo donaciji humanitarnim organizacijama.
 
-Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih rezervirati i platiti te preuzeti do zadanog roka. Nakon plaćanja dobivaju potvrdu i kod koji prodavač potvrđuje pri preuzimanju. Humanitarne organizacije imaju zasebnu ulogu: pregledavaju ponude namijenjene donacijama i od ustanova traže određenu količinu. Administrator upravlja sustavom i odobrava profile humanitarnih organizacija.
+Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih rezervirati i platiti te preuzeti do zadanog roka. Nakon plaćanja dobivaju potvrdu i kod koji zaposlenik prodajnog mjesta potvrđuje pri preuzimanju. Humanitarne organizacije imaju zasebnu ulogu: pregledavaju ponude namijenjene donacijama i od prodajnih mjesta traže određenu količinu. Administrator upravlja sustavom i odobrava profile humanitarnih organizacija.
 
 Rasprodani ili istekli proizvodi automatski se uklanjaju iz aplikacije. Izvan opsega projekta su dostava i obrada plaćanja (prepušteno vanjskim servisima).
 
@@ -21,28 +21,28 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prodajna mjesta, kupce i 
 | Prodajna mjesta                                            | Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.                                |
 | Zaposlenici prodajnih mjesta                               | Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.                                                                                      |
 | Humanitarne organizacije                                   | Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane. Objavljivati akcije doniranja i doprijeti do većeg broja sudionika.           |
-| Krajnji primatelj donirane hrane                           | Primiti prehrambene proizvode od strane humanitarne organizacije kojoj su poslane donacije putem sustava.                                                |
-| Administrator                                              | Odobravati profile humanitarnih organizacija te upravljati korisnicima i sadržajem sustava.                                                              |
+| Krajnji primatelji donirane hrane                          | Primiti prehrambene proizvode od strane humanitarne organizacije kojoj su poslane donacije putem sustava.                                                |
+| Vlasnik platforme                                          | Imati funkcionalan sustav koji nudi zaradu (članarine) te upravljati korisnicima i sadržajem sustava.                                                    |
 | Ocjenjivači projekta                                       | Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.                                                                                             |
 | Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva obradu i zaštitu osobnih podataka korisnika u skladu s GDPR-om. Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava.           |
 
 ## 1.3 Granice projekta
 
-**Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
-
 **Uključeno:**
 Korisnička strana:
 Izrada korisničkog računa i prijava putem vanjskog pružatelja autentifikacije (Google, OAuth 2.0), bez pohrane lozinki u sustavu (NF-03).
 Kupac može pregledavati sve aktivne ponude prodajnih mjesta i humanitarne akcije. Kupac može filtrirati ponude prema kategoriji, udaljenosti, cijeni i vremenu preuzimanja (F-027). Kupac može rezervirati i platiti aktivnu ponudu. Kupac može otkazati rezervaciju i dobiti povrat novca najkasnije jedan sat prije isteka roka preuzimanja (F-010). Kupac e-poštom dobije kod za preuzimanje plaćene ponude.
-Kupac može prijaviti na sudjelovanje u humanitarnoj akciji. Kupci prijavljeni za humanitarnu akciju mogu odabrati proizvode koje planiraju donijeti s popisa vrsta potrebnih proizvoda.
-Kupac može ostaviti recenziju prodajnom mjestu. Kupac se može pretplatiti na primanje obavijesti o novim ponudama odabranog prodajnog mjesta.
+Kupac se može prijaviti na sudjelovanje u humanitarnoj akciji. Kupci prijavljeni za humanitarnu akciju mogu odabrati proizvode koje planiraju donijeti s popisa vrsta potrebnih proizvoda.
+Kupac može ostaviti recenziju prodajnom mjestu. Kupac se može pretplatiti na primanje obavijesti o novim ponudama odabranog prodajnog mjesta ili kategorija.
 
-Humanitarne akcije mogu kreirati korisnički račun, koji treba odobriti administrator sustava. Humanitarne organizacije s odobrenim profilom mogu pregledavati i slati zahtjeve za ponude prodajnih mjesta namijenjene donaciji. Mogu pokrenuti akcije doniranja te imati uvid u prijavu kupaca i evidenciju donacija za iste.
+Humanitarne organizacije mogu kreirati korisnički račun, koji treba odobriti administrator sustava. Humanitarne organizacije s odobrenim profilom mogu pregledavati i slati zahtjeve za ponude prodajnih mjesta namijenjene donaciji. Mogu pokrenuti akcije doniranja te imati uvid u prijavu kupaca i evidenciju donacija za iste.
 
 Prodavačka strana:
-Prodavač/prodajno mjesto može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, logo, lokaciju. Prodajno mjesto može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Ponuda može biti i paket iznenađenja. Prodajno mjesto može urediti ili obrisati ponudu koja nije rezervirana (F-024). Prodajno mjesto može ponudu namijeniti isključivo donaciji humanitarnim organizacijama (F-012), a humanitarna organizacija takve ponude pregledava i šalje zahtjev za preuzimanje određene količine (F-013).
+Prodajno mjesto može napraviti javni račun, te mora unijeti naziv, vrstu, adresu, kontakt i lokaciju (logo nije obavezan) (F-004). Prodajno mjesto može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Ponuda može biti i paket iznenađenja. Prodajno mjesto može urediti ili obrisati ponudu koja nije rezervirana (F-024). Prodajno mjesto može ponudu namijeniti isključivo donaciji humanitarnim organizacijama (F-012), a humanitarna organizacija takve ponude pregledava i šalje zahtjev za preuzimanje određene količine (F-013).
 Prodajna mjesta mogu platiti članarinu (mjesečnu ili godišnju). Prodajna mjesta koja u trenu pokušaja objave nemaju aktivnu (plaćenu) članarinu, ne mogu objaviti ponudu.
-Prodajna mjesta mogu potvrditi preuzimanje ponude kada im korisnik prikaže kod za preuzimanje proizvoda. Prodajna mjesta mogu odgovarati na recenzije korisnika.
+Prodajna mjesta mogu potvrditi preuzimanje rezervacije kada im korisnik prikaže kod za preuzimanje proizvoda. Prodajna mjesta mogu odgovarati na recenzije korisnika.
+
+Administrator odobrava profile organizacija, određuje cijene članarina može blokirati korisnike i uklanjati neprimjerene sadržaje.
 
 Ostalo:
 Potrebno je realizirati relacijsku bazu podataka, ugraditi i osposobiti vanjske sustave. Potrebno je napraviti aplikaciju koja se može prilagoditi uređaju tj. skalirati s obzirom na ekran (mobitel / stolno računalo). 
@@ -55,10 +55,6 @@ Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth 2.0 pr
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
-**Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
-
 Građanin koji želi kupiti višak hrane po sniženoj cijeni može se o dostupnosti i uvjetima preuzimanja raspitivati izravno u pojedinim prodajnim mjestima, dok humanitarna organizacija može zasebno kontaktirati ta mjesta radi dogovora o donaciji. Takav pristup omogućuje izravan dogovor, ali može zahtijevati više pojedinačnih kontakata kako bi se pronašla odgovarajuća hrana i uskladilo preuzimanje. SpasiZalogaj objedinjuje pregled dostupnih ponuda, rezervacije i zahtjeve za donacije na jednom mjestu, čime olakšava povezivanje prodajnih mjesta s kupcima i humanitarnim organizacijama te organizaciju preuzimanja viška hrane.
 
 ---
-
-> **Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
