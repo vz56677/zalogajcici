@@ -27,8 +27,6 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 
 ## 1.3 Granice projekta
 
-**Cilj:** Jasno definirati granice sustava — što je obuhvaćeno odobrenim zadatkom, što je svjesno izostavljeno ili odgođeno te o kojim vanjskim uslugama sustav izravno ovisi.
-
 **Uključeno:**
 Korisnička strana:
 Izrada korisničkog računa i prijava putem vanjskog pružatelja autentifikacije (Google, OAuth 2.0), bez pohrane lozinki u sustavu (NF-03), te moguća promjena osobnih podataka korisniku. Kupac može pregledavati sve aktivne ponude prodajnih mjesta i humanitarne akcije. Kupac može filtrirati ponude prema kategoriji, udaljenosti, cijeni i vremenu preuzimanja (F-027). Kupac može rezervirati i platiti aktivnu ponudu. Kupac može otkazati rezervaciju i dobiti povrat novca najkasnije jedan sat prije isteka roka preuzimanja (F-010).
@@ -47,10 +45,5 @@ Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth 2.0 pr
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
-**Cilj:** Objasniti kako korisnici trenutačno rješavaju problem i koja preostala potreba opravdava odobreni projekt.
 
 Građanin koji želi kupiti višak hrane po sniženoj cijeni može se o dostupnosti i uvjetima preuzimanja raspitivati izravno u pojedinim prodajnim mjestima, dok humanitarna organizacija može zasebno kontaktirati ta mjesta radi dogovora o donaciji. Takav pristup omogućuje izravan dogovor, ali može zahtijevati više pojedinačnih kontakata kako bi se pronašla odgovarajuća hrana i uskladilo preuzimanje. SpasiZalogaj objedinjuje pregled dostupnih ponuda, rezervacije i zahtjeve za donacije na jednom mjestu, čime olakšava povezivanje prodajnih mjesta s kupcima i humanitarnim organizacijama te organizaciju preuzimanja viška hrane.
-
----
-
-> **Završna provjera:** Opis problema, cilj projekta, korisnici i dionici, granice opsega te postojeći pristupi međusobno su usklađeni. Navedene koristi ne predstavljaju neprovjerene tvrdnje, a uključene i izostavljene funkcionalnosti odgovaraju odobrenom projektnom zadatku.
