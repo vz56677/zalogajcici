@@ -81,7 +81,7 @@ Cilj: Prikazati važne pohranjene entitete, njihove identifikatore i veze te dov
 
 Prodavač objavljuje ponudu pekarskog paketa na svojem prodajnom mjestu. Kupac rezervira dva paketa. Jedna stavka povezuje rezervaciju s ponudom te pamti količinu i jediničnu cijenu u trenutku rezerviranja. Online plaćanje evidentira se u tablici `uplata`. Pri preuzimanju se na rezervaciji bilježe status `PREUZETA`, vrijeme i korisnik koji je potvrdio preuzimanje.
 
-**Analiza primjera.** Svaka rezervacija ima jednog kupca i jedno prodajno mjesto. Složeni strani ključevi stavke osiguravaju da ponuda i rezervacija pripadaju istom prodajnom mjestu. Par `(rezervacija_id, ponuda_id)` identificira stavku, pa se dva paketa iz iste ponude bilježe količinom 2 u jednom retku. Baza dopušta rezervaciju s nula stavki, a aplikacija pri izradi treba zahtijevati barem jednu. Tablica `pristup_mjestu` povezuje dodatne ovlaštene korisnike s prodajnim mjestom.
+**Analiza primjera.** Svaka rezervacija ima jednog kupca i jedno prodajno mjesto. Složeni strani ključevi stavke osiguravaju da ponuda i rezervacija pripadaju istom prodajnom mjestu. Par `(rezervacija_id, ponuda_id)` identificira stavku, pa se dva paketa iz iste ponude bilježe količinom 2 u jednom retku. Baza dopušta rezervaciju s nula stavki, a aplikacija pri izradi treba zahtijevati barem jednu.
 
 </details>
 
