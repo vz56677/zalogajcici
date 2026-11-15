@@ -2,7 +2,7 @@
 
 Cilj projekta je izraditi aplikaciju koja smanjuje bacanje hrane kojoj se bliži rok trajanja. Prehrambene ustanove se prijavljuju u aplikaciju i objavljuju proizvode s kratkim rokom trajanja po sniženoj cijeni. Postoje samostalni proizvodi i paketi iznenađenja čiji sadržaj nije poznat unaprijed. Pojedine proizvode ustanove mogu namijeniti isključivo donaciji humanitarnim organizacijama.
 
-Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih rezervirati i platiti te preuzeti do zadanog roka. Nakon plaćanja dobivaju potvrdu i kod koji prodavač potvrđuje pri preuzimanju. Humanitarne organizacije imaju zasebnu ulogu: pregledavaju ponude namijenjene donacijama i od ustanova traže određenu količinu. Administrator upravlja sustavom i odobrava profile humanitarnih organizacija i ustanova.
+Kupci se prijavljuju kao privatne osobe i vide trenutno dostupne ponude. Mogu ih rezervirati i platiti te preuzeti do zadanog roka. Nakon plaćanja dobivaju potvrdu i kod koji prodavač potvrđuje pri preuzimanju. Humanitarne organizacije imaju zasebnu ulogu: pregledavaju ponude namijenjene donacijama i od ustanova traže određenu količinu. Administrator upravlja sustavom i odobrava profile humanitarnih organizacija.
 
 Rasprodani ili istekli proizvodi automatski se uklanjaju iz aplikacije. Izvan opsega projekta su dostava i obrada plaćanja (prepušteno vanjskim servisima).
 
@@ -21,9 +21,9 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 | Prehrambene ustanove                                       | Prodati ili donirati hranu kojoj se bliži rok trajanja umjesto da je bace te jednostavno objavljivati i uređivati ponude.                                                     |
 | Zaposlenici ustanova                                       | Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.                                                                                                           |
 | Humanitarne organizacije                                   | Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane.                                                                                                    |
-| Administrator                                              | Odobravati profile humanitarnih organizacija i ustanova te upravljati korisnicima i sadržajem sustava.                                                                        |
+| Administrator                                              | Odobravati profile humanitarnih organizacija te upravljati korisnicima i sadržajem sustava.                                                                                   |
 | Ocjenjivači projekta                                       | Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.                                                                                                                  |
-| Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva osiguravanje anonimnosti prijavitelja i zaštitu osobnih podataka (npr. usklađenost s GDPR-om). Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava. |
+| Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva obradu i zaštitu osobnih podataka korisnika u skladu s GDPR-om. Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava. |
 
 ## 1.3 Granice projekta
 
@@ -31,19 +31,19 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prehrambene objekte, kupc
 
 **Uključeno:**
 Korisnička strana:
-Izrada korisničkog računa, oporavak računa u slučaju zaboravljene lozinke slanjem mail-a, moguća promjena osobnih podataka korisniku. Korisnik može pregledavati sve aktivne ponude i donacije od strane humanitarnih organizacija i prodavača. Korisnik može sortirati proizvode prema blizini, cijeni, datumu i vremenu isteka ponude. Korisnik se može javiti za preuzimanje aktivne ponude. Korisnik, za sve trenutno aktivne ponude za koje se prijavio, može otkazati preuzimanje i zatražiti povrat novaca (ne vrijedi unutar sat vremena od preuzimanja).
+Izrada korisničkog računa i prijava putem vanjskog pružatelja autentifikacije (Google, OAuth 2.0), bez pohrane lozinki u sustavu (NF-03), te moguća promjena osobnih podataka korisniku. Kupac može pregledavati sve aktivne ponude prodajnih mjesta i humanitarne akcije. Kupac može filtrirati ponude prema kategoriji, udaljenosti, cijeni i vremenu preuzimanja (F-027). Kupac može rezervirati i platiti aktivnu ponudu. Kupac može otkazati rezervaciju i dobiti povrat novca najkasnije jedan sat prije isteka roka preuzimanja (F-010).
 
 Prodavačka strana:
-Prodavač/trgovina može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, OIB, logo, lokaciju. Prodavač može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Prodavač može otkazati ponudu koja nije rezervirana. Humanitarna organizacija može iznijeti ponudu za proizvode koji se nude za besplatno darivanje popunjavanjem slike, opisa, lokacije i roka preuzimanja.
+Prodavač/trgovina može napraviti javni račun, te mora predati barem ključne podatke poput naziva tvrtke, OIB, logo, lokaciju. Prodavač može napraviti novu ponudu upisujući opis artikala, dodavanjem slike artikala i određivanjem roka za preuzimanje sadržaja. Prodavač može urediti ili obrisati ponudu koja nije rezervirana (F-024). Prodavač može ponudu namijeniti isključivo donaciji humanitarnim organizacijama (F-012), a humanitarna organizacija takve ponude pregledava i šalje zahtjev za preuzimanje određene količine (F-013).
 
 Ostalo:
-Potrebno je ralizirati relacijsku bazu podataka, ugraditi i osposobiti vanjske sustave. Potrebno je napraviti aplikaciju koja se može prilagoditi uređaju tj. skalirati s obzirom na ekran (mobitel / stolno računalo). 
+Potrebno je realizirati relacijsku bazu podataka, ugraditi i osposobiti vanjske sustave. Potrebno je napraviti aplikaciju koja se može prilagoditi uređaju tj. skalirati s obzirom na ekran (mobitel / stolno računalo). 
 
 **Izvan opsega ili odgođeno:**
-U opsegu projekta nije omogućavanje plaćanje gotovinom, već će svaka transakcija od korisnika prema prodavaču biti isključivo uz pomoć kartičnog plaćanja ili usluge paypal. Također nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
+U opsegu projekta nije omogućavanje plaćanja gotovinom, već će svaka transakcija od korisnika prema prodavaču biti isključivo uz pomoć kartičnog plaćanja ili usluge PayPal. Također nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
 
 **Vanjske ovisnosti:**
-Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth (identifikacija korisnika), Google maps (prikaz lokacije i karta) i SendGrid (slanje mailova korisnicima).
+Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth 2.0 pružatelj Google (identifikacija korisnika), PayPal (plaćanje rezervacija i članarina karticom ili PayPal računom), Google Maps (prikaz lokacije i karta) i SendGrid (slanje e-pošte korisnicima).
 
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
