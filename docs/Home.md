@@ -1,7 +1,7 @@
 # Spasi Zalogaj — Projektna dokumentacija
 
 **Kolegij:** [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz), Fakultet elektrotehnike i računarstva Sveučilišta u Zagrebu  
-**Akademska godina:** [2026./2027.]  
+**Akademska godina:** 2026./2027.  
 **Tim:** 7.4 Zalogajčići  
 **Nastavnik:** Vlado Sruk  
 **Asistent / demonstrator:** Asistentica: Iva Sović; Demonstratorica: 
@@ -10,7 +10,7 @@
 
 **Cilj:** Omogućiti čitatelju koji prvi put vidi projekt da u dvije ili tri rečenice prepozna aplikaciju, njezine ciljane korisnike i glavnu svrhu.
 
-Projekt Spasi Zalogaj je aplikacija čiji je cilj "spasiti" višak hrane koju bi prodajna mjesta bacaila u otpad, uz promoviranje akcija doniranja hrane. Prodajna mjesta objavljuju svoje proizvode "viška" koje mogu prodati građanima po sniženoj cijeni ili donirati humanitarnim organizacijama odobravanjem zahtjeva za preuzimanje. Građani i humanitarne organizacije mogu pretraživati ponude i poslati zahtjev za preuzimanjem - građani plaćaju proizvode unutar aplikacije dok humanitarne organizacije samo pošalju zahtjev. Humanitarne organizacije također kreiraju akcije doniranja hrane na koje se kupci mogu prijaviti i označiti proizvode za donaciju.
+Projekt Spasi Zalogaj je aplikacija čiji je cilj "spasiti" višak hrane koju bi prodajna mjesta bacila u otpad, uz promoviranje akcija doniranja hrane. Prodajna mjesta objavljuju svoje proizvode "viška" koje mogu prodati građanima po sniženoj cijeni ili donirati humanitarnim organizacijama odobravanjem zahtjeva za preuzimanje. Građani i humanitarne organizacije mogu pretraživati ponude i poslati zahtjev za preuzimanjem - građani plaćaju proizvode unutar aplikacije dok humanitarne organizacije samo pošalju zahtjev. Humanitarne organizacije također kreiraju akcije doniranja hrane na koje se kupci mogu prijaviti i označiti proizvode za donaciju.
 
 
 **Aplikacija i osnovno postavljanje:** [README repozitorija](../README.md#quick-start)  
@@ -31,7 +31,7 @@ Ažurirani popis članova, njihovih GitHub profila i glavnih uloga ili doprinosa
 | [5. Ispitivanje](5-Ispitivanje.md) | Pristup ispitivanju, stvarni rezultati i poznati nedostaci |
 | [6. Postavljanje, instalacija i konfiguracija](6-Postavljanje-instalacija-i-konfiguracija.md) | Lokalna instalacija, konfiguracija, javno postavljanje i administracija |
 | [7. Zaključak i budući rad](7-Zakljucak-i-buduci-rad.md) | Zaključak i moguća daljnja poboljšanja |
-| [A. Pregled aktivnosti grupe](A-Pregled-aktivnosti-grupe.md) | Aktivnosti tima, doprinosi i izazovi |
+| [A. Pregled aktivnosti grupe](A-Preglednost-aktivnosti-grupe.md) | Aktivnosti tima, doprinosi i izazovi |
 
 ## Ključne točke projekta
 
@@ -67,7 +67,8 @@ Nastavni primjeri pretpostavljaju React/Vite klijentski dio, Node.js poslužitel
 
 Za obrazac uporabe podnošenja prijave kriznog događaja u CrisisMapu tim može čuvati UML izvor u `.puml` datoteci, prikazati odgovarajuću sliku na relevantnoj stranici dokumentacije te ažurirati oboje kada se interakcija promijeni. Koristite stvarni dijagram i stvarno postavljanje vlastitog projekta. Domena ili tehnologija prikazana u primjeru ne postaje zahtjev osim ako je dio odobrenog zadatka.
 
->Napomena o primjerima: Blokovi „Primjer — CrisisMap" nastavni su scenarij, a ne rezultat ičijeg projekta; ne prepisujte ih. U primjerima se koriste React, Node.js, PostgreSQL, Render i Selenium samo radi dosljednosti. Vaš stog može biti drukčiji (npr. Java/Spring); dokumentirajte ono što stvarno koristite.</details>
+>Napomena o primjerima: Blokovi „Primjer — CrisisMap" nastavni su scenarij, a ne rezultat ičijeg projekta; ne prepisujte ih. U primjerima se koriste React, Node.js, PostgreSQL, Render i Selenium samo radi dosljednosti. Vaš stog može biti drukčiji (npr. Java/Spring); dokumentirajte ono što stvarno koristite.
+</details>
 
 ## Akademski integritet, ponašanje i licenciranje
 

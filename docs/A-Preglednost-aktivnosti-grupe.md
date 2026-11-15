@@ -6,33 +6,15 @@
 
 **Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 
->Definirati prije prve uporabe:
-`[Inicijali/Kratica] = [Ime i prezime]
-[GD] = [Gabrijel Dumbović] ; [FK] = [Klara Ferišak]; [KL] = [Karlo List]; [LP] = [Lucija Perica]; [DR] = [Domagoj Radman]; [ES] = [Ena Špoler]Ž; [VZ] = [Viktor Žigić]
-																												
+**Kratice članova tima:** GD = Gabrijel Dumbović; FK = Klara Ferišak; KL = Karlo List; LP = Lucija Perica; DR = Domagoj Radman; ES = Ena Špoler; VZ = Viktor Žigić.
 
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
 | --- | --- | --- | --- |
 |8.10. GD, FK, KL, LP, DR, ES, VZ|Definiranje uloge voditelja i upoznavanje tima|Voditelj tima je LP, dogovoren idući sastanak||
-| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijski i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) |
+| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) |
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
 
-<details>
-<summary><strong>Primjer evidencije sastanaka (CrisisMap)</strong></summary>
-
-**Primjer — CrisisMap:**
-
-**Kratice članova tima:** AK = Ana Kovač; LM = Luka Marić; EP = Ema Petrović; NK = Nika Kralj.
-
-| Datum i sudionici | Glavna tema | Odluka, radnja ili otvoreno pitanje | Poveznica na zadatak ili nastali rezultat, ako postoji |
-| --- | --- | --- | --- |
-| 15. 11. 2025.; AK, LM, EP | Lokacija kada je pristup preglednika odbijen | Dodati ručni odabir položaja na karti u obrazac za prijavu. AK obrađuje obrazac; LM provjerava valjanost lokacije. | Zadataka #21 i #23. |
-| 22. 11. 2025.; AK, EP | Usklađivanje formata lokacijskih podataka | klijentski dio i poslužiteljski API koriste neusklađene formate koordinata. EP će uskladiti format zahtjeva i demonstrira spremanje na sljedećem pregledu. | Zadatak #25. |
-
-**Ishod i odgovornost:** Zapisi jasno definiraju tko je odgovoran za koji dio posla i koji je provjerljivi rezultat dogovoren. npr Rečenica „Raspravljali smo o obradi lokacije” prikrila bi je li se itko obvezao na promjenu. Ovi redci navode odluku ili otvorenu radnju, odgovornu osobu i rezultat koji se može pregledati.
-
-</details>
 
 ## A.2 Plan rada
 
