@@ -44,19 +44,6 @@ VALUES
     (9009, 9009, 'Dobra štruca', 'Pekarnica', 'Probna ulica 9, Zagreb', 'demo9009@example.test', 45.819, 15.97),
     (9010, 9010, 'Pecivo i više', 'Pekarnica', 'Probna ulica 10, Zagreb', 'demo9010@example.test', 45.82, 15.97);
 
-INSERT INTO pristup_mjestu (prodajno_mjesto_id, korisnik_id)
-VALUES
-    (9001, 9002),
-    (9002, 9003),
-    (9003, 9004),
-    (9004, 9005),
-    (9005, 9006),
-    (9006, 9007),
-    (9007, 9008),
-    (9008, 9009),
-    (9009, 9010),
-    (9010, 9001);
-
 INSERT INTO radno_vrijeme (prodajno_mjesto_id, datum, vrijeme_od, vrijeme_do)
 VALUES
     (9001, (CURRENT_DATE +1), '08:00', '20:00'),
