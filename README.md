@@ -37,35 +37,56 @@ Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](d
 <!-- UPUTA: Ovaj odjeljak opisuje već postavljenu aplikaciju koju se  može otvoriti i isprobati bez lokalnog pokretanja izvornog koda.
 Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. -->
 
-**Javno dostupna aplikacija:** [Javni URL]
+**Javno dostupna aplikacija:** https://spasizalogaj.onrender.com/ 
 
-**Isprobajte:** [Jedna ili dvije kratke radnje koje pokazuju funkcionalan korisnički tijek.]
+**Isprobajte:** Otvorite aplikaciju preko gore navedene adrese. Prijavite se Google računom i odaberite ulogu "Kupac" te pregledajte dostupne ponude!
 
-**Demonstracija:** [Objasnite kako dobiti potreban ograničeni pristup ako je prijava obavezna; u suprotnom napišite „Korisnički račun nije potreban.” Ovdje ne objavljujte lozinke ni pristupne tokene.]
+**Demonstracija:** Za prijavu je potreban Google račun, no dok je aplikacija u testnom načinu rada, prijava je moguća samo za račune koji su dodani kao testni korisnici (članovi tima i asistentica). Za pristup se javite voditeljici tima.
 
-**Ograničenja:** [Kratko navedite ograničenja postavljene inačice ili postavite poveznicu na jedinstveno mjerodavno mjesto u dokumentaciji s poznatim problemima.]
+**Ograničenja:** Aplikacija je na besplatnom Render planu (nakon duže neaktivnosti se uspava), pa prvo učitavanje može trajati neko vrijeme (do oko minutu).
+Plaćanje nije implementirano zbog čega rezervacija ostaje u statusu "ČEKA UPLATU" i ne može se dobiti kod za preuzimanje.
 
-[Vodič za postavljanje i pokretanje](docs/6-Postavljanje-instalacija-i-konfiguracija.md) opisuje smještaj aplikacije (engl. hosting) koji tim stvarno koristi. Tim može koristiti Render ili drugu platformu koju ste dogovorili s asistentom/demonstratorom.
+Aplikacija je postavljena na [Render](https://render.com) kao jedna Docker web-usluga. Spring Boot poslužuje i REST API i web-klijent, a podaci se nalaze u upravljanoj PostgreSQL bazi na Neonu. Potrebne varijable okruženja navedene su u [`.env.example`](.env.example), a lokalno pokretanje opisano je u [backend/README.md](backend/README.md).
 
 <a id="quick-start"></a>
 ## Brzi početak / instalacija
+**Preduvjeti:**
 
-<!-- Obavezno od Demo 1 nadalje. Zamijenite mjesta za unos naredbama koje je drugi član tima uspješno provjerio nakon čistog kloniranja repozitorija. Detaljne upute za administraciju držite u projektnoj dokumentaciji u direktoriju docs/. -->
+| Alat | Verzija | Napomena |
+| --- | --- | --- |
+| JDK | 21 ili noviji | Provjera: `java -version` |
+| PostgreSQL | 16 ili noviji | Lokalno instaliran; servis mora biti pokrenut |
+| Git | — | |
+| Maven | — | Nije potreban, projekt ima Maven Wrapper (`mvnw`) |
 
-**Preduvjeti:** [Navedite potrebno izvršno okruženje (engl. runtime) i verzija, upravitelj paketa (engl. package manager), baza podataka ili vanjska usluga ako je nužna.]
 
 ```bash
-git clone [repository URL]
-cd [repository directory]
-[install dependencies]
-[run the application]
+git clone https://github.com/vz56677/zalogajcici.git
+cd zalogajcici
+psql -U postgres -c "CREATE DATABASE spasizalogaj;"
+cd backend
+DB_PASSWORD=... GOOGLE_CLIENT_ID=... GOOGLE_CLIENT_SECRET=... ./mvnw spring-boot:run
 ```
 
-**Adresa:** [Stvarna adresa koju aplikacija ispiše nakon pokretanja.]
+Nije potrebno tablice stvarati ručno, Flyway ih stvara prilikom prvog pokretanja aplikacije iz migracija u `backend/src/main/resources/db/migration`.
+Testni podaci mogu se učitati iz korijena repozitorija: `psql -U postgres -d spasizalogaj -f db/seed.sql` **nakon** prvog pokretanja aplikacije. 
 
-**Konfiguracija:** [Navedite potrebne varijable okruženja (engl. environment variables) ili uputite na sigurnu datoteku `.env.example`; objasnite gdje se dobivaju vrijednosti. Nikada ne stavljajte stvarne pristupne podatke u ovu datoteku, primjer konfiguracije, snimke zaslona, zapise ni zapise promjena (engl. commits).]
+**Adresa:** http://localhost:8080
 
-[Dodajte kratak korak provjere, primjerice koja se stranica treba otvoriti ili koja naredba pokreće osnovnu provjeru.] Za detaljno postavljanje pogledajte [projektnu dokumentaciju](docs/Home.md).
+**Konfiguracija:** Popis varijabli okruženja nalazi se u [`.env.example`](.env.example). Stvarne vrijednosti nikad se ne upisuju u repozitorij.
+
+| Varijabla | Obavezna | Zadana vrijednost | Opis |
+| --- | --- | --- | --- |
+| `DB_PASSWORD` | da | — | Lozinka PostgreSQL korisnika |
+| `GOOGLE_CLIENT_ID` | da | — | ID OAuth klijenta iz Google Cloud Consolea |
+| `GOOGLE_CLIENT_SECRET` | da | — | Tajni ključ OAuth klijenta |
+| `DB_USERNAME` | ne | `postgres` | PostgreSQL korisnik |
+| `DB_URL` | ne | `jdbc:postgresql://localhost:5432/spasizalogaj` | JDBC adresa baze |
+| `PORT` | ne | `8080` | Port poslužitelja |
+
+Naredbe za PowerShell i cmd te postavke za IntelliJ opisane su u [backend/README.md](backend/README.md).
+
+**Provjera:** http://localhost:8080/api/health vraća `Backend is running`, a nakon prijave na http://localhost:8080/oauth2/authorization/google adresa http://localhost:8080/api/me vraća podatke prijavljenog korisnika.
 
 ## Tehnologije
 
