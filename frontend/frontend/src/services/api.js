@@ -26,7 +26,7 @@ export async function login({ email, password, role, name }) {
   localStorage.setItem(KEY, JSON.stringify(s));
   return delay(s);
 }
-export const loginGoogle = role => login({ email: 'ana@gmail.com', password: 'x', role, name: role === 'org' ? 'Banka hrane Zagreb' : 'Ana' });
+export const loginGoogle = role => login({ email: 'ana@gmail.com', password: 'x', role, name: role === 'org' ? 'Banka hrane Zagreb' : role === 'store' ? 'Mala Trgovina' : 'Ana' });
 
 export const listOffers = async (role) => delay(OFFERS.filter(o => role === 'org' ? o.sale === null : o.sale !== null));
 export const getOffer = async id => delay(OFFERS.find(o => o.id == id));
