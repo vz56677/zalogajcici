@@ -13,7 +13,7 @@ export function OfferCard({ o }) {
         <div className={`price ${free ? 'free' : ''}`}>
           {free ? 'Besplatno' : <>{eur(o.sale)}<s>{eur(o.price)}</s></>}
         </div>
-        <div className="when">Preuzimanje {o.from} – {o.to}</div>
+        <div className="when">Preuzimanje {o.day} {o.from} – {o.to}</div>
       </div>
     </Link>
   );
@@ -27,7 +27,7 @@ export function OfferRow({ o }) {
       <div className="t">
         <h3>{o.name}</h3>
         <p>{o.store} · {o.km} km</p>
-        <p><b>Danas {o.from} – {o.to}</b></p>
+        <p><b>{o.day} {o.from} – {o.to}</b></p>
       </div>
       <div className={`price ${free ? 'free' : ''}`}>
         {free ? 'Besplatno' : <>{eur(o.sale)}<br /><s>{eur(o.price)}</s></>}

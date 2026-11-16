@@ -85,6 +85,16 @@ function mapUser(data) {
 
 // Pretvara ponudu iz backenda (PonudaOdgovor) u oblik koji koriste stranice
 const hhmm = iso => new Date(iso).toLocaleTimeString('hr-HR', { hour: '2-digit', minute: '2-digit' });
+
+// "Danas", "Sutra" ili datum
+const dayLabel = iso => {
+  const day = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  const diff = Math.round((day(new Date(iso)) - day(new Date())) / 86400000);
+  if (diff === 0) return 'Danas';
+  if (diff === 1) return 'Sutra';
+  return new Date(iso).toLocaleDateString('hr-HR', { day: 'numeric', month: 'numeric' });
+};
+
 const artFor = cat => /pek|kruh/i.test(cat) ? 'bread' : /jel|obrok/i.test(cat) ? 'bowl' : 'basket';
 
 function mapOffer(p) {
@@ -100,6 +110,7 @@ function mapOffer(p) {
     price: Number(p.redovnaCijena),
     sale: p.namjena === 'DONACIJA' ? null : Number(p.prodajnaCijena),
     left: Number(p.raspolozivo),
+    day: dayLabel(p.preuzimanjeOd),
     from: hhmm(p.preuzimanjeOd),
     to: hhmm(p.preuzimanjeDo)
   };
