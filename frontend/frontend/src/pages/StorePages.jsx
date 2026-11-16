@@ -4,14 +4,16 @@ import Shell, { TopBar } from '../components/Shell.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { Icon } from '../components/Icons.jsx';
+import { publishOffer } from '../services/api.js';
 
 const KEY = 'sz_store_data';
 const seed = {
   profile: { name: 'Mala Trgovina', address: 'Ilica 40, Zagreb', contact: '01 555 0101', hours: 'Pon – Sub, 08:00 – 20:00', description: 'Lokalna trgovina sa svježim i pažljivo odabranim namirnicama.' },
   offers: [
-    { id: 1, name: 'Kutija spašenih namirnica', category: 'Voće i povrće', qty: 6, regular: 14, sale: 4.99, expiry: '2026-11-17', pickup: '19:00 – 20:00', purpose: 'prodaja', type: 'Proizvod' },
+    /*{ id: 1, name: 'Kutija spašenih namirnica', category: 'Voće i povrće', qty: 6, regular: 14, sale: 4.99, expiry: '2026-11-17', pickup: '19:00 – 20:00', purpose: 'prodaja', type: 'Proizvod' },
     { id: 2, name: 'Gajbe voća i povrća', category: 'Voće i povrće', qty: 5, regular: 30, sale: 0, expiry: '2026-11-17', pickup: '17:00 – 19:00', purpose: 'donacija', type: 'Proizvod' },
     { id: 3, name: 'Paket iznenađenja', category: 'Miješano', qty: 4, regular: 18, sale: 5.99, expiry: '2026-11-17', pickup: '19:30 – 20:00', purpose: 'prodaja', type: 'Paket iznenađenja' },
+  */
   ],
   requests: [
     { id: 101, org: 'Banka hrane Zagreb', item: 'Gajbe voća i povrća', qty: 2, date: 'Danas, 10:24', status: 'Na čekanju' },
@@ -65,9 +67,28 @@ export function StoreOffersPage() {
   const blank = { name: '', category: 'Pekara', qty: 1, regular: '', sale: '', expiry: '', pickup: '', purpose: 'prodaja', type: 'Proizvod' };
   const [form, setForm] = useState(blank); const [editing, setEditing] = useState(null); const [show, setShow] = useState(false);
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = e => { e.preventDefault(); if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
+  /*const submit = e => { e.preventDefault(); if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
     const item = { ...form, id: editing ?? Date.now(), qty: Number(form.qty), regular: Number(form.regular || 0), sale: form.purpose === 'donacija' ? 0 : Number(form.sale || 0) };
     update({ offers: editing ? data.offers.map(o => o.id === editing ? item : o) : [item, ...data.offers] }); setForm(blank); setEditing(null); setShow(false); toast(editing ? 'Ponuda je ažurirana.' : 'Ponuda je objavljena.'); };
+  */
+  const submit = async e => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
+    const item = { ...form, id: editing ?? Date.now(), qty: Number(form.qty), regular: Number(form.regular || 0), sale: form.purpose === 'donacija' ? 0 : Number(form.sale || 0) };
+
+    if (!editing) {
+      try {
+        const saved = await publishOffer(form); // stvarna objava na backend
+        item.id = saved.id;
+      } catch (err) {
+        return toast(err.message); // poruka s backenda, npr. "Snižena cijena mora biti manja od redovne."
+      }
+    }
+
+    update({ offers: editing ? data.offers.map(o => o.id === editing ? item : o) : [item, ...data.offers] });
+    setForm(blank); setEditing(null); setShow(false);
+    toast(editing ? 'Ponuda je ažurirana.' : 'Ponuda je objavljena.');
+  };
   const edit = o => { setForm({ ...o }); setEditing(o.id); setShow(true); };
   const remove = id => { update({ offers: data.offers.filter(o => o.id !== id) }); toast('Ponuda je uklonjena.'); };
   return <Shell user={user} route="/store/offers"><TopBar title="Ponude hrane" sub="Upravljanje proizvodima i paketima" />
