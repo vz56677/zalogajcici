@@ -1,9 +1,17 @@
 
-#izgradnja
+#izgradnja frontenda (React + Vite)
+FROM node:20 AS frontend
+WORKDIR /fe
+COPY frontend/frontend/package*.json ./
+RUN npm ci
+COPY frontend/frontend/ ./
+RUN npm run build
+
+#izgradnja backenda
 FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY backend/ backend/
-COPY frontend/frontend/ backend/src/main/resources/static/
+COPY --from=frontend /fe/dist/ backend/src/main/resources/static/
 RUN cd backend && mvn -q -DskipTests package
 
 #pokretanje
