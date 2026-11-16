@@ -240,3 +240,42 @@ export async function cancelOrder(id) {
 
   return delay(true);
 }
+
+
+// "18:00 – 19:00" (ili "18:00-19:00") -> početak i kraj preuzimanja danas
+function pickupRange(text) {
+  const m = text.match(/(\d{1,2})[:.](\d{2})\s*[–-]\s*(\d{1,2})[:.](\d{2})/);
+  if (!m) throw new Error('Vrijeme preuzimanja upišite u obliku 18:00 – 19:00.');
+  const at = (h, min) => {
+    const d = new Date();
+    d.setHours(Number(h), Number(min), 0, 0);
+    return d.toISOString();
+  };
+  return [at(m[1], m[2]), at(m[3], m[4])];
+}
+
+// POST /api/ponude: prodajno mjesto backend uzima iz prijavljenog prodavača
+export async function publishOffer(form) {
+  const [od, doVrijeme] = pickupRange(form.pickup);
+  const donacija = form.purpose === 'donacija';
+
+  return request('/api/ponude', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-XSRF-TOKEN': getCsrfToken()
+    },
+    body: JSON.stringify({
+      vrsta: form.type === 'Paket iznenađenja' ? 'PAKET' : 'PROIZVOD',
+      namjena: donacija ? 'DONACIJA' : 'PRODAJA',
+      naziv: form.name.trim(),
+      kategorija: form.category,
+      redovnaCijena: Number(form.regular || 0),
+      prodajnaCijena: donacija ? 0 : Number(form.sale || 0),
+      raspolozivo: Number(form.qty),
+      preuzimanjeOd: od,
+      preuzimanjeDo: doVrijeme,
+      rokUpotrebe: form.expiry ? new Date(`${form.expiry}T23:59:00`).toISOString() : null
+    })
+  });
+}
