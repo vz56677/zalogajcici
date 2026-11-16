@@ -1,41 +1,22 @@
-<!--
-PREDLOŽAK — README završnog projekta na kolegiju Programsko inženjerstvo FER-a.
-Kopirajte ovu datoteku u README.md u repozitoriju svojeg projekta. Zamijenite
-svaku uputu u uglatim zagradama činjenicama o svojem projektu, uklonite sve
-komentare s uputama i ogledne <details> blokove te prije predaje izbrišite ovu
-napomenu. Nemojte kopirati nastavni primjer kao rezultat svojeg projekta.
--->
 
-# [Naziv aplikacije]
+# SpasiZalogaj
 
-<details>
-<summary>Zašto je ovaj odjeljak važan</summary>
-
-Započnite README nazivom svojeg projekta i sažetim opisom njegove svrhe. Naziv projekta ne mora sam po sebi objašnjavati čemu projekt služi, ali opis uz naziv treba novom čitatelju omogućiti da brzo razumije što aplikacija radi.
-
-</details>
-
-[U jednoj rečenici navedite što aplikacija omogućuje svojim korisnicima.]
+Web-aplikacija koja povezuje prodajna mjesta (trgovine, pekare, restorane...) s kupcima i humanitarnim organizacijama, kako bi se višak hrane donirao ili prodao po sniženoj cijeni umjesto bacanja.
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
-
-[U dvije ili tri rečenice objasnite problem, ciljane korisnike i glavnu korist svoje aplikacije. Trenutačne funkcionalnosti navedite odvojeno od planiranih; opišite stvarni opseg umjesto obećanih mogućnosti.]
+U prodajnim mjestima svakodnevno se baca hrana koja je još sigurna za konzumaciju. Aplikacija SpasiZalogaj prodajnim mjestima omogućuje objavu viška hrane i paketa iznenađenja, kupcima rezervaciju i preuzimanje po sniženoj cijeni, a humanitarnim organizacijama preuzimanje donacija. Registracija i prijava moguća je isključivo preko Google računa (OAuth 2.0).
 
 **Ključne funkcionalnosti**
-
-- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
-- [Druga reprezentativna funkcionalnost]
-- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
+- Prijava i registracija putem Google(OAuth 2.0) računa uz odabir uloge kupac/prodajno mjesto
+- Objava ponude proizvoda (prodavač) i pregled aktivnih ponuda iz baze
+- Kreiranje rezervacije uz provjeru i smanjenje zalihe
 
 Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](docs/Home.md).
 
 <a id="deployment"></a>
 ## Postavljanje (engl. deployment)
-
-<!-- UPUTA: Ovaj odjeljak opisuje već postavljenu aplikaciju koju se  može otvoriti i isprobati bez lokalnog pokretanja izvornog koda.
-Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li URL na javno dostupnu pokrenutu aplikaciju i radi li navedeni tijek uporabe. Nikada ne objavljujte lozinke ni pristupne tokene. -->
 
 **Javno dostupna aplikacija:** https://spasizalogaj.onrender.com/ 
 
@@ -90,62 +71,52 @@ Naredbe za PowerShell i cmd te postavke za IntelliJ opisane su u [backend/README
 
 ## Tehnologije
 
-Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša aplikacija radi. Za svaku navedite njezinu konkretnu ulogu i jedan razlog ili ograničenje važno za projekt. Alat za razvoj ili ispitivanje uključite samo ako je njegova uloga važna za razumijevanje načina na koji je projekt izrađen ili provjeren. Nemojte prepisivati popis ovisnosti (engl. dependencies), statistiku programskih jezika ni popis razvojnih okruženja i komunikacijskih alata. Tablicu provjerite prema stvarnom repozitoriju i pokrenutoj aplikaciji; potrebne verzije i konfiguraciju dokumentirajte u vodiču za instalaciju.
-
 | Tehnologija ili alat | Uloga u ovom projektu | Razlog uporabe ili važno ograničenje |
 | --- | --- | --- |
-| [Naziv] | [Što radi u ovoj aplikaciji] | [Razlog ili ograničenje specifično za projekt] |
-
-<details>
-<summary><strong>Primjer: objašnjenje ključnih tehnoloških odluka</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Tehnologija ili alat | Uloga u ovom projektu | Razlog uporabe ili važno ograničenje |
-| --- | --- | --- |
-| React | Prikazuje obrazac za prijavu i kartu kriznih događaja u pregledniku. | Karta i poslane prijave mogu se ažurirati bez ponovnog učitavanja cijele stranice. |
-| PostgreSQL | Pohranjuje prijave, lokacije i njihove odnose. | Zapisi o prijavama moraju ostati povezani s autorima i lokacijama; promjene sheme zahtijevaju migracije baze podataka (engl. database migrations). |
-| Usluga kartografskih pločica (engl. map tile service) | Omogućuje prikaz karte u pregledniku. | Karta ovisi o vanjskoj usluzi; aplikacija mora imati definirano ponašanje i kada kartografske pločice nisu dostupne. |
-
-**Analiza primjera:** Svaki redak opisuje ulogu ili posljedicu konkretne tehnologije u ovoj aplikaciji. Verzije paketa pripadaju datotekama s ovisnostima projekta; verzije izvršnog okruženja i konfiguracija važna za postavljanje pripadaju vodiču za instalaciju. Važne kompromise u oblikovanju (engl. design trade-offs) objasnite na stranici arhitekture u direktoriju `docs/` umjesto da ovdje ponavljate cijeli zapis odluke. Navodite samo usluge koje vaš tim stvarno integrira.
-
-</details>
+| Spring Boot 4 (Java 21) | REST API, poslovna pravila i posluživanje web-klijenta | Jedna aplikacija poslužuje i API i statički klijent, pa nema zasebnog postavljanja klijenta. |
+| Spring Security OAuth2 Client | Prijava Google računom | Lozinke se ne pohranjuju (NF-03); aplikacija ovisi o dostupnosti Googlea. |
+| PostgreSQL + Flyway | Pohrana korisnika, ponuda i rezervacija; verzionirane migracije sheme | Relacijska ograničenja štite dosljednost zalihe i rezervacija; svaka promjena sheme ide kao nova migracija. |
+| JavaScript (ES moduli), HTML, CSS | Web-klijent prilagođen računalu i mobitelu | Bez build koraka i dodatnih okvira; svi pozivi API-ja nalaze se u `api.js`. |
+| Docker + Render | Javno postavljanje aplikacije | Ograničenje: besplatni plan se uspava nakon neaktivnosti. |
 
 <a id="team-members"></a>
 ## Članovi tima
 
 | Član | Glavna uloga ili doprinos |
 | --- | --- |
-| [Ime] | [Uloga ili doprinos] |
-| [Ime] | [Uloga ili doprinos] |
+| Lucija Perica | Voditeljica tima; web-klijent |
+| Ena Špoler | Ponude i zaliha (backend); organizacija zadataka |
+| Domagoj Radman | Prijava putem Googlea i uloge korisnika |
+| Gabrijel Dumbović | Inicijalizacija backenda; arhitektura |
+| Karlo List | Model podataka i baza |
+| Viktor Žigić | Obrasci uporabe; web-klijent |
+| Klara Ferišak | Rezervacije (backend); postavljanje aplikacije |
 
 Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
 
 ## Doprinos projektu
 
-[Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
+Zadaci se evidentiraju kao [GitHub Issues](https://github.com/vz56677/zalogajcici/issues) raspoređeni po milestoneima (M1, M2, M3). Svaki zadatak razvija se na vlastitoj grani i u `master` ulazi putem pull requesta.
 
 <a id="license"></a>
 
-**Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
+**Status licence:** Projekt (izvorni kod i dokumentacija) objavljen je pod licencom [Creative Commons Imenovanje-Nekomercijalno-Dijeli pod istim uvjetima 4.0 međunarodna (CC BY-NC-SA 4.0)](LICENSE). Dopušteno je dijeljenje i prerada uz navođenje autora, samo u nekomercijalne svrhe i pod istom licencom.
 
 Dokumentacijski predložak kolegija sadrži otvorene obrazovne sadržaje (engl. Open Educational Resources, OER) i licenciran je licencom Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. Ta licenca **ne određuje automatski licencu studentske aplikacije**; tim treba jasno navesti licencu svojeg projekta u prethodnom retku i datoteci `LICENSE`, ako je primjenjivo.
 
-Kod trećih strana, skupovi podataka, slike, ikone i drugi sadržaji zadržavaju vlastite licence i uvjete uporabe. [Po potrebi postavite poveznicu na zahvale i izvore.]
+Kod trećih strana, skupovi podataka, slike, ikone i drugi sadržaji zadržavaju vlastite licence i uvjete uporabe. 
 
 <a id="ai-usage"></a>
 ## Uporaba umjetne inteligencije [![AI Usage: Disclosed](https://img.shields.io/badge/AI%20Usage-Disclosed-blue.svg)](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf)
 
 Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
 
-**Izjava:** [Navedite jesu li korišteni alati umjetne inteligencije. Ako jesu, navedite alate i njihove glavne namjene te objasnite kako je tim pregledao nastali kod ili tekst i kako može objasniti vlastiti doprinos. Ako nisu korišteni, to jasno navedite. U alate umjetne inteligencije nemojte unositi privatne podatke, pristupne podatke ni tuđe zaštićene materijale.]
-
-[Ako je za ovaj projekt potreban detaljniji zapis uporabe umjetne inteligencije, postavite poveznicu na njegovo jedinstveno mjerodavno mjesto u dokumentaciji.]
+**Izjava:** Članovi tima koristili su Claude (Anthropic) za pregled dokumentacije i koda, objašnjenja i prijedloge ispravaka. Sav kod i tekst napisali su ili pregledali članovi tima te mogu objasniti vlastiti doprinos.
 
 <a id="code-of-conduct-and-support"></a>
 ## Kodeks ponašanja i podrška [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
-Od članova tima očekuje se pridržavanje **Kodeksa ponašanja studenata** Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu, pravila timskog rada na kolegiju i [Etičkog kodeksa IEEE-a](https://www.ieee.org/about/corporate/governance/p7-8.html). [Postavite poveznicu na `CODE_OF_CONDUCT.md` ako se ta datoteka koristi u vašem repozitoriju.]
+Od članova tima očekuje se pridržavanje **Kodeksa ponašanja studenata** Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu, pravila timskog rada na kolegiju i [Etičkog kodeksa IEEE-a](https://www.ieee.org/about/corporate/governance/p7-8.html). 
 
 ---
 
