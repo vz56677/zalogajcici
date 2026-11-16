@@ -20,7 +20,7 @@ public class SecurityConfig {
 
     public SecurityConfig(
             CurrentUserService currentUserService,
-            @Value("${app.frontend-url:http://localhost:5173}") String frontendUrl) {
+            @Value("${app.frontend-url:/}") String frontendUrl) {
         this.currentUserService = currentUserService;
         this.frontendUrl = frontendUrl;
     }
