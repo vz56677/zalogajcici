@@ -20,7 +20,7 @@ export function HomePage() {
 
   useEffect(() => {
     let alive = true;
-    listOffers(user.role).then(r => alive && setAll(r));
+    listOffers(user.role).then(r => alive && setAll(r)).catch(() => alive && setAll([]));
     return () => { alive = false; };
   }, [user.role]);
 
