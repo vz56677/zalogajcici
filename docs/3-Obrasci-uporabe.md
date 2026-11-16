@@ -6,13 +6,23 @@
 
 **Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava.
 
-![Dijagram obrazaca uporabe sustava Spasi Zalogaj](./assets/diagrams/plantuml-diagram.svg)
+![Dijagram obrazaca uporabe sustava Spasi Zalogaj](./assets/diagrams/3-1-system-UC.svg)
 
 **Slika 3.1. Dijagram obrazaca uporabe sustava Spasi Zalogaj**
 
 **PlantUML izvor:** [izvor](./puml/3-1-system-UC.puml)
 
-Dijagram prikazuje granicu sustava i četiri primarna aktera: kupca, predstavnika prodajnog mjesta, predstavnika humanitarne organizacije i administratora. Pružatelj autentifikacije (OAuth 2.0), servis za plaćanje i servis za karte sudjeluju kao sekundarni akteri u obrascima UC-001, UC-002, UC-003, UC-005 i UC-007. Dijagram je usklađen s funkcijskim zahtjevima iz odjeljka 2.1.
+Dijagram prikazuje granicu sustava, četiri primarna aktera i četiri sekundarna aktera. Kupac, predstavnik prodajnog mjesta i predstavnik humanitarne organizacije specijalizacije su općenitog aktera „Korisnik”; administrator je prikazan zasebno. Sekundarni akteri su pružatelj autentifikacije (OAuth 2.0), servis za plaćanje, servis za karte (Google Maps) i servis za slanje e-pošte SendGrid (A-08). Odnosi `<<include>>` izdvajaju obveznu obradu plaćanja (UC-003), provjeru aktivnog članstva pri objavi ponude (UC-008) i povrat novca pri otkazivanju rezervacije (UC-005). Odnosi `<<extend>>` prikazuju neobvezni prikaz ponuda na karti kao proširenje pregleda ponuda (UC-002) te recenziranje kao proširenje preuzimanja rezervacije (UC-004). SendGrid sudjeluje u slanju potvrde rezervacije i koda za preuzimanje u UC-003.
+
+### Dodatni dijagram: tijek rezervacije, plaćanja, preuzimanja i recenzije
+
+![Tijek rezervacije, plaćanja, preuzimanja i recenzije](./assets/diagrams/3-2-reservation-flow.svg)
+
+**Slika 3.2. Tijek rezervacije, plaćanja, preuzimanja i recenzije**
+
+**PlantUML izvor:** [izvor](./puml/3-2-reservation-flow.puml)
+
+Dodatni dijagram detaljnije prikazuje povezani tijek koji započinje odabirom ponude i potvrdom rezervacije (UC-003). Sustav najprije provjerava dostupnost količine; ako količine nema, prikazuje obavijest i postupak završava. Ako je ponuda dostupna, količina se privremeno zadržava, a kupac odabire način plaćanja. Vanjski servis autorizira plaćanje. U slučaju neuspjeha sustav obavještava kupca, a nedovršena rezervacija poništava se nakon zadanog roka te se količina vraća u zalihu. Nakon uspješnog plaćanja sustav potvrđuje rezervaciju, generira jedinstveni kod i šalje potvrdu s kodom putem SendGrida (A-08). Pri dolasku u prodajno mjesto zaposlenik unosi ili skenira kod, a sustav provjerava njegovu valjanost (UC-004). Ako je kod valjan, zaposlenik predaje proizvode i potvrđuje preuzimanje. Nakon toga kupac može ostaviti ocjenu i komentar, što odgovara proširenju UC-004 obrascem UC-006. Nevaljan kod zaustavlja postupak preuzimanja uz prikaz razloga.
 
 
 
@@ -20,7 +30,7 @@ Dijagram prikazuje granicu sustava i četiri primarna aktera: kupca, predstavnik
 
 **Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative.
 
-Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prodajnog mjesta (uključuje zaposlenike koji potvrđuju preuzimanje), **A-03** Predstavnik humanitarne organizacije, **A-04** Administrator sustava, **A-05** Pružatelj autentifikacije (OAuth 2.0), **A-06** Servis za plaćanje (PayPal / kreditne kartice), **A-07** Servis za karte (Google Maps). Vanjski sustavi (A-05, A-06, A-07) sudjeluju kao sekundarni akteri.
+Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prodajnog mjesta (uključuje zaposlenike koji potvrđuju preuzimanje), **A-03** Predstavnik humanitarne organizacije, **A-04** Administrator sustava, **A-05** Pružatelj autentifikacije (OAuth 2.0), **A-06** Servis za plaćanje (PayPal / kreditne kartice), **A-07** Servis za karte (Google Maps), **A-08** Servis za slanje e-pošte (SendGrid). Vanjski sustavi (A-05 do A-08) sudjeluju kao sekundarni akteri.
 
 ---
 

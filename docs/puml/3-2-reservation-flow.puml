@@ -1,0 +1,70 @@
+@startuml 3-2-reservation-flow
+title Tijek rezervacije, plaćanja, preuzimanja i recenzije
+left to right direction
+skinparam shadowing false
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  DiamondBackgroundColor #F7F7F7
+  DiamondBorderColor #444444
+}
+
+|Kupac|
+start
+:Odabire ponudu i količinu;
+:Potvrđuje rezervaciju;
+
+|Sustav Spasi Zalogaj|
+:Provjerava dostupnost ponude;
+if (Ima li dovoljno količine?) then (Da)
+  :Privremeno zadržava količinu;
+  :Pokreće UC-003\nRezervacija i plaćanje;
+else (Ne)
+  :Prikazuje nedostupnu količinu;
+  stop
+endif
+
+|Kupac|
+:Odabire način plaćanja;
+
+|Vanjski servis plaćanja|
+:Autorizira plaćanje;
+
+|Sustav Spasi Zalogaj|
+if (Plaćanje uspješno?) then (Da)
+  :Potvrđuje rezervaciju;
+  :Generira jedinstveni kod;
+  :Šalje potvrdu i kod e-poštom;
+else (Ne)
+  :Prikazuje neuspjeh plaćanja;
+  :Poništava rezervaciju nakon isteka roka;
+  :Vraća količinu u zalihu;
+  stop
+endif
+
+|Kupac|
+:Dolazi na prodajno mjesto\ns kodom za preuzimanje;
+
+|Predstavnik prodajnog mjesta|
+:Unosi ili skenira kod;
+
+|Sustav Spasi Zalogaj|
+:Provjerava valjanost koda\n(UC-004);
+if (Kod je valjan?) then (Da)
+  |Predstavnik prodajnog mjesta|
+  :Predaje proizvode;
+  :Potvrđuje preuzimanje;
+else (Ne)
+  :Odbija preuzimanje i\nprikazuje razlog;
+  stop
+endif
+
+|Kupac|
+:Otvara preuzetu rezervaciju;
+:Ostavlja ocjenu i komentar\n(UC-006);
+
+|Sustav Spasi Zalogaj|
+:Pohranjuje recenziju;
+:Prikazuje recenziju na\njavnom profilu prodajnog mjesta;
+stop
+@enduml
