@@ -3,19 +3,25 @@ title Dijagram obrazaca uporabe sustava
 left to right direction
 skinparam packageStyle rectangle
 skinparam shadowing false
+skinparam actorStyle awesome
 skinparam usecase {
   BackgroundColor #FFFFFF
   BorderColor #444444
 }
 
-'Primarni akteri
+' Zajednicka generalizacija korisnickih uloga
+actor "Korisnik" as KOR
 actor "A-01\nKupac" as A01
 actor "A-02\nPredstavnik\nprodajnog mjesta" as A02
 actor "A-03\nPredstavnik\nhumanitarne\norganizacije" as A03
 actor "A-04\nAdministrator\nsustava" as A04
 
-'Granica sustava
-rectangle "Sustav" {
+A01 -|> KOR
+A02 -|> KOR
+A03 -|> KOR
+
+' Granica sustava
+rectangle "Sustav Spasi Zalogaj" {
   usecase "UC-001\nRegistracija i prijava\nputem OAuth-a" as UC001
   usecase "UC-002\nPregled i pretraživanje\nponuda" as UC002
   usecase "UC-003\nRezervacija i plaćanje\nponude" as UC003
@@ -30,22 +36,27 @@ rectangle "Sustav" {
   usecase "UC-012\nKreiranje humanitarne akcije\ni evidencija donacija" as UC012
   usecase "UC-013\nPrijava u humanitarnu\nakciju" as UC013
   usecase "UC-014\nAdministracija sustava" as UC014
+
+  usecase "Obrada plaćanja" as PAY
+  usecase "Provjera aktivnog\nčlanstva" as MEMBER
+  usecase "Povrat novca" as REFUND
+  usecase "Prikaz ponuda\nna karti" as MAP
 }
 
-'Sekundarni (vanjski) akteri
+' Sekundarni (vanjski) akteri
 actor "A-05\nPružatelj autentifikacije\n(OAuth 2.0)" as A05 <<vanjski sustav>>
 actor "A-06\nServis za plaćanje\n(PayPal / kartice)" as A06 <<vanjski sustav>>
 actor "A-07\nServis za karte\n(Google Maps)" as A07 <<vanjski sustav>>
+actor "A-08\nServis za e-poštu\n(SendGrid)" as A08 <<vanjski sustav>>
 
-'Kupac
-A01 -- UC001
+' Primarni akteri
+KOR -- UC001
 A01 -- UC002
 A01 -- UC003
 A01 -- UC005
 A01 -- UC006
 A01 -- UC013
 
-'Predstavnik prodajnog mjesta
 A02 -- UC001
 A02 -- UC004
 A02 -- UC007
@@ -53,20 +64,27 @@ A02 -- UC008
 A02 -- UC010
 A02 -- UC012
 
-'Humanitarna organizacija
 A03 -- UC001
 A03 -- UC009
 A03 -- UC012
 
-'Administrator
 A04 -- UC011
 A04 -- UC014
 
-'Sekundarni akteri
+' Sekundarni akteri
 UC001 -- A05
-UC002 -- A07
-UC003 -- A06
-UC005 -- A06
+PAY -- A06
 UC007 -- A06
+MAP -- A07
+UC003 -- A08
+
+' Obavezni ukljuceni obrasci
+UC003 ..> PAY : <<include>>
+UC008 ..> MEMBER : <<include>>
+UC005 ..> REFUND : <<include>>
+
+' Neobavezna prosirenja osnovnih obrazaca
+MAP ..> UC002 : <<extend>>
+UC006 ..> UC004 : <<extend>>
 
 @enduml
