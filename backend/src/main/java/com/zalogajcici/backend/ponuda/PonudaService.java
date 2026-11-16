@@ -39,12 +39,14 @@ public class PonudaService {
             throw new BusinessException(HttpStatus.FORBIDDEN, "NIJE_PRODAVAC", "Samo prodajna mjesta mogu objavljivati ponude.");
         }
 
-        // 2. Za koje mjesto
-        if (z.prodajnoMjestoId() == null) {
-            throw new NeispravnaPonudaException("OBAVEZNO_POLJE", "Prodajno mjesto je obavezno.");
-        }
-        ProdajnoMjesto mjesto = mjesta.findById(z.prodajnoMjestoId()).orElseThrow(() ->
-                new BusinessException(HttpStatus.NOT_FOUND, "PRODAJNO_MJESTO_NE_POSTOJI", "Prodajno mjesto ne postoji."));
+
+        // 2. Za koje mjesto: ako nije poslano, uzima se mjesto prijavljenog prodavača
+        ProdajnoMjesto mjesto = (z.prodajnoMjestoId() != null)
+                ? mjesta.findById(z.prodajnoMjestoId()).orElseThrow(() ->
+                new BusinessException(HttpStatus.NOT_FOUND, "PRODAJNO_MJESTO_NE_POSTOJI", "Prodajno mjesto ne postoji."))
+                : mjesta.findFirstByVlasnikId(korisnikId).orElseThrow(() ->
+                new BusinessException(HttpStatus.NOT_FOUND, "PRODAJNO_MJESTO_NE_POSTOJI", "Prodavač nema prodajno mjesto."));
+
         if (!mjesto.getVlasnik().getId().equals(korisnikId)) {
             throw new BusinessException(HttpStatus.FORBIDDEN, "NIJE_VLASNIK", "Ponudu možete objaviti samo za svoje prodajno mjesto.");
         }
