@@ -57,28 +57,28 @@ VALUES
     (9009, (CURRENT_DATE +9), '08:00', '20:00'),
     (9010, (CURRENT_DATE +10), '08:00', '20:00');
 
-INSERT INTO ponuda (id, prodajno_mjesto_id, vrsta, namjena, naziv, kategorija, redovna_cijena, prodajna_cijena, raspolozivo, objavljeno_u, preuzimanje_od, preuzimanje_do)
+INSERT INTO ponuda (id, prodajno_mjesto_id, vrsta, namjena, naziv, kategorija, redovna_cijena, prodajna_cijena, raspolozivo, objavljeno_u, preuzimanje_od, preuzimanje_do, rok_upotrebe)
 VALUES
-    (9001, 9001, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -6 + TIME '08:00'), (CURRENT_DATE -6 + TIME '20:00')),
-    (9101, 9001, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +1 + TIME '08:00'), (CURRENT_DATE +1 + TIME '20:00')),
-    (9002, 9002, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -5 + TIME '08:00'), (CURRENT_DATE -5 + TIME '20:00')),
-    (9102, 9002, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +2 + TIME '08:00'), (CURRENT_DATE +2 + TIME '20:00')),
-    (9003, 9003, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -4 + TIME '08:00'), (CURRENT_DATE -4 + TIME '20:00')),
-    (9103, 9003, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +3 + TIME '08:00'), (CURRENT_DATE +3 + TIME '20:00')),
-    (9004, 9004, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -3 + TIME '08:00'), (CURRENT_DATE -3 + TIME '20:00')),
-    (9104, 9004, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +4 + TIME '08:00'), (CURRENT_DATE +4 + TIME '20:00')),
-    (9005, 9005, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -2 + TIME '08:00'), (CURRENT_DATE -2 + TIME '20:00')),
-    (9105, 9005, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +5 + TIME '08:00'), (CURRENT_DATE +5 + TIME '20:00')),
-    (9006, 9006, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +6 + TIME '08:00'), (CURRENT_DATE +6 + TIME '20:00')),
-    (9106, 9006, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +6 + TIME '08:00'), (CURRENT_DATE +6 + TIME '20:00')),
-    (9007, 9007, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +7 + TIME '08:00'), (CURRENT_DATE +7 + TIME '20:00')),
-    (9107, 9007, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +7 + TIME '08:00'), (CURRENT_DATE +7 + TIME '20:00')),
-    (9008, 9008, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +8 + TIME '08:00'), (CURRENT_DATE +8 + TIME '20:00')),
-    (9108, 9008, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +8 + TIME '08:00'), (CURRENT_DATE +8 + TIME '20:00')),
-    (9009, 9009, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +9 + TIME '08:00'), (CURRENT_DATE +9 + TIME '20:00')),
-    (9109, 9009, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +9 + TIME '08:00'), (CURRENT_DATE +9 + TIME '20:00')),
-    (9010, 9010, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 0, CURRENT_TIMESTAMP, (CURRENT_DATE +10 + TIME '08:00'), (CURRENT_DATE +10 + TIME '20:00')),
-    (9110, 9010, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +10 + TIME '08:00'), (CURRENT_DATE +10 + TIME '20:00'));
+    (9001, 9001, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -6 + TIME '08:00'), (CURRENT_DATE -6 + TIME '20:00'), NULL),
+    (9101, 9001, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +1 + TIME '08:00'), (CURRENT_DATE +1 + TIME '20:00'), (CURRENT_DATE +1 + TIME '20:00')),
+    (9002, 9002, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -5 + TIME '08:00'), (CURRENT_DATE -5 + TIME '20:00'), NULL),
+    (9102, 9002, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +2 + TIME '08:00'), (CURRENT_DATE +2 + TIME '20:00'), (CURRENT_DATE +2 + TIME '20:00')),
+    (9003, 9003, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -4 + TIME '08:00'), (CURRENT_DATE -4 + TIME '20:00'), NULL),
+    (9103, 9003, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +3 + TIME '08:00'), (CURRENT_DATE +3 + TIME '20:00'), (CURRENT_DATE +3 + TIME '20:00')),
+    (9004, 9004, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -3 + TIME '08:00'), (CURRENT_DATE -3 + TIME '20:00'), NULL),
+    (9104, 9004, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +4 + TIME '08:00'), (CURRENT_DATE +4 + TIME '20:00'), (CURRENT_DATE +4 + TIME '20:00')),
+    (9005, 9005, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, (CURRENT_DATE -7 + TIME '08:00'), (CURRENT_DATE -2 + TIME '08:00'), (CURRENT_DATE -2 + TIME '20:00'), NULL),
+    (9105, 9005, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +5 + TIME '08:00'), (CURRENT_DATE +5 + TIME '20:00'), (CURRENT_DATE +5 + TIME '20:00')),
+    (9006, 9006, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +6 + TIME '08:00'), (CURRENT_DATE +6 + TIME '20:00'), NULL),
+    (9106, 9006, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +6 + TIME '08:00'), (CURRENT_DATE +6 + TIME '20:00'), (CURRENT_DATE +6 + TIME '20:00')),
+    (9007, 9007, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +7 + TIME '08:00'), (CURRENT_DATE +7 + TIME '20:00'), NULL),
+    (9107, 9007, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +7 + TIME '08:00'), (CURRENT_DATE +7 + TIME '20:00'), (CURRENT_DATE +7 + TIME '20:00')),
+    (9008, 9008, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +8 + TIME '08:00'), (CURRENT_DATE +8 + TIME '20:00'), NULL),
+    (9108, 9008, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +8 + TIME '08:00'), (CURRENT_DATE +8 + TIME '20:00'), (CURRENT_DATE +8 + TIME '20:00')),
+    (9009, 9009, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +9 + TIME '08:00'), (CURRENT_DATE +9 + TIME '20:00'), NULL),
+    (9109, 9009, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +9 + TIME '08:00'), (CURRENT_DATE +9 + TIME '20:00'), (CURRENT_DATE +9 + TIME '20:00')),
+    (9010, 9010, 'PAKET', 'PRODAJA', 'Pekarski paket', 'Pekarski proizvodi', 7, 3.5, 0, CURRENT_TIMESTAMP, (CURRENT_DATE +10 + TIME '08:00'), (CURRENT_DATE +10 + TIME '20:00'), NULL),
+    (9110, 9010, 'PROIZVOD', 'DONACIJA', 'Kruh za donaciju', 'Pekarski proizvodi', 2, 0, 5, CURRENT_TIMESTAMP, (CURRENT_DATE +10 + TIME '08:00'), (CURRENT_DATE +10 + TIME '20:00'), (CURRENT_DATE +10 + TIME '20:00'));
 
 INSERT INTO rezervacija (id, kupac_id, prodajno_mjesto_id, kod_preuzimanja, status, kreirana_u, rok_preuzimanja, preuzeta_u, preuzimanje_potvrdio_id)
 VALUES
