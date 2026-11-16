@@ -9,7 +9,7 @@ const read = (key, fallback) => {
     return fallback;
   }
 };
-
+/*
 const OFFERS = [
   { id: 1, name: 'Pekarska vrećica iznenađenja', store: 'Pekara Zora', addr: 'Ulica primjere 12, Zagreb', km: 0.4, price: 9, sale: 2.99, left: 2, from: '18:30', to: '19:00', cat: 'Pekara', kind: 'bread', desc: 'Iznenađenje iz današnje ponude: kruh, peciva i slatkiši koji tijekom dana nisu prodani, a još su savršeno svježi.', tags: ['Kruh', 'Peciva', 'Slatko'] },
   { id: 2, name: 'Ručak u zdjeli', store: 'Zeleni kutak', addr: 'Gajeva 5, Zagreb', km: 0.9, price: 8.5, sale: 3.5, left: 4, from: '20:00', to: '20:30', cat: 'Jela', kind: 'bowl', desc: 'Topli obrok dana: povrće, žitarice i umak kuće.', tags: ['Vegetarijansko', 'Toplo'] },
@@ -17,7 +17,7 @@ const OFFERS = [
   { id: 4, name: 'Tjestenina dana', store: 'Trattoria Luna', addr: 'Tkalčićeva 9, Zagreb', km: 1.6, price: 9.5, sale: 3.2, left: 3, from: '21:00', to: '21:30', cat: 'Jela', kind: 'bowl', desc: 'Porcija tjestenine dana, pakirana za van.', tags: ['Jela'] },
   { id: 5, name: 'Kruh i peciva za donaciju', store: 'Pekara Zora', addr: 'Ulica primjere 12, Zagreb', km: 0.4, price: 12, sale: null, left: 20, from: '19:00', to: '20:00', cat: 'Pekara', kind: 'bread', desc: 'Neprodani kruh i peciva dostupni samo humanitarnim organizacijama.', tags: ['Donacija', 'Kruh'] },
   { id: 6, name: 'Gajbe voća i povrća', store: 'Mala Trgovina', addr: 'Ilica 40, Zagreb', km: 1.2, price: 30, sale: null, left: 5, from: '17:00', to: '19:00', cat: 'Voće i povrće', kind: 'basket', desc: 'Gajbe sezonskog voća i povrća za donaciju.', tags: ['Donacija', 'Voće'] }
-];
+];*/
 
 const CAMPAIGNS = [
   { id: 1, name: 'Zimska zaliha za Kuću nade', place: 'Zagreb, Trešnjevka', dates: '15.11. – 15.12.', need: 'Konzerve, tjestenina, ulje' },
@@ -46,8 +46,20 @@ async function request(url, options = {}) {
     }
   });
 
+  /*
   if (!response.ok) {
     const message = await response.text();
+    throw new Error(message || `Greška poslužitelja: ${response.status}`);
+  }*/
+
+  if (!response.ok) {
+    const text = await response.text();
+    let message = text;
+    try {
+      message = JSON.parse(text).poruka ?? text;
+    } catch {
+      // odgovor nije JSON (npr. "Korisnik nije prijavljen.")
+    }
     throw new Error(message || `Greška poslužitelja: ${response.status}`);
   }
 
@@ -68,6 +80,28 @@ function mapUser(data) {
     email: data.email,
     name: data.ime,
     role: roles[data.uloga] ?? null
+  };
+}
+
+// Pretvara ponudu iz backenda (PonudaOdgovor) u oblik koji koriste stranice
+const hhmm = iso => new Date(iso).toLocaleTimeString('hr-HR', { hour: '2-digit', minute: '2-digit' });
+const artFor = cat => /pek|kruh/i.test(cat) ? 'bread' : /jel|obrok/i.test(cat) ? 'bowl' : 'basket';
+
+function mapOffer(p) {
+  return {
+    id: p.id,
+    name: p.naziv,
+    cat: p.kategorija,
+    desc: p.opis ?? '',
+    tags: [p.kategorija],
+    kind: artFor(p.kategorija),
+    store: p.prodajnoMjesto.naziv,
+    addr: p.prodajnoMjesto.adresa,
+    price: Number(p.redovnaCijena),
+    sale: p.namjena === 'DONACIJA' ? null : Number(p.prodajnaCijena),
+    left: Number(p.raspolozivo),
+    from: hhmm(p.preuzimanjeOd),
+    to: hhmm(p.preuzimanjeDo)
   };
 }
 
@@ -151,6 +185,7 @@ export async function logout() {
   }
 }
 
+/*
 export const listOffers = async role =>
     delay(OFFERS.filter(offer =>
         role === 'org' ? offer.sale === null : offer.sale !== null
@@ -158,6 +193,18 @@ export const listOffers = async role =>
 
 export const getOffer = async id =>
     delay(OFFERS.find(offer => offer.id == id));
+*/
+
+export const listOffers = async () =>
+    (await request('/api/ponude')).map(mapOffer);
+
+export const getOffer = async id => {
+  try {
+    return mapOffer(await request(`/api/ponude/${id}`));
+  } catch {
+    return null; // 404: ponuda ne postoji, istekla je ili je za donaciju
+  }
+};
 
 export const listCampaigns = () => delay(CAMPAIGNS);
 
