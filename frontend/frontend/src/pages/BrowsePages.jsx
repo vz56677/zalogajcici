@@ -106,7 +106,7 @@ export function DetailPage() {
             </div>
           </div>
           <div className="tiles">
-            <div className="tile">Preuzimanje<b>Danas {o.from} – {o.to}</b></div>
+            <div className="tile">Preuzimanje<b>{o.day} {o.from} – {o.to}</b></div>
             <div className="tile">Udaljenost<b>{o.km} km · {Math.round(o.km * 13)} min hoda</b></div>
           </div>
           <h2 style={{ fontSize: 16 }}>{org ? 'O donaciji' : 'Što možeš očekivati'}</h2>
