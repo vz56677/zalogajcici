@@ -20,7 +20,7 @@ export function HomePage() {
 
   useEffect(() => {
     let alive = true;
-    listOffers(user.role).then(r => alive && setAll(r));
+    listOffers(user.role).then(r => alive && setAll(r)).catch(() => alive && setAll([]));
     return () => { alive = false; };
   }, [user.role]);
 
@@ -80,12 +80,17 @@ export function DetailPage() {
   const price = free ? 'Besplatno' : eur(o.sale * qty);
   const step = d => setQty(v => Math.min(o.left, Math.max(1, v + d)));
 
-  const reserve = async () => {
-    const code = await createOrder(o, qty, user.role);
-    toast(org ? 'Zahtjev poslan. Prodajno mjesto će ga potvrditi.' : `Rezervirano. Kod za preuzimanje: ${code}`);
-    navigate('/orders');
+  const reserve = async() => {
+    try{
+      await createOrder(o, qty, user.role);
+      toast(org ? 'Zahtjev poslan. Prodajno mjesto će ga potvrditi.': 'Rezervacija zaprimljena, čeka plaćanje.');
+      navigate('/orders');
+    }
+    catch(e){
+      let poruka = e.message;
+      toast(poruka || 'Rezervacija nije uspjela.');
+    }
   };
-
   return (
     <Shell user={user} route="/">
       <div className="detail">
@@ -106,7 +111,7 @@ export function DetailPage() {
             </div>
           </div>
           <div className="tiles">
-            <div className="tile">Preuzimanje<b>Danas {o.from} – {o.to}</b></div>
+            <div className="tile">Preuzimanje<b>{o.day} {o.from} – {o.to}</b></div>
             <div className="tile">Udaljenost<b>{o.km} km · {Math.round(o.km * 13)} min hoda</b></div>
           </div>
           <h2 style={{ fontSize: 16 }}>{org ? 'O donaciji' : 'Što možeš očekivati'}</h2>
@@ -125,7 +130,7 @@ export function DetailPage() {
           <b style={{ minWidth: 18, textAlign: 'center' }}>{qty}</b>
           <button aria-label="Više" onClick={() => step(1)}>+</button>
         </div>
-        <button className="btn" onClick={reserve}>{org ? 'Zatraži donaciju' : 'Rezerviraj'} · <span>{price}</span></button>
+        <button className="btn" onClick={reserve} disabled={o.left <= 0}>{org ? 'Zatraži donaciju' : 'Rezerviraj'} · <span>{price}</span></button>
       </div>
     </Shell>
   );

@@ -4,14 +4,16 @@ import Shell, { TopBar } from '../components/Shell.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { Icon } from '../components/Icons.jsx';
+import { publishOffer } from '../services/api.js';
 
 const KEY = 'sz_store_data';
 const seed = {
   profile: { name: 'Mala Trgovina', address: 'Ilica 40, Zagreb', contact: '01 555 0101', hours: 'Pon – Sub, 08:00 – 20:00', description: 'Lokalna trgovina sa svježim i pažljivo odabranim namirnicama.' },
   offers: [
-    { id: 1, name: 'Kutija spašenih namirnica', category: 'Voće i povrće', qty: 6, regular: 14, sale: 4.99, expiry: '2026-11-17', pickup: '19:00 – 20:00', purpose: 'prodaja', type: 'Proizvod' },
+    /*{ id: 1, name: 'Kutija spašenih namirnica', category: 'Voće i povrće', qty: 6, regular: 14, sale: 4.99, expiry: '2026-11-17', pickup: '19:00 – 20:00', purpose: 'prodaja', type: 'Proizvod' },
     { id: 2, name: 'Gajbe voća i povrća', category: 'Voće i povrće', qty: 5, regular: 30, sale: 0, expiry: '2026-11-17', pickup: '17:00 – 19:00', purpose: 'donacija', type: 'Proizvod' },
     { id: 3, name: 'Paket iznenađenja', category: 'Miješano', qty: 4, regular: 18, sale: 5.99, expiry: '2026-11-17', pickup: '19:30 – 20:00', purpose: 'prodaja', type: 'Paket iznenađenja' },
+  */
   ],
   requests: [
     { id: 101, org: 'Banka hrane Zagreb', item: 'Gajbe voća i povrća', qty: 2, date: 'Danas, 10:24', status: 'Na čekanju' },
@@ -65,9 +67,28 @@ export function StoreOffersPage() {
   const blank = { name: '', category: 'Pekara', qty: 1, regular: '', sale: '', expiry: '', pickup: '', purpose: 'prodaja', type: 'Proizvod' };
   const [form, setForm] = useState(blank); const [editing, setEditing] = useState(null); const [show, setShow] = useState(false);
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = e => { e.preventDefault(); if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
+  /*const submit = e => { e.preventDefault(); if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
     const item = { ...form, id: editing ?? Date.now(), qty: Number(form.qty), regular: Number(form.regular || 0), sale: form.purpose === 'donacija' ? 0 : Number(form.sale || 0) };
     update({ offers: editing ? data.offers.map(o => o.id === editing ? item : o) : [item, ...data.offers] }); setForm(blank); setEditing(null); setShow(false); toast(editing ? 'Ponuda je ažurirana.' : 'Ponuda je objavljena.'); };
+  */
+  const submit = async e => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.expiry || !form.pickup) return toast('Popunite naziv, rok i vrijeme preuzimanja.');
+    const item = { ...form, id: editing ?? Date.now(), qty: Number(form.qty), regular: Number(form.regular || 0), sale: form.purpose === 'donacija' ? 0 : Number(form.sale || 0) };
+
+    if (!editing) {
+      try {
+        const saved = await publishOffer(form); // stvarna objava na backend
+        item.id = saved.id;
+      } catch (err) {
+        return toast(err.message); // poruka s backenda, npr. "Snižena cijena mora biti manja od redovne."
+      }
+    }
+
+    update({ offers: editing ? data.offers.map(o => o.id === editing ? item : o) : [item, ...data.offers] });
+    setForm(blank); setEditing(null); setShow(false);
+    toast(editing ? 'Ponuda je ažurirana.' : 'Ponuda je objavljena.');
+  };
   const edit = o => { setForm({ ...o }); setEditing(o.id); setShow(true); };
   const remove = id => { update({ offers: data.offers.filter(o => o.id !== id) }); toast('Ponuda je uklonjena.'); };
   return <Shell user={user} route="/store/offers"><TopBar title="Ponude hrane" sub="Upravljanje proizvodima i paketima" />
@@ -99,10 +120,88 @@ export function StoreCampaignsPage() {
 }
 
 export function StoreProfilePage() {
-  const { user, logout } = useAuth(); const toast = useToast(); const [data, update] = useStoreData(); const [form, setForm] = useState(data.profile);
-  const set = (k,v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = e => { e.preventDefault(); update({ profile: form }); toast('Profil prodajnog mjesta je spremljen.'); };
-  return <Shell user={user} route="/store/profile"><TopBar title="Profil trgovine" sub="Javni podaci prodajnog mjesta" /><div className="content store-content"><form className="store-form" onSubmit={submit}><div className="profile store-profile"><div className="avatar"><Icon name="home" /></div><div><h3>{form.name}</h3><p>Prodajno mjesto · SpasiZalogaj</p></div></div><label>Naziv prodajnog mjesta<input className="in" value={form.name} onChange={e => set('name',e.target.value)} required /></label><label>Adresa<input className="in" value={form.address} onChange={e => set('address',e.target.value)} required /></label><label>Kontakt telefon / e-pošta<input className="in" value={form.contact} onChange={e => set('contact',e.target.value)} /></label><label>Radno vrijeme<input className="in" value={form.hours} onChange={e => set('hours',e.target.value)} /></label><label>Opis trgovine<textarea className="in" rows="3" value={form.description} onChange={e => set('description',e.target.value)} /></label><button className="btn">Spremi profil</button></form><button className="btn logout-btn" onClick={logout}>Odjava</button></div></Shell>;
+  const { user, logout } = useAuth();
+  const store = user.prodajnoMjesto;
+
+  return (
+      <Shell user={user} route="/store/profile">
+        <TopBar
+            title="Profil trgovine"
+            sub="Podaci registriranog prodajnog mjesta"
+        />
+
+        <div className="content store-content">
+          {store ? (
+              <div className="store-form">
+
+                <div className="profile store-profile">
+                  <div className="avatar">
+                    {store.logoUrl ? (
+                        <img
+                            src={store.logoUrl}
+                            alt={`Logo ${store.name}`}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              borderRadius: '50%'
+                            }}
+                        />
+                    ) : (
+                        <Icon name="home" />
+                    )}
+                  </div>
+
+                  <div>
+                    <h3>{store.name}</h3>
+                    <p>Prodajno mjesto · SpasiZalogaj</p>
+                  </div>
+                </div>
+
+                <label>
+                  Naziv prodajnog mjesta
+                  <input className="in" value={store.name} readOnly />
+                </label>
+
+                <label>
+                  Vrsta prodajnog mjesta
+                  <input className="in" value={store.type} readOnly />
+                </label>
+
+                <label>
+                  Adresa
+                  <input className="in" value={store.address} readOnly />
+                </label>
+
+                <label>
+                  Kontakt
+                  <input className="in" value={store.contact} readOnly />
+                </label>
+
+                <label>
+                  Geografska širina
+                  <input className="in" value={store.latitude} readOnly />
+                </label>
+
+                <label>
+                  Geografska dužina
+                  <input className="in" value={store.longitude} readOnly />
+                </label>
+
+              </div>
+          ) : (
+              <p className="empty">
+                Podaci prodajnog mjesta nisu pronađeni.
+                Pokušajte se ponovno prijaviti ili kontaktirajte podršku.
+              </p>
+          )}
+
+          <button className="btn logout-btn" onClick={logout}>
+            Odjava
+          </button>
+        </div>
+      </Shell>
+  );
 }
 
 export function StoreReviewsPage() {

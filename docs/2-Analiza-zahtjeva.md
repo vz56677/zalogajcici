@@ -155,11 +155,12 @@ Akteri:
 
 ## 2.7 Pregled zahtjeva
 
-**Cilj:** Zabilježiti važne povratne informacije o zahtjevima i odluke koje iz njih proizlaze na dvije formalne kontrolne točke projekta, u 7. i 14. tjednu.
+## 2.7 Pregled zahtjeva
+
+**Cilj:** Zabilježiti važne povratne informacije o zahtjevima i odluke koje iz njih proizlaze na formalnim kontrolnim točkama projekta.
 
 | Kontrolna točka | Povratna informacija ili nalaz | Odluka o zahtjevu ili opsegu |
-|-----------------|--------------------------------|------------------------------|
-| Iteracija 1     | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
-| Demo 2          | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
-| Završni pregled | [Povratna informacija]         | [Odluka; vidi odjeljak 2.5]  |
-
+|---|---|---|
+| Iteracija 1 | Tijekom razgovora s asistenticom na laboratorijskoj vježbi 30.10.2026. utvrđeno je da se pojedini funkcijski zahtjevi preklapaju jer opisuju dijelove iste korisničke radnje. Također je zaključeno da plaćanje gotovinom pri preuzimanju nije potrebno za ostvarenje ciljeva sustava. | Uklonjena je mogućnost plaćanja gotovinom pri preuzimanju, a zadržano je online plaćanje putem vanjskog pružatelja usluge. Spojeni su zahtjevi koji opisuju dijelove iste korisničke radnje te je broj funkcijskih zahtjeva smanjen s 35 na 26. Detalji su navedeni u odjeljku 2.5. |
+| Demo 2 | U komentarima asistentice zaprimljenima e-poštom 12.11.2026. zatraženo je razdvajanje pregleda i filtriranja ponuda, preciznije navođenje aktera koji izvršavaju pojedine radnje, uklanjanje ponavljanja odobravanja profila administratora iz F-015 i F-016 te jasnije razlikovanje opisa funkcijskog zahtjeva od kriterija prihvaćanja. Također je zatražena veća preciznost nefunkcijskog zahtjeva NF-06 te dorada razlikovanja dionika i aktera i UML dijagrama obrazaca uporabe. | Filtriranje ponuda izdvojeno je iz F-002 u zaseban zahtjev F-027. Ostale primjedbe uzete su u obzir kao smjernice za daljnju doradu funkcijskih i nefunkcijskih zahtjeva, opisa aktera i dijagrama obrazaca uporabe. Potrebno je provjeriti i uskladiti povezane dijelove dokumentacije. Promjena F-002 i F-027 zabilježena je u odjeljku 2.5. |
+| Završni pregled | Završni pregled zahtjeva do datuma izrade ove verzije dokumentacije nije proveden. | Nisu donesene dodatne odluke. Povratne informacije i eventualne promjene zahtjeva bit će zabilježene nakon provedbe završnog pregleda. |

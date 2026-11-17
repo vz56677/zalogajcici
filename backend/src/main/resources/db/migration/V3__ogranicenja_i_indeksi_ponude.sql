@@ -1,5 +1,5 @@
 ALTER TABLE ponuda
-    ADD CONSTRAINT ponuda_prodajna_cijena_check
+    ADD CONSTRAINT ponuda_snizena_cijena_check
         CHECK (prodajna_cijena <= redovna_cijena),
     ADD CONSTRAINT ponuda_proizvod_rok_upotrebe_check
         CHECK (vrsta <> 'PROIZVOD' OR rok_upotrebe IS NOT NULL);

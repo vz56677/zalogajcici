@@ -12,7 +12,7 @@ export default function App() {
 
   useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
 
-  if (!user) return <AuthPage />;
+  if (!user || !user.role) return <AuthPage />;
   const org = user.role === 'org';
   const store = user.role === 'store';
   if (store) return (
