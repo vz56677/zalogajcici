@@ -235,24 +235,50 @@ export const listOrders = () => delay(read(ORD, []));
 
 export async function createOrder(offer, qty, role) {
   const orders = read(ORD, []);
-  const code = 'SZ-' + Math.random().toString(36).slice(2, 6).toUpperCase();
+  //const code = 'SZ-' + Math.random().toString(36).slice(2, 6).toUpperCase();
 
-  orders.unshift({
-    id: Date.now(),
-    role,
-    offerId: offer.id,
-    name: offer.name,
-    store: offer.store,
-    qty,
-    code,
-    total: offer.sale === null ? 0 : +(offer.sale * qty).toFixed(2),
-    until: offer.to,
-    status: role === 'org' ? 'Na čekanju' : 'Rezervirano'
+  //za hum org - jos nema backend za zahtjeve
+  if (role == 'org'){
+   orders.unshift({
+      id: Date.now(),
+      role,
+      offerId: offer.id,
+      name: offer.name,
+      store: offer.store,
+      qty,
+      total: offer.sale === null ? 0 : +(offer.sale * qty).toFixed(2),
+      until: offer.to,
+      status: role === 'org' ? 'Na čekanju' : 'Rezervirano'
+    });
+    localStorage.setItem(ORD, JSON.stringify(orders));
+
+    return delay(null);
+  }
+
+  //za kupca (prave rezervacije)
+  const r = await request('/api/rezervacije', {
+    method: 'POST', 
+    headers: {'Content-type': 'application/json', 'X-XSRF-TOKEN': getCsrfToken()},
+    body: JSON.stringify({stavke: [{ponudaId: offer.id, kolicina: qty}] })
   });
 
+  
+  // dok ne postoji GET /api/rezervacije/moje -> spremanje lokalno za "Narudzbe"
+  orders.unshift({
+    id: r.id, 
+    role, 
+    offerId: offer.id, 
+    name: offer.name, 
+    store: offer.store,
+    qty, 
+    total: Number(r.ukupnaCijena), 
+    until: offer.to, 
+    status: 'Čeka plaćanje'
+  });
   localStorage.setItem(ORD, JSON.stringify(orders));
+  return r;
 
-  return delay(code);
+ 
 }
 
 export async function cancelOrder(id) {
