@@ -95,6 +95,27 @@ public class PonudaService {
         return PonudaOdgovor.iz(p);
     }
 
+    @Transactional
+    public void ukloni(Long korisnikId, Long ponudaId) {
+        Korisnik korisnik = korisnici.findById(korisnikId).orElseThrow(() ->
+                new BusinessException(HttpStatus.UNAUTHORIZED, "KORISNIK_NE_POSTOJI", "Korisnik ne postoji."));
+        if (korisnik.getUloga() != UlogaKorisnika.PRODAVAC) {
+            throw new BusinessException(HttpStatus.FORBIDDEN, "NIJE_PRODAVAC",
+                    "Samo prodajna mjesta mogu uklanjati ponude.");
+        }
+
+        Ponuda ponuda = ponude.findById(ponudaId).orElseThrow(this::nijePronadena);
+        if (!ponuda.getProdajnoMjesto().getVlasnik().getId().equals(korisnikId)) {
+            throw new BusinessException(HttpStatus.FORBIDDEN, "NIJE_VLASNIK",
+                    "Ponudu možete ukloniti samo sa svojeg prodajnog mjesta.");
+        }
+
+        ponude.obrisiZahtjeveDonacije(ponudaId);
+        ponude.obrisiStavkeRezervacije(ponudaId);
+        ponude.delete(ponuda);
+        ponude.flush();
+    }
+
     private BusinessException nijePronadena() {
         return new BusinessException(HttpStatus.NOT_FOUND, "PONUDA_NE_POSTOJI", "Ponuda ne postoji.");
     }

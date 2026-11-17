@@ -328,3 +328,12 @@ export async function publishOffer(form) {
     })
   });
 }
+
+export async function removeOffer(id) {
+  return request(`/api/ponude/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'X-XSRF-TOKEN': getCsrfToken()
+    }
+  });
+}

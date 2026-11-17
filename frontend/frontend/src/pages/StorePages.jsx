@@ -4,7 +4,7 @@ import Shell, { TopBar } from '../components/Shell.jsx';
 import { useAuth } from '../context/AuthContext.jsx';
 import { useToast } from '../components/Toast.jsx';
 import { Icon } from '../components/Icons.jsx';
-import { publishOffer } from '../services/api.js';
+import { publishOffer, removeOffer } from '../services/api.js';
 
 const KEY = 'sz_store_data';
 const seed = {
@@ -90,7 +90,16 @@ export function StoreOffersPage() {
     toast(editing ? 'Ponuda je ažurirana.' : 'Ponuda je objavljena.');
   };
   const edit = o => { setForm({ ...o }); setEditing(o.id); setShow(true); };
-  const remove = id => { update({ offers: data.offers.filter(o => o.id !== id) }); toast('Ponuda je uklonjena.'); };
+  const remove = async id => {
+    try {
+      await removeOffer(id);
+      update({ offers: data.offers.filter(o => o.id !== id) });
+      toast('Ponuda je uklonjena.');
+    } catch (err) {
+      toast(err.message);
+    }
+  };
+  
   return <Shell user={user} route="/store/offers"><TopBar title="Ponude hrane" sub="Upravljanje proizvodima i paketima" />
     <div className="content store-content"><div className="store-toolbar"><p>Objavite proizvode na sniženju ili hranu namijenjenu doniranju.</p><button className="btn store-add" onClick={() => { setForm(blank); setEditing(null); setShow(v => !v); }}><Icon name="leaf" /> Nova ponuda</button></div>
       {show && <form className="store-form" onSubmit={submit}><div className="form-heading"><h2>{editing ? 'Uredi ponudu' : 'Nova ponuda'}</h2><button type="button" className="text-button" onClick={() => setShow(false)}>Zatvori ✕</button></div>

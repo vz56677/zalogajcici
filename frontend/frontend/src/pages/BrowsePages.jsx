@@ -20,8 +20,15 @@ export function HomePage() {
 
   useEffect(() => {
     let alive = true;
-    listOffers(user.role).then(r => alive && setAll(r)).catch(() => alive && setAll([]));
-    return () => { alive = false; };
+    const refresh = () => {
+      listOffers(user.role).then(r => alive && setAll(r)).catch(() => alive && setAll([]));
+    };
+    refresh();
+    window.addEventListener('focus', refresh);
+    return () => {
+      alive = false;
+      window.removeEventListener('focus', refresh);
+    };
   }, [user.role]);
 
   if (!all) return null;

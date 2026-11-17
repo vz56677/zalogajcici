@@ -39,4 +39,12 @@ public class PonudaController {
     public PonudaOdgovor jedna(@PathVariable Long id) {
         return ponudaService.jedna(id);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> ukloni(@AuthenticationPrincipal OidcUser oidcUser,
+                                       @PathVariable Long id) {
+        Korisnik korisnik = currentUserService.requireCurrent(oidcUser);
+        ponudaService.ukloni(korisnik.getId(), id);
+        return ResponseEntity.noContent().build();
+    }
 }

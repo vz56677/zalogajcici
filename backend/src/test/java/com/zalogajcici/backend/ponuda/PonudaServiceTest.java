@@ -111,6 +111,20 @@ class PonudaServiceTest {
         assertEquals("NIJE_VLASNIK", kodGreske(() -> ponudaService.objavi(drugi.getId(), ispravanProizvod(mjesto.getId()))));
     }
 
+    @Test
+    void vlasnikDeaktiviraSvojuPonudu() {
+        Korisnik prodavac = noviKorisnik(UlogaKorisnika.PRODAVAC);
+        ProdajnoMjesto mjesto = novoMjesto(prodavac);
+        Ponuda ponuda = ponudaRepository.save(new Ponuda(
+                mjesto, VrstaPonude.PROIZVOD, "Kroasan", "Pekara",
+                new BigDecimal("2.50"), new BigDecimal("1.00"), new BigDecimal("10"),
+                sada.plusHours(1), sada.plusHours(3)));
+
+        ponudaService.ukloni(prodavac.getId(), ponuda.getId());
+
+        assertTrue(ponudaRepository.findById(ponuda.getId()).isEmpty());
+    }
+
     // ---------- validacija ----------
 
     @Test
