@@ -53,13 +53,32 @@ public class RegistrationService {
 
         korisnik = korisnikRepository.saveAndFlush(korisnik);
 
+        ProdajnoMjestoResponse mjestoResponse = null;
+
         if (request.uloga() == UlogaKorisnika.PRODAVAC) {
-            ProdajnoMjesto prodajnoMjesto = new ProdajnoMjesto(korisnik, mjesto.naziv().trim(), mjesto.vrsta().trim(), mjesto.adresa().trim(), mjesto.kontakt().trim(),
-            mjesto.logoUrl(), mjesto.sirina(), mjesto.duzina());
-            prodajnoMjestoRepository.saveAndFlush(prodajnoMjesto);
+            ProdajnoMjesto prodajnoMjesto = new ProdajnoMjesto(
+                    korisnik,
+                    mjesto.naziv().trim(),
+                    mjesto.vrsta().trim(),
+                    mjesto.adresa().trim(),
+                    mjesto.kontakt().trim(),
+                    mjesto.logoUrl(),
+                    mjesto.sirina(),
+                    mjesto.duzina()
+            );
+
+            prodajnoMjesto = prodajnoMjestoRepository.saveAndFlush(prodajnoMjesto);
+
+            mjestoResponse = ProdajnoMjestoResponse.from(prodajnoMjesto);
         }
 
-        return new MeResponse(korisnik.getId(), korisnik.getEmail(), korisnik.getIme(), korisnik.getUloga());
+        return new MeResponse(
+                korisnik.getId(),
+                korisnik.getEmail(),
+                korisnik.getIme(),
+                korisnik.getUloga(),
+                mjestoResponse
+        );
     }
 
     private static void validirajProdajnoMjesto(ProdajnoMjestoInput mjesto) {
