@@ -120,10 +120,88 @@ export function StoreCampaignsPage() {
 }
 
 export function StoreProfilePage() {
-  const { user, logout } = useAuth(); const toast = useToast(); const [data, update] = useStoreData(); const [form, setForm] = useState(data.profile);
-  const set = (k,v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = e => { e.preventDefault(); update({ profile: form }); toast('Profil prodajnog mjesta je spremljen.'); };
-  return <Shell user={user} route="/store/profile"><TopBar title="Profil trgovine" sub="Javni podaci prodajnog mjesta" /><div className="content store-content"><form className="store-form" onSubmit={submit}><div className="profile store-profile"><div className="avatar"><Icon name="home" /></div><div><h3>{form.name}</h3><p>Prodajno mjesto · SpasiZalogaj</p></div></div><label>Naziv prodajnog mjesta<input className="in" value={form.name} onChange={e => set('name',e.target.value)} required /></label><label>Adresa<input className="in" value={form.address} onChange={e => set('address',e.target.value)} required /></label><label>Kontakt telefon / e-pošta<input className="in" value={form.contact} onChange={e => set('contact',e.target.value)} /></label><label>Radno vrijeme<input className="in" value={form.hours} onChange={e => set('hours',e.target.value)} /></label><label>Opis trgovine<textarea className="in" rows="3" value={form.description} onChange={e => set('description',e.target.value)} /></label><button className="btn">Spremi profil</button></form><button className="btn logout-btn" onClick={logout}>Odjava</button></div></Shell>;
+  const { user, logout } = useAuth();
+  const store = user.prodajnoMjesto;
+
+  return (
+      <Shell user={user} route="/store/profile">
+        <TopBar
+            title="Profil trgovine"
+            sub="Podaci registriranog prodajnog mjesta"
+        />
+
+        <div className="content store-content">
+          {store ? (
+              <div className="store-form">
+
+                <div className="profile store-profile">
+                  <div className="avatar">
+                    {store.logoUrl ? (
+                        <img
+                            src={store.logoUrl}
+                            alt={`Logo ${store.name}`}
+                            style={{
+                              width: '100%',
+                              height: '100%',
+                              objectFit: 'cover',
+                              borderRadius: '50%'
+                            }}
+                        />
+                    ) : (
+                        <Icon name="home" />
+                    )}
+                  </div>
+
+                  <div>
+                    <h3>{store.name}</h3>
+                    <p>Prodajno mjesto · SpasiZalogaj</p>
+                  </div>
+                </div>
+
+                <label>
+                  Naziv prodajnog mjesta
+                  <input className="in" value={store.name} readOnly />
+                </label>
+
+                <label>
+                  Vrsta prodajnog mjesta
+                  <input className="in" value={store.type} readOnly />
+                </label>
+
+                <label>
+                  Adresa
+                  <input className="in" value={store.address} readOnly />
+                </label>
+
+                <label>
+                  Kontakt
+                  <input className="in" value={store.contact} readOnly />
+                </label>
+
+                <label>
+                  Geografska širina
+                  <input className="in" value={store.latitude} readOnly />
+                </label>
+
+                <label>
+                  Geografska dužina
+                  <input className="in" value={store.longitude} readOnly />
+                </label>
+
+              </div>
+          ) : (
+              <p className="empty">
+                Podaci prodajnog mjesta nisu pronađeni.
+                Pokušajte se ponovno prijaviti ili kontaktirajte podršku.
+              </p>
+          )}
+
+          <button className="btn logout-btn" onClick={logout}>
+            Odjava
+          </button>
+        </div>
+      </Shell>
+  );
 }
 
 export function StoreReviewsPage() {

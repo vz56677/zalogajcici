@@ -79,7 +79,19 @@ function mapUser(data) {
     id: data.id,
     email: data.email,
     name: data.ime,
-    role: roles[data.uloga] ?? null
+    role: roles[data.uloga] ?? null,
+    prodajnoMjesto: data.prodajnoMjesto
+        ? {
+          id: data.prodajnoMjesto.id,
+          name: data.prodajnoMjesto.naziv,
+          type: data.prodajnoMjesto.vrsta,
+          address: data.prodajnoMjesto.adresa,
+          contact: data.prodajnoMjesto.kontakt,
+          logoUrl: data.prodajnoMjesto.logoUrl,
+          latitude: data.prodajnoMjesto.sirina,
+          longitude: data.prodajnoMjesto.duzina
+        }
+        : null
   };
 }
 
