@@ -12,6 +12,14 @@ import java.util.Optional;
 
 public interface PonudaRepository extends JpaRepository<Ponuda, Long> {
 
+    @Modifying
+    @Query(value = "delete from zahtjev_donacije where ponuda_id = :id", nativeQuery = true)
+    void obrisiZahtjeveDonacije(@Param("id") Long id);
+
+    @Modifying
+    @Query(value = "delete from stavka_rezervacije where ponuda_id = :id", nativeQuery = true)
+    void obrisiStavkeRezervacije(@Param("id") Long id);
+
     //join fetch rjesava problem: (lazy + open-in-view=false)
     @Query("""
         select p from Ponuda p join fetch p.prodajnoMjesto
