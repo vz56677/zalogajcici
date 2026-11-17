@@ -2,7 +2,8 @@ package com.zalogajcici.backend.korisnik;
 
 public record RoleSelectionRequest(
     UlogaKorisnika uloga,
-    ProdajnoMjestoInput prodajnoMjesto
+    ProdajnoMjestoInput prodajnoMjesto,
+    OrganizacijaInput organizacija
 ) {
     public record ProdajnoMjestoInput(
         String naziv,
@@ -13,4 +14,10 @@ public record RoleSelectionRequest(
         Double sirina,
         Double duzina
     ) {}
+        public record OrganizacijaInput(
+        String naziv,
+        String kontakt,
+        String podrucjeDjelovanja
+    ){}
 }
+

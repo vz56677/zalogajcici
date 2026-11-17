@@ -36,6 +36,12 @@ public class Korisnik {
         }
     }
 
+    public void postaviPodatkeOrganizacije(String ime, String kontakt, String podrucjeDjelovanja){
+        this.ime = ime;
+        this.kontakt = kontakt;
+        this.podrucjeDjelovanja = podrucjeDjelovanja;
+    }
+
     public Long getId() {
         return id;
     }

@@ -30,6 +30,7 @@ public class SecurityConfig {
         .requestMatchers("/api/me", "/api/me/uloga").authenticated()
         .requestMatchers("/api/prodavac/**").access((authentication, context) -> new AuthorizationDecision(currentUserService.hasRole(authentication.get(), UlogaKorisnika.PRODAVAC)))
         .requestMatchers("/api/kupac/**").access((authentication, context) -> new AuthorizationDecision(currentUserService.hasRole(authentication.get(), UlogaKorisnika.KUPAC)))
+        .requestMatchers("/api/organizacija/**").access((authentication, context) -> new AuthorizationDecision(currentUserService.hasRole(authentication.get(), UlogaKorisnika.ORGANIZACIJA)))
         .anyRequest().authenticated())
         .oauth2Login(withDefaults())
         .csrf(csrf -> csrf.spa()) //mozda nepotrebno(konzultirati s timom)
