@@ -11,7 +11,10 @@
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
 | --- | --- | --- | --- |
 |8.10. GD, FK, KL, LP, DR, ES, VZ|Definiranje uloge voditelja i upoznavanje tima|Voditelj tima je LP, dogovoren idući sastanak||
-| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) ||22.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 1. i 2. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||29.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 3. i 4. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||5.11. GD, FK, KL, LP, DR, ES, VZ| Definiranje arhitekture sustava i početak izrade aplikacije |Dogovorena je arhitektura sustava i raspodjeljen posao za izradu frontenda, backenda i baze podataka| **LINK NA ISSUE ili commit ili nes???** |
+|15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) ||
+|22.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 1. i 2. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||
+|29.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 3. i 4. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||
+|5.11. GD, FK, KL, LP, DR, ES, VZ| Definiranje arhitekture sustava i početak izrade aplikacije |Dogovorena je arhitektura sustava i raspodjeljen posao za izradu frontenda, backenda i baze podataka| **LINK NA ISSUE ili commit ili nes???** ||
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
 
@@ -80,11 +83,9 @@ Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako pog
 
 **Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa.
 
-**Prikaz aktivnosti repozitorija:** [Ugradite ili povežite GitHubov prikaz `Contributors` i generirani graf za projektni repozitorij; navedite razdoblje koje obuhvaća.]
+**Prikaz aktivnosti repozitorija:** [GitHub Contributors graf](https://github.com/vz56677/zalogajcici/graphs/contributors)
 
-TEST JEL RADI GRAF:
-![GitHub Contributors graf](https://github.com/vz56677/zalogajcici/graphs/contributors)
-
+Razdoblje prikaza obuhvaća početak projekta do trenutnog stanja repozitorija (18.11.2026).
 
 Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, ali ne prikazuje sav rad na oblikovanju, ispitivanju, integraciji, pregledu ili dokumentaciji. Ako postoji uočljiv nesklad s tablicom aktivnosti, kratko ga objasnite; nemojte iz grafa izvoditi broj sati. Generirani prikaz neka bude vezan uz stvarni repozitorij umjesto da se ručno crta drugi graf.
 
