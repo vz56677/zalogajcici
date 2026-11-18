@@ -282,12 +282,26 @@ export async function createOrder(offer, qty, role) {
 }
 
 export async function cancelOrder(id) {
-  localStorage.setItem(
-      ORD,
-      JSON.stringify(read(ORD, []).filter(order => order.id !== id))
-  );
+  const orders = read(ORD, []);
+  const order = orders.find(o => o.id === id);
 
-  return delay(true);
+  // humanitarne organizacije: zahtjevi su još samo lokalni (nema backenda)
+  if (!order || order.role === 'org') {
+    localStorage.setItem(ORD, JSON.stringify(orders.filter(o => o.id !== id)));
+    return delay(true);
+  }
+
+  // kupac: stvarno otkazivanje na backendu (vraća količinu u zalihu)
+  await request(`/api/rezervacije/${id}/otkazivanje`, {
+    method: 'POST',
+    headers: { 'X-XSRF-TOKEN': getCsrfToken() }
+  });
+
+  // lokalni popis "Tvoje narudžbe": rezervacija ostaje vidljiva, ali kao otkazana
+  localStorage.setItem(ORD, JSON.stringify(
+      orders.map(o => o.id === id ? { ...o, status: 'Otkazano' } : o)
+  ));
+  return true;
 }
 
 
