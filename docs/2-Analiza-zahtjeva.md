@@ -113,42 +113,42 @@ Akteri:
 
 **Cilj:** Osigurati dvosmjernu sljedivost — povezati zahtjeve s opisanim ponašanjem, dijelovima sustava koji ih ostvaruju te ispitivanjem ili drugom provjerom.
 
-| ID zahtjeva | Obrazac uporabe / modul                             | Arhitekturna realizacija                                                                                                                                    | Ispitivanje ili provjera                                                              |
-|-------------|-----------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| F-001       | UC-001                                              | Spring Security OAuth2 (Google); korisnik (Korisnik, KorisnikRepository)                                                                                    | na čekanju: #40 i scenarij 401 iz #43                                                 |
-| F-002       | UC-002                                              | ponuda (Ponuda, PonudaRepository); GET /api/ponude                                                                                                          | PonudaRepositoryTest                                                                  |
-| F-003       | UC-007                                              | Vanjski servis za plaćanje (A-06)                                                                                                                           | na čekanju (nije u opsegu M1)                                                         |
-| F-004       | UC-001 (korak 4)                                    | prodajnomjesto (ProdajnoMjesto)                                                                                                                             | Na čekanju                                                                            |
-| F-005       | UC-008                                              | ponuda; POST /api/ponude (PonudaService.objavi)                                                                                                             | PonudaServiceTest                                                                     |
-| F-006       | UC-008                                              | ponuda (VrstaPonude)                                                                                                                                        | Na čekanju                                                                            |
-| F-007       | UC-002                                              | Web-klijent i Google Maps (A-07)                                                                                                                            | Na čekanju                                                                            |
-| F-008       | UC-003                                              | rezervacija (Rezervacija, StavkaRezervacije); zaliha (ZalihaService)                                                                                        | RezervacijaTest, ZalihaServiceTest, ZalihaIstodobnostTest                             |
-| F-009       | UC-004                                              | rezervacija, slanje koda e-poštom: SendGrid (A-08)                                                                                                          | Na čekanju                                                                            |
-| F-010       | UC-005                                              | Rezervacija, status OTKAZANA                                                                                                                                | RezervacijaTest (prijelazi stanja)                                                    |
-| F-011       | UC-006                                              | Na čekanju: modul nije započet                                                                                                                              | Na čekanju                                                                            |
-| F-012       | UC-008                                              | ponuda (NamjenaPonude)                                                                                                                                      | Na čekanju                                                                            |
-| F-013       | UC-009                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-014       | UC-010                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-015       | UC-001, UC-011                                      | korisnik (StatusOdobrenja)	                                                                                                                                 | Na čekanju                                                                            |
-| F-016       | UC-011                                              | korisnik (StatusOdobrenja)                                                                                                                                  | Na čekanju                                                                            |
-| F-017       | UC-012                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-018       | UC-013                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-019       | UC-013                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-020       | UC-012                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-021       | Nema zasebnog obrasca (3.3)                         | Na čekanju: obavijesti, slanje e-pošte: SendGrid (A-08)                                                                                                     | Na čekanju                                                                            |
-| F-022       | UC-014                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-023       | UC-005                                              | rezervacija; GET /api/rezervacije/moje (planirano)                                                                                                          | Na čekanju                                                                            |
-| F-024       | UC-008 (proširenje, nije zasebno opisano; vidi 3.3) | ponuda                                                                                                                                                      | Na čekanju                                                                            |
-| F-025       | UC-007, UC-008                                      | Provjera članstva pri objavi ponude                                                                                                                         | Na čekanju                                                                            |
-| F-026       | UC-014                                              | Na čekanju                                                                                                                                                  | Na čekanju                                                                            |
-| F-027       | UC-002                                              | ponuda; GET /api/ponude (parametri filtera planirani, još nisu implementirani)                                                                              | Na čekanju                                                                            |
-| NF-01       | UC-002                                              | GET /api/ponude; upiti u PonudaRepository                                                                                                                   | Na čekanju: mjerenje vremena odziva na postavljenoj aplikaciji                        |
-| NF-02       | Nema zasebnog obrasca                               | Hosting s HTTPS-om (#42)                                                                                                                                    | Na čekanju                                                                            |
-| NF-03       | UC-001                                              | OAuth2 prijava; tablica korisnika bez stupca za lozinku                                                                                                     | Pregled sheme [V1__init.sql](../backend/src/main/resources/db/migration/V1__init.sql) |
-| NF-04       | Svi obrasci uporabe sa sučeljem                     | Web-klijent: prilagodljivi CSS (frontend/frontend/src/assets/app.css), donja traka na mobitelu i bočna na računalu (frontend/frontend/src/components/ui.js) | Na čekanju: ručna provjera na mobitelu i računalu                                     |
-| NF-05       | Svi obrasci uporabe sa sučeljem                     | Tekstovi u web-klijentu; poruke grešaka iz backenda na hrvatskom                                                                                            | Na čekanju: ručna provjera sučelja i poruka grešaka                                   |
-| NF-06       | UC-003, UC-007                                      | Vanjski servis za plaćanje (A-06); aplikacija ne pohranjuje podatke kartica                                                                                 | Na čekanju (nije u opsegu M1)                                                         |
-| NF-07       | UC-003                                              | zaliha: ZalihaServiceImpl.rezerviraj uvjetno umanjuje raspoloživu količinu unutar transakcije kreiranja rezervacije (ADR-02)                                | ZalihaServiceTest, ZalihaIstodobnostTest, RezervacijaZalihaTest                       |
+| ID zahtjeva | Obrazac uporabe / modul | Arhitekturna realizacija | Ispitivanje ili provjera |
+|-------------|-----------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| F-001 | UC-001 | Spring Security OAuth2 (Google); korisnik (Korisnik, KorisnikRepository) | Na čekanju: #40 i scenarij 401 iz #43 |
+| F-002 | UC-002 | ponuda (Ponuda, PonudaRepository); GET /api/ponude | PonudaRepositoryTest |
+| F-003 | UC-007 | Vanjski servis za plaćanje (A-06) | Na čekanju (nije u opsegu M1) |
+| F-004 | UC-001 (korak 4) | prodajnomjesto (ProdajnoMjesto) | Na čekanju |
+| F-005 | UC-008 | ponuda; POST /api/ponude (PonudaService.objavi) | PonudaServiceTest |
+| F-006 | UC-008 | ponuda (VrstaPonude) | Na čekanju |
+| F-007 | UC-002 | Web-klijent i Google Maps (A-07) | Na čekanju |
+| F-008 | UC-003 | rezervacija (Rezervacija, StavkaRezervacije); zaliha (ZalihaService) | RezervacijaTest, ZalihaServiceTest, ZalihaIstodobnostTest |
+| F-009 | UC-004 | rezervacija; slanje koda e-poštom: SendGrid (A-08) | Na čekanju |
+| F-010 | UC-005 | Rezervacija, status OTKAZANA | RezervacijaTest (prijelazi stanja) |
+| F-011 | UC-006 | Modul recenzija i odgovora na recenzije | Na čekanju (modul nije započet) |
+| F-012 | UC-008 | ponuda (NamjenaPonude) | Na čekanju |
+| F-013 | UC-009 | Modul donacija i zahtjeva za donaciju | Na čekanju |
+| F-014 | UC-010 | Modul obrade zahtjeva za donaciju | Na čekanju |
+| F-015 | UC-001, UC-011 | korisnik (StatusOdobrenja) | Na čekanju |
+| F-016 | UC-011 | korisnik (StatusOdobrenja) | Na čekanju |
+| F-017 | UC-012 | Modul humanitarnih akcija | Na čekanju |
+| F-018 | UC-013 | Modul prijava za humanitarne akcije | Na čekanju |
+| F-019 | UC-013 | Modul najave donacija | Na čekanju |
+| F-020 | UC-012 | Modul evidencije zaprimljenih donacija | Na čekanju |
+| F-021 | Nema zasebnog obrasca uporabe (opisano u odjeljku 3.3) | Modul obavijesti; slanje e-pošte: SendGrid (A-08) | Na čekanju |
+| F-022 | UC-014 | Modul administracije članarina | Na čekanju |
+| F-023 | UC-005 | rezervacija; GET /api/rezervacije/moje (planirano) | Na čekanju |
+| F-024 | UC-008 (proširenje; nije zasebno opisano, vidi 3.3) | ponuda | Na čekanju |
+| F-025 | UC-007, UC-008 | Provjera članstva pri objavi ponude | Na čekanju |
+| F-026 | UC-014 | Modul administracije korisnika i sadržaja | Na čekanju |
+| F-027 | UC-002 | ponuda; GET /api/ponude (parametri filtera planirani, još nisu implementirani) | Na čekanju |
+| NF-01 | UC-002 | GET /api/ponude; upiti u PonudaRepository | Na čekanju: mjerenje vremena odziva na postavljenoj aplikaciji |
+| NF-02 | Nema zasebnog obrasca uporabe | Hosting s HTTPS-om (#42) | Na čekanju |
+| NF-03 | UC-001 | OAuth2 prijava; tablica korisnika bez stupca za lozinku | Pregled sheme [V1__init.sql](../backend/src/main/resources/db/migration/V1__init.sql) |
+| NF-04 | Svi obrasci uporabe sa sučeljem | Web-klijent: prilagodljivi CSS (frontend/frontend/src/assets/app.css), donja traka na mobitelu i bočna na računalu (frontend/frontend/src/components/ui.js) | Na čekanju: ručna provjera na mobitelu i računalu |
+| NF-05 | Svi obrasci uporabe sa sučeljem | Tekstovi u web-klijentu; poruke pogrešaka iz backenda na hrvatskom | Na čekanju: ručna provjera sučelja i poruka pogrešaka |
+| NF-06 | UC-003, UC-007 | Vanjski servis za plaćanje (A-06); aplikacija ne pohranjuje podatke kartica | Na čekanju (nije u opsegu M1) |
+| NF-07 | UC-003 | zaliha: ZalihaServiceImpl.rezerviraj uvjetno umanjuje raspoloživu količinu unutar transakcije kreiranja rezervacije (ADR-02) | ZalihaServiceTest, ZalihaIstodobnostTest, RezervacijaZalihaTest |
 
 
 ---
