@@ -155,8 +155,6 @@ Akteri:
 
 ## 2.7 Pregled zahtjeva
 
-## 2.7 Pregled zahtjeva
-
 **Cilj:** Zabilježiti važne povratne informacije o zahtjevima i odluke koje iz njih proizlaze na formalnim kontrolnim točkama projekta.
 
 | Kontrolna točka | Povratna informacija ili nalaz | Odluka o zahtjevu ili opsegu |
