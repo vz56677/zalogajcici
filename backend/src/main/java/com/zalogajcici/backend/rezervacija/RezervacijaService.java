@@ -81,4 +81,28 @@ public class RezervacijaService {
 
         return RezervacijaOdgovor.iz(spremljena);
     }
+
+    @Transactional
+    public RezervacijaOdgovor otkazi(Long rezervacijaId, Long kupacId){
+        Rezervacija rezervacija = rezervacije.findById(rezervacijaId).orElseThrow(()->
+            new BusinessException(HttpStatus.NOT_FOUND, "REZ_NE_POSTOJI", "Rezervacija ne postoji!"));
+
+        if(!rezervacija.getKupacId().equals(kupacId)){
+            throw new BusinessException(HttpStatus.FORBIDDEN, "TUDA_REZERVACIJA", "Rezervacija ne pripada ovom korisniku!");
+        }
+
+
+        //otkazemo rezervaciju
+        rezervacija.otkazi(OffsetDateTime.now(clock)); //pravilo 1h prije roka i provjera statusa -> provjera u entitetu
+
+
+        //svaku stavku vratimo u zalihu
+        for (StavkaRezervacije stavka:rezervacija.getStavke()){
+            zalihaService.vrati(stavka.getId().getPonudaId(), stavka.getKolicina());
+        }
+
+        return RezervacijaOdgovor.iz(rezervacija);
+
+
+    }
 }
