@@ -16,7 +16,15 @@ export function OrdersPage() {
   const load = useCallback(() => listOrders().then(r => setOrders(r.filter(o => (o.role === 'org') === org))), [org]);
   useEffect(() => { load(); }, [load]);
 
-  const cancel = async id => { await cancelOrder(id); toast('Otkazano.'); load(); };
+  const cancel = async id => {
+      try {
+          await cancelOrder(id);
+          toast(org ? 'Zahtjev je povučen.' : 'Rezervacija je otkazana, količina je vraćena u ponudu.');
+      } catch (err) {
+          toast(err.message);
+      }
+      load();
+  };
 
   if (!orders) return null;
   return (
@@ -32,9 +40,11 @@ export function OrdersPage() {
               <span className="status">{o.status}</span>
             </div>
             <div className="price">{org ? '' : eur(o.total)}</div>
-            <button className="chip" style={{ background: 'var(--cream)' }} onClick={() => cancel(o.id)}>
-              {org ? 'Povuci zahtjev' : 'Otkaži'}
-            </button>
+              {o.status !== 'Otkazano' && (
+                  <button className="chip" style={{ background: 'var(--cream)' }} onClick={() => cancel(o.id)}>
+                  {org ? 'Povuci zahtjev' : 'Otkaži'}
+                  </button>
+              )}
           </div>
         )) : (
           <p className="empty">
