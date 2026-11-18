@@ -37,6 +37,13 @@ public class RezervacijaController {
 
     }
 
+    @PostMapping("/{id}/otkazivanje")
+    public ResponseEntity<RezervacijaOdgovor> otkazi (@AuthenticationPrincipal OidcUser oidcUser, @PathVariable Long id){
+        Korisnik kupac = currentUserService.requireCurrent(oidcUser);
+
+        return ResponseEntity.ok(rezervacijaService.otkazi(id, kupac.getId()));
+    }
+
 
 
 }
