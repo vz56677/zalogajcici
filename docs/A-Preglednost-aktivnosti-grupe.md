@@ -11,7 +11,7 @@
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
 | --- | --- | --- | --- |
 |8.10. GD, FK, KL, LP, DR, ES, VZ|Definiranje uloge voditelja i upoznavanje tima|Voditelj tima je LP, dogovoren idući sastanak||
-| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) |
+| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) ||22.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 1. i 2. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||29.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 3. i 4. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| **LINK NA DOKUMENTACIJU** ||5.11. GD, FK, KL, LP, DR, ES, VZ| Definiranje arhitekture sustava i početak izrade aplikacije |Dogovorena je arhitektura sustava i raspodjeljen posao za izradu frontenda, backenda i baze podataka| **LINK NA ISSUE ili commit ili nes???** |
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
 
@@ -24,7 +24,9 @@ Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet
 
 | Razdoblje/Tjedan | Glavni planirani rad | Odgovorni članovi | Poveznica na zadatke |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Projektni tjedan 6 | Pregled i dopuna dokumentacije | LP, ES, FK, GD | K8 Pregled i dopuna dokumentacije
+ #36 |
+| Projektni tjedan 6 | Pregled koda i ispravljanje pogrešaka | DR, KL, VZ, LP | **NAPRAVITI ISSUE ZA PREGLED KODA?** |
 
 Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga kada se prioriteti promijene. Kratice članova tima definirajte  u A.1 i ovdje ih primjenjujte dosljedno; ako dva člana imaju iste inicijale, proširite kraticu. Plan nije dokaz da je planirani rad dovršen (to dokazuje kod i dokumentacija).
 
@@ -48,7 +50,13 @@ Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga k
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| aktivnost/rezultat | LP | sati | rezultat |
+| aktivnost/rezultat | VZ | sati | rezultat |
+| aktivnost/rezultat | ES | sati | rezultat |
+| aktivnost/rezultat | FK | sati | rezultat |
+| aktivnost/rezultat | KL | sati | rezultat |
+| aktivnost/rezultat | DR | sati | rezultat |
+| aktivnost/rezultat | GD | sati | rezultat |
 
 Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako poglavlje dokumentacije ili svaki UML dijagram. Tim treba dosljedno bilježiti sate i izbjegavati dvostruko brojanje zajedničkog rada; reprezentativni rezultat objašnjava što je prijavljeni trud proizveo. Sati su samoprijavljena procjena uloženog rada, a ne mjera kvalitete niti zamjena za pregled koda i artefakata.
 
@@ -74,11 +82,19 @@ Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako pog
 
 **Prikaz aktivnosti repozitorija:** [Ugradite ili povežite GitHubov prikaz `Contributors` i generirani graf za projektni repozitorij; navedite razdoblje koje obuhvaća.]
 
+TEST JEL RADI GRAF:
+![GitHub Contributors graf](https://github.com/vz56677/zalogajcici/graphs/contributors)
+
+
 Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, ali ne prikazuje sav rad na oblikovanju, ispitivanju, integraciji, pregledu ili dokumentaciji. Ako postoji uočljiv nesklad s tablicom aktivnosti, kratko ga objasnite; nemojte iz grafa izvoditi broj sati. Generirani prikaz neka bude vezan uz stvarni repozitorij umjesto da se ručno crta drugi graf.
 
 ## A.5 Ključni inženjerski izazovi i rješenja
 
 **Cilj:** Dokumentirati stvarne tehničke i organizacijske prepreke s kojima se tim suočio, poduzete korektivne inženjerske korake te konačni ishod. Odaberite konkretne izazove umjesto općenite pohvale timskog rada.
+
+
+Privremeno prazno, potrebno savjetovanje sa timom, koliko velik problem mora biti da bi ga zapisali.
+
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
 | --- | --- | --- |
