@@ -50,7 +50,6 @@ Tijekom razvoja prioriteti su prilagođavani napretku projekta i problemima otkr
 Sati predstavljaju samoprijavljenu procjenu svakog člana i potrebno ih je dopuniti prema stvarno uloženom vremenu. Git povijest ne prikazuje sav rad na sastancima, planiranju, testiranju i zajedničkoj izradi dokumentacije.
 
 ## A.4 Pregled promjena u repozitoriju
-## A.4 Pregled promjena u repozitoriju
 
 
 **Prikaz aktivnosti repozitorija:** [GitHub Contributors – Spasi Zalogaj](https://github.com/vz56677/zalogajcici/graphs/contributors)
@@ -72,6 +71,7 @@ Privremeno prazno, potrebno savjetovanje sa timom, koliko velik problem mora bit
 
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
+| --- | --- | --- |
 | Korištenje Reacta za frontend | Frontend je naknadno prebačen na React biblioteku umjesto običnog JavaScripta | Novi frontend koristi React |
 | Ispravljeni zahtjevi | Funkcijski i nefunkcijski zahtjevi su s asistenticom promjenjeni, pa su dokumentacije ažurirane na reference za nove zahtjeve | zahtjevi su ažurirani |
 | GitHub pretplata je potrebna za praćenje aktivnosti | Repozitorij će umjesto toga na kraju projekta biti javno objavljen | Aktivnost će se vidjeti na kraju projekta |
