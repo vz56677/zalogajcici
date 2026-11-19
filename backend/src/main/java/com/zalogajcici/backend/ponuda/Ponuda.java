@@ -21,6 +21,7 @@ public class Ponuda {
     @Enumerated(EnumType.STRING)
     private NamjenaPonude namjena = NamjenaPonude.PRODAJA;
     private String naziv;
+    @Enumerated(EnumType.STRING)
     private KategorijaPonude kategorija;
     private String opis;
     private String fotografijaUrl;
