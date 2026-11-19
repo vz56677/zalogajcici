@@ -181,7 +181,8 @@ export async function selectRole(role, storeData = null) {
     },
     body: JSON.stringify({
       uloga: roles[role],
-      prodajnoMjesto: role === 'store' ? storeData : null
+      prodajnoMjesto: role === 'store' ? storeData : null,
+      organizacija: role === 'org' ? storeData : null
     })
   });
 
@@ -231,54 +232,72 @@ export const getOffer = async id => {
 
 export const listCampaigns = () => delay(CAMPAIGNS);
 
-export const listOrders = () => delay(read(ORD, []));
+export async function listOrders(role) {
+  if (role === 'org') {
+    const zahtjevi = await request('/api/organizacija/zahtjevi');
+
+    return zahtjevi.map(z => ({
+      id: z.id,
+      role: 'org',
+      offerId: z.ponudaId,
+      name: z.nazivPonude,
+      store: z.prodajnoMjesto,
+      qty: Number(z.trazenaKolicina),
+      total: 0,
+      until: hhmm(z.preuzimanjeDo),
+      status: {
+        NA_CEKANJU: 'Na čekanju',
+        ODOBRENO: 'Odobreno',
+        ODBIJENO: 'Odbijeno'
+      }[z.status] ?? z.status
+    }));
+  }
+
+  return delay(read(ORD, []));
+}
 
 export async function createOrder(offer, qty, role) {
   const orders = read(ORD, []);
   //const code = 'SZ-' + Math.random().toString(36).slice(2, 6).toUpperCase();
 
-  //za hum org - jos nema backend za zahtjeve
   if (role == 'org'){
-   orders.unshift({
-      id: Date.now(),
-      role,
-      offerId: offer.id,
-      name: offer.name,
-      store: offer.store,
-      qty,
-      total: offer.sale === null ? 0 : +(offer.sale * qty).toFixed(2),
-      until: offer.to,
-      status: role === 'org' ? 'Na čekanju' : 'Rezervirano'
+    return request('/api/organizacija/zahtjevi', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-XSRF-TOKEN': getCsrfToken()
+      },
+      body: JSON.stringify({
+        ponudaId: offer.id,
+        kolicina: qty
+      })
     });
-    localStorage.setItem(ORD, JSON.stringify(orders));
-
-    return delay(null);
   }
 
   //za kupca (prave rezervacije)
   const r = await request('/api/rezervacije', {
-    method: 'POST', 
+    method: 'POST',
     headers: {'Content-type': 'application/json', 'X-XSRF-TOKEN': getCsrfToken()},
     body: JSON.stringify({stavke: [{ponudaId: offer.id, kolicina: qty}] })
   });
 
-  
+
   // dok ne postoji GET /api/rezervacije/moje -> spremanje lokalno za "Narudzbe"
   orders.unshift({
-    id: r.id, 
-    role, 
-    offerId: offer.id, 
-    name: offer.name, 
+    id: r.id,
+    role,
+    offerId: offer.id,
+    name: offer.name,
     store: offer.store,
-    qty, 
-    total: Number(r.ukupnaCijena), 
-    until: offer.to, 
+    qty,
+    total: Number(r.ukupnaCijena),
+    until: offer.to,
     status: 'Čeka plaćanje'
   });
   localStorage.setItem(ORD, JSON.stringify(orders));
   return r;
 
- 
+
 }
 
 export async function cancelOrder(id) {

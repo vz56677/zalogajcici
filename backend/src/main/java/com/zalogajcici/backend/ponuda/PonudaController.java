@@ -31,13 +31,15 @@ public class PonudaController {
     }
 
     @GetMapping
-    public List<PonudaOdgovor> aktivne() {
-        return ponudaService.aktivne();
+    public List<PonudaOdgovor> aktivne(@AuthenticationPrincipal OidcUser oidcUser) {
+        Korisnik korisnik = currentUserService.requireCurrent(oidcUser);
+        return ponudaService.aktivneZaUlogu(korisnik.getUloga());
     }
 
     @GetMapping("/{id}")
-    public PonudaOdgovor jedna(@PathVariable Long id) {
-        return ponudaService.jedna(id);
+    public PonudaOdgovor jedna(@AuthenticationPrincipal OidcUser oidcUser, @PathVariable Long id) {
+        Korisnik korisnik = currentUserService.requireCurrent(oidcUser);
+        return ponudaService.jednaZaUlogu(id, korisnik.getUloga());
     }
 
     @DeleteMapping("/{id}")

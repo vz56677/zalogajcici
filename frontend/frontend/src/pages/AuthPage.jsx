@@ -20,6 +20,13 @@ export default function AuthPage() {
     duzina: ''
   });
 
+  const [orgData, setOrgData] = useState({
+    naziv: '',
+    kontakt: '',
+    podrucjeDjelovanja: ''
+  });
+
+
   const roles = [
     ['buyer', 'Kupac'],
     ['org', 'Organizacija'],
@@ -30,6 +37,15 @@ export default function AuthPage() {
     const { name, value } = event.target;
 
     setStoreData(previous => ({
+      ...previous,
+      [name]: value
+    }));
+  }
+
+  function updateOrgData(event){
+    const { name, value } = event.target;
+
+    setOrgData(previous => ({
       ...previous,
       [name]: value
     }));
@@ -68,6 +84,22 @@ export default function AuthPage() {
           logoUrl: storeData.logoUrl.trim() || null,
           sirina: Number(storeData.sirina),
           duzina: Number(storeData.duzina)
+        };
+      }
+
+      if (role === 'org') {
+        if (
+            !orgData.naziv.trim() ||
+            !orgData.kontakt.trim() ||
+            !orgData.podrucjeDjelovanja.trim()
+        ) {
+          throw new Error('Ispunite sva obavezna polja.');
+        }
+
+        data = {
+          naziv: orgData.naziv.trim(),
+          kontakt: orgData.kontakt.trim(),
+          podrucjeDjelovanja: orgData.podrucjeDjelovanja.trim()
         };
       }
 
@@ -280,10 +312,45 @@ export default function AuthPage() {
                 )}
 
                 {role === 'org' && (
-                    <div className="role-hint">
-                      Registracija organizacija još nije podržana na
-                      poslužitelju. Potrebna je dorada backend dijela.
-                    </div>
+                    <form onSubmit={handleRegistration}>
+                      <label>
+                        Naziv organizacije *
+                        <input
+                            name="naziv"
+                            value={orgData.naziv}
+                            onChange={updateOrgData}
+                            required
+                        />
+                      </label>
+
+                      <label>
+                        Kontakt *
+                        <input
+                            name="kontakt"
+                            value={orgData.kontakt}
+                            onChange={updateOrgData}
+                            required
+                        />
+                      </label>
+
+                      <label>
+                        Područje djelovanja *
+                        <input
+                            name="podrucjeDjelovanja"
+                            value={orgData.podrucjeDjelovanja}
+                            onChange={updateOrgData}
+                            required
+                        />
+                      </label>
+
+                      <button
+                          className="btn"
+                          type="submit"
+                          disabled={loading}
+                      >
+                        {loading ? 'Registracija...' : 'Dovrši registraciju'}
+                      </button>
+                    </form>
                 )}
 
                 {error && (

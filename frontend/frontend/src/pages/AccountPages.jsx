@@ -13,7 +13,7 @@ export function OrdersPage() {
   const org = user.role === 'org';
   const [orders, setOrders] = useState(null);
 
-  const load = useCallback(() => listOrders().then(r => setOrders(r.filter(o => (o.role === 'org') === org))), [org]);
+  const load = useCallback(() => listOrders(user.role).then(r => setOrders(r.filter(o => (o.role === 'org') === org))), [org, user.role]);
   useEffect(() => { load(); }, [load]);
 
   const cancel = async id => {
