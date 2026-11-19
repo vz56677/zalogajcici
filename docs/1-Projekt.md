@@ -22,7 +22,7 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prodajna mjesta, kupce i 
 | Zaposlenici prodajnih mjesta                               | Brzo potvrditi preuzimanje rezervacije unosom ili skeniranjem koda.                                                                                      |
 | Humanitarne organizacije                                   | Vidjeti ponude namijenjene donacijama i zatražiti potrebnu količinu hrane. Objavljivati akcije doniranja i doprijeti do većeg broja sudionika.           |
 | Krajnji primatelji donirane hrane                          | Primiti prehrambene proizvode od strane humanitarne organizacije kojoj su poslane donacije putem sustava.                                                |
-| Vlasnik platforme                                          | Imati funkcionalan sustav koji nudi zaradu (članarine) te upravljati korisnicima i sadržajem sustava.                                                    |
+| Administrator                                         | Imati funkcionalan sustav koji nudi zaradu (članarine) te upravljati korisnicima i sadržajem sustava.                                                    |
 | Ocjenjivači projekta                                       | Dobiti dokumentiran projekt koji ispunjava odobreni zadatak.                                                                                             |
 | Regulatorno tijelo / Agencija za zaštitu podataka (Dionik) | Zahtijeva obradu i zaštitu osobnih podataka korisnika u skladu s GDPR-om. Ovaj dionik ne koristi aplikaciju, ali definira ograničenja sustava.           |
 
