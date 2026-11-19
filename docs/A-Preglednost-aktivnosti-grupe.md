@@ -45,7 +45,7 @@ Tijekom razvoja prioriteti su prilagođavani napretku projekta i problemima otkr
 | Implementacija postupka rezervacije, provjere dostupnosti proizvoda i ažuriranja zaliha. Razvoj funkcionalnosti otkazivanja rezervacija i povezivanje s backendom. | KF | 17 | Issue #57, #84 i #89. |
 | Razvoj funkcionalnosti za objavu i pregled ponuda, povezivanje API poziva s korisničkim sučeljem te obrada pogrešaka. Priprema `.env.example` datoteke s uputama za konfiguraciju aplikacije. | ES | 17 | Issue #59, #60 i #80; `.env.example`. |
 | Izrada backend strukture i implementacija Google OAuth2 prijave te upravljanja korisničkim ulogama. Razvoj registracije i autorizacije humanitarnih organizacija te povezivanje njihova frontenda i backenda. | DR | 12 | Issue #64, #86 i #93. |
-| Postavljanje početne strukture backend projekta i sudjelovanje u izradi arhitekturne dokumentacije. Rješavanje pogrešaka i dorada funkcionalnosti tijekom razvoja aplikacije. | GD | Dopuniti | Poglavlje 4.1 – Ključne arhitekturne odluke; issue #45 i #88. |
+| Postavljanje početne strukture backend projekta i sudjelovanje u izradi arhitekturne dokumentacije. Rješavanje pogrešaka i dorada funkcionalnosti tijekom razvoja aplikacije. | GD | 16 | Poglavlje 4.1 – Ključne arhitekturne odluke; issue #45 i #88. |
 
 Sati predstavljaju samoprijavljenu procjenu svakog člana i potrebno ih je dopuniti prema stvarno uloženom vremenu. Git povijest ne prikazuje sav rad na sastancima, planiranju, testiranju i zajedničkoj izradi dokumentacije.
 
