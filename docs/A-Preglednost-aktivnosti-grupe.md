@@ -1,80 +1,67 @@
-# A. Pregled aktivnosti grupe
+[11:23, 19/11/2026] Viki <3: # A. Pregled aktivnosti grupe
 
-**Cilj:** Prikazati kako je tim organizirao projekt, raspodijelio rad, reagirao na važne probleme i pridonio rezultatu. Zapisi trebaju opisivati ishode, a ne samo navoditi da je sastanak održan ili da se o nekoj temi raspravljalo.
+*Cilj:* Prikazati kako je tim organizirao projekt, raspodijelio rad, reagirao na važne probleme i pridonio rezultatu. Zapisi trebaju opisivati ishode, a ne samo navoditi da je sastanak održan ili da se o nekoj temi raspravljalo.
 
 ## A.1 Evidencija sastanaka
 
-**Cilj:** Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
+*Cilj:* Voditi kratak zapis projektnih sastanaka i tjedne koordinacije: tko je sudjelovao, što je odlučeno i koja je radnja uslijedila. Raspravu koja nije dovela do odluke zabilježite samo ako je važno pitanje ostalo otvoreno.
 
-**Kratice članova tima:** GD = Gabrijel Dumbović; FK = Klara Ferišak; KL = Karlo List; LP = Lucija Perica; DR = Domagoj Radman; ES = Ena Špoler; VZ = Viktor Žigić.
+*Kratice članova tima:* GD = Gabrijel Dumbović; FK = Klara Ferišak; KL = Karlo List; LP = Lucija Perica; DR = Domagoj Radman; ES = Ena Špoler; VZ = Viktor Žigić.
 
 | Datum i sudionici | Glavna tema | Donesena odluka ili zadatak  | Poveznica na zadatak ili  rezultat, ako postoji |
 | --- | --- | --- | --- |
 |8.10. GD, FK, KL, LP, DR, ES, VZ|Definiranje uloge voditelja i upoznavanje tima|Voditelj tima je LP, dogovoren idući sastanak||
-| 15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) |
+|15.10. GD, FK, KL,LP,ES,VZ |Završno definiranje funkcijskih i nefunkcijskih zahtjeva, završavanje opsega projekta i podjela timskih uloga za daljnji rad  | Dodani funkcijski zahtjevi, propisani issues za idući sastanak | [Analiza zahtjeva](./2-Analiza-zahtjeva.md) ||
+|22.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 1. i 2. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| [Izrađena dokumentacija 1](./1-Projekt.md) [Izrađena dokumentacija 2](./2-Analiza-zahtjeva.md) ||
+|29.10. GD, FK, KL, LP, DR, ES, VZ| Podijela posla za izradu dokumentacije 3. i 4. |Dogovoren je i raspodijeljen posao za izradu dokumentaciju| *[Izrađena dokumentacija 3](./3-Obrasci-uporabe.md) [Izrađena dokumentacija 2](./4-Arhitektura-i-oblikovanje.md) ||
+|5.11. GD, FK, KL, LP, DR, ES, VZ| Definiranje arhitekture sustava i početak izrade aplikacije |Dogovorena je arhitektura sustava i raspodjeljen posao za izradu frontenda, backenda i baze podataka| Arhitektura sustava ||
 
 Za svaki relevantan sastanak ili zapis tjedne koordinacije upišite jedan sažet redak. Dodijeljeni zadatak treba imati odgovornu osobu; za neriješeno pitanje treba navesti tko će ga dalje obraditi. Sam naslov sastanka ne pokazuje što se promijenilo. U ovu evidenciju nemojte kopirati cijeli popis issuea ni prijepis razgovora.
 
-
 ## A.2 Plan rada
 
-**Cilj:** Prikazati planirani redoslijed rada i odgovornosti u timu. Prikažite projektne tjedne ili druga kratka razdoblja koja tim koristi, uključujući pripremu za formalne provjere.
+**Trenutačni plan:** Rad je organiziran po projektnim tjednima, a plan ažurira voditeljica tima Lucija Perica (LP).
 
-**Trenutačni plan:** [Poveznica na GitHub Projects ploču, Gantogram ili održavanu tablicu u nastavku. Navesti osobu zaduženu za ažurnost plana. Odaberite jedan glavni prikaz i navedite tko ga održava ažurnim.]
-
-| Razdoblje/Tjedan | Glavni planirani rad | Odgovorni članovi | Poveznica na zadatke |
+| Razdoblje/Tjedan | Glavni planirani rad | Odgovorni članovi | Poveznica na zadatke ili rezultat |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Projektni tjedan 1 | Postavljanje početne strukture projekta i GitHub repozitorija te priprema predložaka dokumentacije. Definiranje osnovne organizacije rada i upoznavanje članova tima s projektom. | Svi članovi | Početni commitovi i README. |
+| Projektni tjedan 2 | Definiranje cilja, opsega i problema koji projekt rješava te prepoznavanje dionika i korisnika sustava. Izrada početnih funkcijskih i nefunkcijskih zahtjeva. | LP, FK, GD, ES | Poglavlje 2 – Analiza zahtjeva. |
+| Projektni tjedan 3 | Dovršavanje analize zahtjeva, razrada funkcionalnosti i provjera usklađenosti zahtjeva s ciljevima projekta. Priprema dokumentacije za izradu obrazaca uporabe i arhitekture. | LP, ES, FK, KL, GD | Poglavlja 2.1 – 2.7. |
+| Projektni tjedan 4 | Izrada obrazaca uporabe i pripadajućih UML dijagrama te definiranje ključnih arhitekturnih odluka. Paralelno se pripremaju početna struktura frontenda i backenda. | VZ, GD, DR, LP, ES, KL | Poglavlja 3 i 4.1. |
+| Projektni tjedan 5 | Oblikovanje modela podataka, razreda i SQL testnih podataka te razvoj osnovnih funkcionalnosti aplikacije. Započinje implementacija prikaza i objave ponuda, rezervacija i prijave korisnika. | KL, ES, FK, DR, GD | Poglavlje 4.3; issuei #57, #59, #60 i #64. |
+| Projektni tjedan 6 | Povezivanje frontenda i backenda, prelazak frontenda na React te ispravljanje problema u prikazu i objavi ponuda. Razvijaju se funkcionalnosti rezervacija, otkazivanja rezervacija i podrške humanitarnim organizacijama. | Svi članovi | Issuei #71, #80, #84, #86, #89 i #93. |
 
-Ako koristite tablicu, plan vodite na korisnoj tjednoj razini i ažurirajte ga kada se prioriteti promijene. Kratice članova tima definirajte  u A.1 i ovdje ih primjenjujte dosljedno; ako dva člana imaju iste inicijale, proširite kraticu. Plan nije dokaz da je planirani rad dovršen (to dokazuje kod i dokumentacija).
+Tijekom razvoja prioriteti su prilagođavani napretku projekta i problemima otkrivenima tijekom implementacije. U završnoj fazi naglasak je na povezivanju svih dijelova sustava, provjeri funkcionalnosti i usklađivanju dokumentacije s implementacijom.
 
-<details>
-<summary><strong>Primjer plana rada</strong></summary>
-
-**Primjer — CrisisMap:** Plan rada obuhvaća razvoj prijava, karte i postavljanja aplikacije. Za svako razdoblje navedeni su glavni zadaci i odgovorni članovi.
-
-| Razdoblje | Glavni planirani rad | Odgovorni članovi | Poveznica na zadatke/opis |
-| --- | --- | --- | --- |
-| Projektni tjedan 6 | Obrazac za prijavu i provjera valjanosti lokacije | AK, LM | Zadataka #21 i #23. |
-| Projektni tjedan 7 | Povezivanje obrasca s API-jem za prijave | EP | Zadatak #25. |
-
-**Čitanje plana:** Kratice štede prostor u sažetom planu; njihove definicije s početka A.1 vrijede u cijelom ovom primjeru. Kada rad kasni, ažurirajte stvarni zadatak i očekivanje u planu; nemojte tvrditi da je nedovršena funkcionalnost završena samo zato što je predviđeni tjedan prošao.
-
-</details>
 
 ## A.3 Aktivnosti i doprinosi članova
 
-**Cilj:** Prikazati koji su članovi radili na važnim projektnim aktivnostima i približan trud koji prijavljuju. Uz implementaciju uključite oblikovanje, dokumentaciju, integraciju, ispitivanje i postavljanje.
 
 | Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
 | --- | --- | --- | --- |
-|  |  |  |  |
+| Izrada i uređivanje analize zahtjeva, definiranje dionika i funkcionalnosti te priprema prijedloga frontend dizajna. Sudjelovanje u povezivanju frontenda i backenda, ispravljanju dokumentacije i završnoj provjeri zahtjeva. | LP | 14 | Poglavlje 2 – Analiza zahtjeva; frontend dizajn; povezivanje frontenda i backenda. |
+| Izrada specifikacija obrazaca uporabe, definiranje glavnih i alternativnih tijekova te izrada UML dijagrama. Izrada početnog izgleda frontenda i sudjelovanje u njegovu prelasku na React. | VZ | 20 | Poglavlje 3 – Obrasci uporabe; UML dijagrami; issue #71. |
+| Izrada dokumentacije o pristupu i opravdanosti projekta te oblikovanje modela podataka i dijagrama razreda. Priprema SQL testnih podataka i definiranje ograničenja vezanih uz ponude. | KL | Dopuniti | Poglavlje 4.3 – Model podataka i oblikovanje razreda; SQL testni podaci. |
+| Implementacija postupka rezervacije, provjere dostupnosti proizvoda i ažuriranja zaliha. Razvoj funkcionalnosti otkazivanja rezervacija i povezivanje s backendom. | FK | Dopuniti | Issue #57, #84 i #89. |
+| Razvoj funkcionalnosti za objavu i pregled ponuda, povezivanje API poziva s korisničkim sučeljem te obrada pogrešaka. Priprema `.env.example` datoteke s uputama za konfiguraciju aplikacije. | ES | Dopuniti | Issue #59, #60 i #80; `.env.example`. |
+| Izrada backend strukture i implementacija Google OAuth2 prijave te upravljanja korisničkim ulogama. Razvoj registracije i autorizacije humanitarnih organizacija te povezivanje njihova frontenda i backenda. | DR | Dopuniti | Issue #64, #86 i #93. |
+| Postavljanje početne strukture backend projekta i sudjelovanje u izradi arhitekturne dokumentacije. Rješavanje pogrešaka i dorada funkcionalnosti tijekom razvoja aplikacije. | GD | Dopuniti | Poglavlje 4.1 – Ključne arhitekturne odluke; issue #45 i #88. |
 
-Koristite aktivnosti specifične za projekt umjesto obaveznog retka za svako poglavlje dokumentacije ili svaki UML dijagram. Tim treba dosljedno bilježiti sate i izbjegavati dvostruko brojanje zajedničkog rada; reprezentativni rezultat objašnjava što je prijavljeni trud proizveo. Sati su samoprijavljena procjena uloženog rada, a ne mjera kvalitete niti zamjena za pregled koda i artefakata.
-
-<details>
-<summary><strong>Primjer aktivnosti i rezultata rada</strong></summary>
-
-**Primjer — CrisisMap:** Tablica razlikuje implementaciju, integraciju i dokumentaciju te svaku aktivnost povezuje s rezultatom.
-
-| Aktivnost ili rezultat | Član | Prijavljeni sati | Reprezentativni rezultat ili poveznica |
-| --- | --- | --- | --- |
-| Ručni unos položaja na karti | AK | 8 | Zadatak #21; promjena klijentskog dijela. |
-| Provjera valjanosti i trajna pohrana prijave | LM | 10 | Zadatak #23; promjena pozadinskog sustava i ispitivanje. |
-| Integracija klijenta i API-ja te javno postavljanje | EP | 7 | Zadatak #25; konfiguracija u `render.yaml` i `dist/` |
-| Obrazac uporabe za podnošenje prijave i provjera odbijenog dopuštenja | NK | 5 | Završene izmjene UC-002 i ispitivanje ST-03. |
-
-**Trud i rezultat:** Završni stupac omogućuje raspravu o doprinosu bez tretiranja velikog broja sati kao dokaza isporuke. Tim može prijaviti stvarno dugotrajan, još neriješen problem integracije kao obavljen rad i iskreno opisati njegov ishod.
-
-</details>
+Sati predstavljaju samoprijavljenu procjenu svakog člana i potrebno ih je dopuniti prema stvarno uloženom vremenu. Git povijest ne prikazuje sav rad na sastancima, planiranju, testiranju i zajedničkoj izradi dokumentacije.
 
 ## A.4 Pregled promjena u repozitoriju
+## A.4 Pregled promjena u repozitoriju
 
-**Cilj:** Prikazati kada su promjene napravljene u repozitoriju i tko ih je napravio, uz napomenu da sam broj zapisa promjena ne mjeri kvalitetu doprinosa.
 
-**Prikaz aktivnosti repozitorija:** [Ugradite ili povežite GitHubov prikaz `Contributors` i generirani graf za projektni repozitorij; navedite razdoblje koje obuhvaća.]
+**Prikaz aktivnosti repozitorija:** [GitHub Contributors – Spasi Zalogaj](https://github.com/vz56677/zalogajcici/graphs/contributors)
 
-Graf može pokazati kada su zapisi promjena napravljeni i tko ih je napravio, ali ne prikazuje sav rad na oblikovanju, ispitivanju, integraciji, pregledu ili dokumentaciji. Ako postoji uočljiv nesklad s tablicom aktivnosti, kratko ga objasnite; nemojte iz grafa izvoditi broj sati. Generirani prikaz neka bude vezan uz stvarni repozitorij umjesto da se ručno crta drugi graf.
+**Razdoblje prikaza:** Od početka projekta do 19. 11. 2026.
+
+Tijekom razvoja projekta promjene u repozitoriju obuhvaćale su izradu projektne dokumentacije, razvoj frontenda i backenda, oblikovanje baze podataka te implementaciju glavnih funkcionalnosti aplikacije. U kasnijim fazama rada naglasak je bio na povezivanju frontenda i backenda, autentifikaciji korisnika, rezervacijama, objavi ponuda i funkcionalnostima za humanitarne organizacije.
+
+GitHubov graf prikazuje doprinose članova prema njihovim commitovima kroz vrijeme. Povijest repozitorija uključuje i promjene napravljene kroz zasebne grane i spojene pull requestove, što omogućuje praćenje razvoja projekta i suradnje članova tima.
+
+Broj commitova nije izravna mjera ukupnog doprinosa pojedinog člana jer ne obuhvaća sav rad na planiranju, sastancima, testiranju, pregledu koda i zajedničkoj izradi dokumentacije. Zbog toga se prikaz aktivnosti repozitorija promatra zajedno s evidencijom doprinosa iz poglavlja A.3.f.
 
 ## A.5 Ključni inženjerski izazovi i rješenja
 
