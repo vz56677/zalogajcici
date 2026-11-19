@@ -48,7 +48,13 @@ Ostalo:
 Potrebno je realizirati relacijsku bazu podataka, ugraditi i osposobiti vanjske sustave. Potrebno je napraviti aplikaciju koja se može prilagoditi uređaju tj. skalirati s obzirom na ekran (mobitel / stolno računalo). 
 
 **Izvan opsega ili odgođeno:**
-U opsegu projekta nije omogućavanje plaćanja gotovinom, već će svaka transakcija od korisnika prema prodajnom mjestu biti isključivo uz pomoć kartičnog plaćanja ili usluge PayPal. Također nije uključeno naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta.
+U opsegu projekta nije:
+- drugi načini plaćanja (gotovina, druge vrste kartičnog plaćanja, digitalno bankarstvo...) - svaka transakcija od korisnika prema prodajnom mjestu biti isključivo uz pomoć usluge PayPal
+- dostava - kupac sam preuzima narudžbe u prodajnom mjestu
+- mobilna verzija aplikacije - bit će dostupna samo web aplikacija
+- naknadno održavanje i daljnji razvoj aplikacije zbog prirode projekta
+- korisnička podrška
+- provjera sigurnosti hrane i ispravnosti rokova - sustav ne provjerava, odgovornost prodajnog mjesta
 
 **Vanjske ovisnosti:**
 Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth 2.0 pružatelj Google (identifikacija korisnika), PayPal (plaćanje rezervacija i članarina karticom ili PayPal računom), Google Maps (prikaz lokacije i karta) i SendGrid (slanje e-pošte korisnicima).
@@ -56,5 +62,11 @@ Prema vanjskim ovisnostima, realizacija projekta ovisi o sustavima: OAuth 2.0 pr
 ## 1.4 Postojeći pristupi i opravdanost projekta
 
 Građanin koji želi kupiti višak hrane po sniženoj cijeni može se o dostupnosti i uvjetima preuzimanja raspitivati izravno u pojedinim prodajnim mjestima, dok humanitarna organizacija može zasebno kontaktirati ta mjesta radi dogovora o donaciji. Takav pristup omogućuje izravan dogovor, ali može zahtijevati više pojedinačnih kontakata kako bi se pronašla odgovarajuća hrana i uskladilo preuzimanje. SpasiZalogaj objedinjuje pregled dostupnih ponuda, rezervacije i zahtjeve za donacije na jednom mjestu, čime olakšava povezivanje prodajnih mjesta s kupcima i humanitarnim organizacijama te organizaciju preuzimanja viška hrane.
+
+**Primjeri postojećih sustava**: 
+- Mobilna aplikacija Crumbs
+- Mobilna aplikacija Too Good To go
+
+Navedeni primjeri nudi slične usluge za kupce i prodajna mjesta. Ne omogućavaju humanitarne akcije i doniranje hrane.
 
 ---
