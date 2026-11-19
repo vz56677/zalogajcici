@@ -7,7 +7,7 @@ import java.time.OffsetDateTime;
 
 // Što backend vraća. Podaci o mjestu trebaju frontendu (naziv, adresa, koordinate za udaljenost)
 public record PonudaOdgovor(Long id, VrstaPonude vrsta, NamjenaPonude namjena, String naziv,
-                            String kategorija, String opis, String fotografijaUrl, BigDecimal redovnaCijena,
+                            KategorijaPonude kategorija, String opis, String fotografijaUrl, BigDecimal redovnaCijena,
                             BigDecimal prodajnaCijena, BigDecimal raspolozivo, String jedinicaMjere,
                             OffsetDateTime preuzimanjeOd, OffsetDateTime preuzimanjeDo, OffsetDateTime rokUpotrebe,
                             Mjesto prodajnoMjesto) {

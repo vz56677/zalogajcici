@@ -9,7 +9,7 @@ public record ObjaviPonuduZahtjev(
         VrstaPonude vrsta,
         NamjenaPonude namjena,        // null -> PRODAJA (postavlja konstruktor Ponude)
         String naziv,
-        String kategorija,
+        KategorijaPonude kategorija,
         String opis,
         String fotografijaUrl,
         BigDecimal redovnaCijena,

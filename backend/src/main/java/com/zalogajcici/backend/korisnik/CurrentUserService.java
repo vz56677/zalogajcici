@@ -3,6 +3,8 @@ package com.zalogajcici.backend.korisnik;
 import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjestoRepository;
 
 import java.util.Optional;
+
+import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjestoResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;

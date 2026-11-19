@@ -8,6 +8,7 @@ import com.zalogajcici.backend.korisnik.RoleSelectionRequest.ProdajnoMjestoInput
 import com.zalogajcici.backend.common.BusinessException;
 
 
+import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjestoResponse;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

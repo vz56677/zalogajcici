@@ -1,4 +1,4 @@
-package com.zalogajcici.backend.korisnik;
+package com.zalogajcici.backend.prodajnomjesto;
 
 import com.zalogajcici.backend.prodajnomjesto.ProdajnoMjesto;
 

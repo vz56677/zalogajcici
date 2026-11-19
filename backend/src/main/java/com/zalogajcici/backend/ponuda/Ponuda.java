@@ -21,7 +21,7 @@ public class Ponuda {
     @Enumerated(EnumType.STRING)
     private NamjenaPonude namjena = NamjenaPonude.PRODAJA;
     private String naziv;
-    private String kategorija;
+    private KategorijaPonude kategorija;
     private String opis;
     private String fotografijaUrl;
     private BigDecimal redovnaCijena;
@@ -39,7 +39,7 @@ public class Ponuda {
     }
 
     // Stari konstruktor (koriste ga postojeći testovi); prosljeđuje novome, pa i on prolazi provjeru
-    public Ponuda(ProdajnoMjesto prodajnoMjesto, VrstaPonude vrsta, String naziv, String kategorija,
+    public Ponuda(ProdajnoMjesto prodajnoMjesto, VrstaPonude vrsta, String naziv, KategorijaPonude kategorija,
                   BigDecimal redovnaCijena, BigDecimal prodajnaCijena, BigDecimal raspolozivo,
                   OffsetDateTime preuzimanjeOd, OffsetDateTime preuzimanjeDo) {
         this(prodajnoMjesto, vrsta, null, naziv, kategorija, null, null, redovnaCijena, prodajnaCijena,
@@ -47,7 +47,7 @@ public class Ponuda {
     }
 
     public Ponuda(ProdajnoMjesto prodajnoMjesto, VrstaPonude vrsta, NamjenaPonude namjena,
-                  String naziv, String kategorija, String opis, String fotografijaUrl,
+                  String naziv, KategorijaPonude kategorija, String opis, String fotografijaUrl,
                   BigDecimal redovnaCijena, BigDecimal prodajnaCijena, BigDecimal raspolozivo,
                   String jedinicaMjere, OffsetDateTime objavljenoU, OffsetDateTime preuzimanjeOd,
                   OffsetDateTime preuzimanjeDo, OffsetDateTime rokUpotrebe) {
@@ -76,7 +76,7 @@ public class Ponuda {
         obavezno(prodajnoMjesto, "Prodajno mjesto je obavezno.");
         obavezno(vrsta, "Vrsta ponude je obavezna.");
         if (naziv == null || naziv.isBlank()) obavezno(null, "Naziv je obavezan.");
-        if (kategorija == null || kategorija.isBlank()) obavezno(null, "Kategorija je obavezna.");
+        if (kategorija == null) obavezno(null, "Kategorija je obavezna.");
         obavezno(redovnaCijena, "Redovna cijena je obavezna.");
         obavezno(prodajnaCijena, "Prodajna cijena je obavezna.");
         obavezno(raspolozivo, "Količina je obavezna.");
@@ -122,7 +122,7 @@ public class Ponuda {
         return naziv;
     }
 
-    public String getKategorija() {
+    public KategorijaPonude getKategorija() {
         return kategorija;
     }
 
