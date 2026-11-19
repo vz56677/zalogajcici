@@ -18,7 +18,8 @@ start
 :Provjerava dostupnost ponude;
 if (Ima li dovoljno količine?) then (Da)
   :Privremeno zadržava količinu;
-  :Pokreće UC-003\nRezervacija i plaćanje;
+  :Pokreće UC-003
+Rezervacija i plaćanje;
 else (Ne)
   :Prikazuje nedostupnu količinu;
   stop
