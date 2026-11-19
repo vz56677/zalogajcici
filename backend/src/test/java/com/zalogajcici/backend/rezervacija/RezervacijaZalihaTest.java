@@ -3,6 +3,7 @@ package com.zalogajcici.backend.rezervacija;
 import com.zalogajcici.backend.korisnik.Korisnik;
 import com.zalogajcici.backend.korisnik.KorisnikRepository;
 import com.zalogajcici.backend.korisnik.UlogaKorisnika;
+import com.zalogajcici.backend.ponuda.KategorijaPonude;
 import com.zalogajcici.backend.ponuda.Ponuda;
 import com.zalogajcici.backend.ponuda.PonudaRepository;
 import com.zalogajcici.backend.ponuda.VrstaPonude;
@@ -58,7 +59,7 @@ public class RezervacijaZalihaTest {
     }
 
     private Ponuda novaPonuda(ProdajnoMjesto mjesto, BigDecimal raspolozivo, OffsetDateTime preuzimanjeDo) {
-        return new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda", "Pekara",
+        return new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda",  KategorijaPonude.PEKARA,
                 new BigDecimal("9.00"), new BigDecimal("3.50"), raspolozivo,
                 preuzimanjeDo.minusHours(3), preuzimanjeDo);
     }

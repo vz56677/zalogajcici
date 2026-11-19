@@ -16,6 +16,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import com.zalogajcici.backend.ponuda.KategorijaPonude;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,7 +76,7 @@ class ZalihaIstodobnostTest {
                 "Unska 3, Zagreb", "01 1234 567", null, 45.80, 15.97));
 
         OffsetDateTime preuzimanjeDo = OffsetDateTime.now(clock).plusHours(2);
-        ponuda = ponudaRepository.save(new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda", "Pekara",
+        ponuda = ponudaRepository.save(new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda",  KategorijaPonude.PEKARA,
                 new BigDecimal("9.00"), new BigDecimal("3.50"), POCETNA_ZALIHA,
                 preuzimanjeDo.minusHours(3), preuzimanjeDo));
     }

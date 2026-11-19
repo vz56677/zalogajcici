@@ -41,13 +41,13 @@ class PonudaServiceTest {
 
     private ProdajnoMjesto novoMjesto(Korisnik vlasnik) {
         return prodajnoMjestoRepository.save(
-                new ProdajnoMjesto(vlasnik, "Pekara", "Pekarnica", "Ulica 1, Zagreb", "kontakt", null, 45.81, 15.97));
+                new ProdajnoMjesto(vlasnik, "Pekara", "Pekara", "Ulica 1, Zagreb", "kontakt", null, 45.81, 15.97));
     }
 
     private ObjaviPonuduZahtjev zahtjev(Long mjestoId, VrstaPonude vrsta, NamjenaPonude namjena,
                                         String redovna, String prodajna, String kolicina,
                                         OffsetDateTime od, OffsetDateTime doVrijeme, OffsetDateTime rokUpotrebe) {
-        return new ObjaviPonuduZahtjev(mjestoId, vrsta, namjena, "Kroasan", "Pekara", null, null,
+        return new ObjaviPonuduZahtjev(mjestoId, vrsta, namjena, "Kroasan",  KategorijaPonude.PEKARA, null, null,
                 new BigDecimal(redovna), prodajna == null ? null : new BigDecimal(prodajna),
                 new BigDecimal(kolicina), null, od, doVrijeme, rokUpotrebe);
     }
@@ -116,7 +116,7 @@ class PonudaServiceTest {
         Korisnik prodavac = noviKorisnik(UlogaKorisnika.PRODAVAC);
         ProdajnoMjesto mjesto = novoMjesto(prodavac);
         Ponuda ponuda = ponudaRepository.save(new Ponuda(
-                mjesto, VrstaPonude.PROIZVOD, "Kroasan", "Pekara",
+                mjesto, VrstaPonude.PROIZVOD, "Kroasan",  KategorijaPonude.PEKARA,
                 new BigDecimal("2.50"), new BigDecimal("1.00"), new BigDecimal("10"),
                 sada.plusHours(1), sada.plusHours(3)));
 
@@ -268,7 +268,7 @@ class PonudaServiceTest {
                                 String kolicina, OffsetDateTime preuzimanjeDo) {
         BigDecimal cijena = namjena == NamjenaPonude.DONACIJA ? BigDecimal.ZERO : new BigDecimal("1.00");
         return ponudaRepository.save(new Ponuda(mjesto, VrstaPonude.PROIZVOD, namjena,
-                "Kroasan", "Pekara", null, null,
+                "Kroasan",  KategorijaPonude.PEKARA, null, null,
                 new BigDecimal("2.50"), cijena, new BigDecimal(kolicina),
                 null, sada.minusDays(1), preuzimanjeDo.minusHours(3), preuzimanjeDo, null));
     }

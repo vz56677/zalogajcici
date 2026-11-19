@@ -138,14 +138,14 @@ class PonudaRepositoryTest {
     // Razlikuju se samo raspolozivo i rok preuzimanja; preuzimanje uvijek pocinje 3 h ranije,
     // pa je CHECK (preuzimanje_od < preuzimanje_do) uvijek zadovoljen.
     private Ponuda novaPonuda(ProdajnoMjesto mjesto, BigDecimal raspolozivo, OffsetDateTime preuzimanjeDo) {
-        return new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda", "Pekara",
+        return new Ponuda(mjesto, VrstaPonude.PROIZVOD, "Testna ponuda",  KategorijaPonude.PEKARA,
                 new BigDecimal("9.00"), new BigDecimal("3.50"), raspolozivo,
                 preuzimanjeDo.minusHours(3), preuzimanjeDo);
     }
 
     private Ponuda novaDonacija(ProdajnoMjesto mjesto, BigDecimal raspolozivo, OffsetDateTime preuzimanjeDo) {
         return new Ponuda(mjesto, VrstaPonude.PROIZVOD, NamjenaPonude.DONACIJA,
-                "Testna donacija", "Pekara", null, null,
+                "Testna donacija", KategorijaPonude.PEKARA, null, null,
                 new BigDecimal("9.00"), BigDecimal.ZERO, raspolozivo,
                 null, SADA, preuzimanjeDo.minusHours(3), preuzimanjeDo, null);
     }
