@@ -1,4 +1,4 @@
-[11:23, 19/11/2026] Viki <3: # A. Pregled aktivnosti grupe
+# A. Pregled aktivnosti grupe
 
 *Cilj:* Prikazati kako je tim organizirao projekt, raspodijelio rad, reagirao na važne probleme i pridonio rezultatu. Zapisi trebaju opisivati ishode, a ne samo navoditi da je sastanak održan ili da se o nekoj temi raspravljalo.
 
@@ -42,7 +42,7 @@ Tijekom razvoja prioriteti su prilagođavani napretku projekta i problemima otkr
 | Izrada i uređivanje analize zahtjeva, definiranje dionika i funkcionalnosti te priprema prijedloga frontend dizajna. Sudjelovanje u povezivanju frontenda i backenda, ispravljanju dokumentacije i završnoj provjeri zahtjeva. | LP | 15 | Poglavlje 2 – Analiza zahtjeva; frontend dizajn; povezivanje frontenda i backenda. |
 | Izrada specifikacija obrazaca uporabe, definiranje glavnih i alternativnih tijekova te izrada UML dijagrama. Izrada početnog izgleda frontenda i sudjelovanje u njegovu prelasku na React. | VZ | 15 | Poglavlje 3 – Obrasci uporabe; UML dijagrami; issue #71. |
 | Izrada dokumentacije o pristupu i opravdanosti projekta te oblikovanje modela podataka i dijagrama razreda. Priprema SQL testnih podataka i definiranje ograničenja vezanih uz ponude. | KL | 12 | Poglavlje 4.3 – Model podataka i oblikovanje razreda; SQL testni podaci. |
-| Implementacija postupka rezervacije, provjere dostupnosti proizvoda i ažuriranja zaliha. Razvoj funkcionalnosti otkazivanja rezervacija i povezivanje s backendom. | KF | 17 | Issue #57, #84 i #89. |
+| Implementacija postupka rezervacije, provjere dostupnosti proizvoda i ažuriranja zaliha. Razvoj funkcionalnosti otkazivanja rezervacija i povezivanje s backendom. | FK | 17 | Issue #57, #84 i #89. |
 | Razvoj funkcionalnosti za objavu i pregled ponuda, povezivanje API poziva s korisničkim sučeljem te obrada pogrešaka. Priprema `.env.example` datoteke s uputama za konfiguraciju aplikacije. | ES | 17 | Issue #59, #60 i #80; `.env.example`. |
 | Izrada backend strukture i implementacija Google OAuth2 prijave te upravljanja korisničkim ulogama. Razvoj registracije i autorizacije humanitarnih organizacija te povezivanje njihova frontenda i backenda. | DR | 12 | Issue #64, #86 i #93. |
 | Postavljanje početne strukture backend projekta i sudjelovanje u izradi arhitekturne dokumentacije. Rješavanje pogrešaka i dorada funkcionalnosti tijekom razvoja aplikacije. | GD | 16 | Poglavlje 4.1 – Ključne arhitekturne odluke; issue #45 i #88. |
