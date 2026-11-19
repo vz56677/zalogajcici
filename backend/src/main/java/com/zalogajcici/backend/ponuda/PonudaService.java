@@ -81,6 +81,16 @@ public class PonudaService {
                 .toList();
     }
 
+     @Transactional(readOnly = true)
+    public List<PonudaOdgovor> aktivneZaUlogu(UlogaKorisnika uloga) {
+        NamjenaPonude namjena = uloga == UlogaKorisnika.ORGANIZACIJA ? NamjenaPonude.DONACIJA : NamjenaPonude.PRODAJA;
+
+        OffsetDateTime sada = OffsetDateTime.now(clock);
+        return ponude.findAktivne(sada, namjena).stream()
+                .map(PonudaOdgovor::iz)
+                .toList();
+    }
+
     //GET /api/ponude/{id}
     @Transactional(readOnly = true)
     //TODO: kada se napravi prijava umjesto NamjenaPonude.PRODAJA provjeriti ulogu korisnika (kupac/org)
@@ -90,6 +100,19 @@ public class PonudaService {
                 .orElseThrow(this::nijePronadena);
 
         if (p.getNamjena() != NamjenaPonude.PRODAJA) {
+            throw nijePronadena();
+        }
+        return PonudaOdgovor.iz(p);
+    }
+
+    @Transactional(readOnly = true)
+    public PonudaOdgovor jednaZaUlogu(Long ponudaId, UlogaKorisnika uloga) {
+        OffsetDateTime sada = OffsetDateTime.now(clock);
+        Ponuda p = ponude.findAktivnaById(sada, ponudaId)
+                .orElseThrow(this::nijePronadena);
+        NamjenaPonude namjena = uloga == UlogaKorisnika.ORGANIZACIJA ? NamjenaPonude.DONACIJA : NamjenaPonude.PRODAJA;
+
+        if (p.getNamjena() != namjena) {
             throw nijePronadena();
         }
         return PonudaOdgovor.iz(p);
