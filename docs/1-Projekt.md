@@ -13,7 +13,6 @@ Cilj projekta je izraditi web aplikaciju koja povezuje prodajna mjesta, kupce i 
 
 ## 1.2 Ciljani korisnici i dionici
 
-**Cilj:** Utvrditi osobe, uloge i organizacije čije potrebe i interesi određuju projektni zadatak.
 
 | Skupina korisnika ili dionika                              | Potreba ili interes relevantan za ovaj projekt                                                                                                           |
 |------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
