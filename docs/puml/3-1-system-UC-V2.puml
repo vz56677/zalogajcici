@@ -1,0 +1,76 @@
+@startuml 3-1-system-UC-V2
+skinparam defaultFontSize 20
+left to right direction
+
+rectangle "Sustav SpasiZalogaj - obrasci uporabe" as sustav {
+    usecase "UC-001 Prijava u sustav" as UC1
+    usecase "UC-002 Pretraživanje ponuda" as UC2
+    usecase "UC-003 Rezervacija i plaćanje ponude" as UC3
+    usecase "UC-004 Potvrda preuzimanja ponude" as UC4
+    ' usecase "UC-005 Otkazivanje rezervacije" as UC5
+    ' usecase "UC-006 Recenziranje prodajnog mjesta" as UC6
+    usecase "UC-007 Plaćanje članarine" as UC7
+    usecase "UC-008 Objava ponude" as UC8
+    usecase "UC-009 Pretraživanje donacijskih ponuda" as UC9
+    ' usecase "UC-010 Obrada zahtjeva humanitarnih organizacija" as UC10
+    usecase "UC-011 Odobravanje profila humanitarne organizacije" as UC11
+    usecase "UC-012 Kreiranje humanitarne akcije i evidencija donacija" as UC12
+    usecase "UC-013 Prijava na humanitarnu akciju" as UC13
+    usecase "UC-014 Administracija sustava" as UC14
+    usecase "UC-015 Plaćanje putem vanjskog servisa" as UC15
+    usecase "UC-016 Prikaz ponuda na karti" as UC16
+
+    ' UC5 -left..> UC3 : <<extend>> \n[otkazivanje zatraženo]
+    ' UC6 -down..> UC3 : <<extend>>
+    ' UC7 -left..> UC8 : <<extend>> \n[članstvo nije aktivno]
+    UC3 -down..> UC15 : <<include>>
+    UC7 -down..> UC15 : <<include>>
+    UC16 -up..> UC2 : <<extend>> \n[prikaz na karti odabran]
+    UC16 -up..> UC9 : <<extend>> \n[prikaz na karti odabran]
+
+}
+
+rectangle " " as Lijevo #transparent;line:transparent {
+    actor Kupac
+    actor "Prodajno mjesto" as PM
+    actor "Humanitarna organizacija" as HO
+    actor Administrator
+    actor Korisnik
+
+    Kupac -up-|> Korisnik
+    PM -up-|> Korisnik
+    HO -up-|> Korisnik
+
+}
+
+rectangle " " as Desno #transparent;line:transparent {
+    actor "Pružatelj autentifikacije" as AUTH <<vanjski sustav>>
+    actor "Servis za plaćanje" as PAY <<vanjski sustav>>
+    actor "Servis za karte" as MAPS <<vanjski sustav>>
+    ' actor "Servis za slanje e-pošte" as MAIL <<vanjski sustav>>
+}
+
+Korisnik -- UC1
+
+Kupac -- UC2
+Kupac -- UC3
+' Kupac --UC5
+Kupac -- UC13
+
+PM -- UC4
+PM -- UC7
+' PM -- UC10
+PM -- UC8
+
+HO -- UC9
+HO -- UC12
+
+Administrator -- UC11
+Administrator -- UC14
+
+UC1 -- AUTH
+UC15 -- PAY
+UC16 -- MAPS
+
+
+@enduml
