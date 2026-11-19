@@ -1,10 +1,6 @@
 # 3. Obrasci uporabe
 
-**Cilj:** Prikazati glavne interakcije između aktera aplikacije i sustava. Opišite kako akter ostvaruje cilj i što se događa kada važan korak ne uspije. Interakcije temeljite na odobrenim zahtjevima i ažurirajte ih kako se aplikacija razvija.
-
 ## 3.1 Dijagram obrazaca uporabe
-
-**Cilj:** Prikazati granicu sustava, relevantne aktere i njihove glavne ciljeve u **preglednom UML dijagramu obrazaca uporabe**. Ako je za razumijevanje pojedinog dijela sustava potrebno prikazati više detalja, taj dio izdvojite u dodatni usmjereni dijagram. Dodatni dijagrami trebaju produbiti dio preglednog modela, a ne stvarati nepovezane ili duplicirane prikaze istog sustava.
 
 ![Dijagram obrazaca uporabe sustava Spasi Zalogaj](./assets/diagrams/3-1-system-UC.svg)
 
@@ -27,8 +23,6 @@ Dodatni dijagram detaljnije prikazuje povezani tijek koji započinje odabirom po
 
 
 ## 3.2 Specifikacije obrazaca uporabe
-
-**Cilj:** Za svaki obrazac uporabe iz dijagrama objasniti cilj aktera, uobičajenu interakciju s aplikacijom i važne alternative.
 
 Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prodajnog mjesta (uključuje zaposlenike koji potvrđuju preuzimanje), **A-03** Predstavnik humanitarne organizacije, **A-04** Administrator sustava, **A-05** Pružatelj autentifikacije (OAuth 2.0), **A-06** Servis za plaćanje (PayPal / kreditne kartice), **A-07** Servis za karte (Google Maps), **A-08** Servis za slanje e-pošte (SendGrid). Vanjski sustavi (A-05 do A-08) sudjeluju kao sekundarni akteri.
 
@@ -217,8 +211,6 @@ Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prod
 ---
 
 ## 3.3 Provjera dosljednosti obrazaca uporabe
-
-**Cilj:** Provjeriti međusobnu usklađenost obrazaca uporabe, aktera, zahtjeva i ispitnih slučajeva. Cjelovito mapiranje održava se isključivo u [**matrici sljedivosti zahtjeva**](2-Analiza-zahtjeva.md#26-sljedivost-zahtjeva).
 
 | Provjera | Pitanje za tim | Nalaz |
 |:--|:--|:--|

@@ -1,7 +1,5 @@
 # 4. Arhitektura i oblikovanje
 
-**Cilj:** Definirati arhitekturni stil, dekompoziciju programa na podsustave i module, organizaciju podataka te dinamičko ponašanje tijekom izvođenja. Arhitektura predstavlja temelj za implementaciju i ažurira se pri svakoj važnijoj promjeni projektnih odluka.
-
 | Arhitekturni pogled      | Ključno inženjersko pitanje                           | Primijenjeni model ili dijagram    |
 | :----------------------- | :---------------------------------------------------- | :--------------------------------- |
 | **Strategija rješenja**  | Koji stil i temeljne odluke određuju program?         | Tablica odluka (odjeljak 4.1)      |
@@ -17,8 +15,6 @@
 Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano na stranici [Home](./Home.md). U dovršenoj stranici koristite vlastite projektne odluke i modele.
 
 ## 4.1 Ključne arhitekturne odluke
-
-**Cilj:** Objasniti nekoliko arhitekturnih odluka koje najviše utječu na rješenje i navesti njihove projektno specifične razloge.
 
 | Odluka                                                                        | Razmatrana alternativa                                             | Projektno specifično obrazloženje i kompromis                                                                                                                                                 |
 | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -64,11 +60,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 ## 4.3 Model podataka i oblikovanje razreda
 
-**Cilj:** Objasniti važne informacije koje aplikacija pohranjuje i jedno reprezentativno područje oblikovanja na razini razreda. Model podataka i UML dijagram razreda odgovaraju na različita pitanja; jedno ne zamjenjuje drugo.
-
 ### 4.3.1 ER dijagram i model podataka
-
-Cilj: Prikazati važne pohranjene entitete, njihove identifikatore i veze te dovoljno atributa za razumijevanje podataka aplikacije. ER dijagram odvojen je od reprezentativnog UML dijagrama razreda u nastavku.
 
 **ER dijagram:**
 
@@ -89,8 +81,6 @@ Prodavač objavljuje ponudu pekarskog paketa na svojem prodajnom mjestu. Kupac r
 Rezervacije se plaćaju isključivo online. Način online plaćanja (PayPal ili kartica) bilježi se u atributu `uplata.nacin`. Veza s tablicom `uplata` prikazana je za rezervacije. U punoj shemi uplata može pripadati rezervaciji ili članarini.
 
 ### 4.3.2 Reprezentativni UML dijagram razreda
-
-Cilj: Prije implementacije reprezentativnog dijela sustava modelirati i prikazati razrede ili sučelja potrebna za dodjelu odgovornosti, operacija i veza. Oblikovanje ažurirajte kada se te odluke promijene.
 
 Odabrano područje je **potvrda preuzimanja unaprijed online plaćene rezervacije** (F-009). Predstavnik prodajnog mjesta unosi ili skenira kod. Backend provjerava rezervaciju i ovlasti te evidentira preuzimanje. ER dijagram iz prethodnog odjeljka prikazuje podatke na kojima se taj postupak temelji. UML dijagram prikazuje koje će provjere obavljati pojedini razredi prije pohrane potvrde.
 
