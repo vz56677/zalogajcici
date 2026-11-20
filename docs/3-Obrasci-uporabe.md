@@ -12,7 +12,7 @@ Dijagram prikazuje osnovne obrasce uporabe sustava i njihove veze s akterima. Ku
 
 ### Dodatni dijagram: rezervacije, plaćanje, preuzimanje i recenzije
 
-![Dijagram rezervacija, plaćanja, preuzimanja i recenzija](./assets/diagrams/3-2-reservations-UC.svg)
+![Dijagram rezervacija, plaćanja, preuzimanja i recenzija](./assets/diagrams/3-2-reservations-UC-V2-pregledan.svg)
 
 **Slika 3.2. Dijagram obrazaca uporabe – rezervacije, plaćanje, preuzimanje i recenzije**
 
@@ -22,7 +22,7 @@ Dodatni dijagram prikazuje rezervaciju i plaćanje ponude (UC-003), potvrdu preu
 
 ### Dodatni dijagram: članstvo i upravljanje ponudama
 
-![Dijagram članstva i upravljanja ponudama](./assets/diagrams/3-3-offers-membership-UC.svg)
+![Dijagram članstva i upravljanja ponudama](./assets/diagrams/3-3-offers-membership-UC-V2.svg)
 
 **Slika 3.3. Dijagram obrazaca uporabe – članstvo i upravljanje ponudama**
 
