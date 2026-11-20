@@ -62,7 +62,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **ER dijagram:**
 
-![ER dijagram ponude, rezervacije i preuzimanja hrane](assets/diagrams/4.3.1-spasizalogaj-ERD-V2.svg)
+![ER dijagram modela podataka](assets/diagrams/4.3.1-spasizalogaj-ERD.svg)
 
 **Izvor dijagrama:** [PlantUML](puml/4.3.1-spasizalogaj-ERD.puml)  
 **Implementacija:** [Flyway migracija V1__init.sql](../backend/src/main/resources/db/migration/V1__init.sql) (PostgreSQL)
@@ -76,7 +76,9 @@ Prodavač objavljuje ponudu pekarskog paketa na svojem prodajnom mjestu. Kupac r
 
 </details>
 
-Rezervacije se plaćaju isključivo online. Način online plaćanja (PayPal ili kartica) bilježi se u atributu `uplata.nacin`. Veza s tablicom `uplata` prikazana je za rezervacije. U punoj shemi uplata može pripadati rezervaciji ili članarini.
+Dijagram prikazuje glavne entitete sustava i stupce važne za razumijevanje modela. Radi preglednosti izostavljene su pomoćne tablice radno_vrijeme, potreba_akcije, donacija_akcije i cjenik_clanarine. Tablice uplata, recenzija, akcija, clanarina i pretplata_obavijesti postoje u shemi, ali ih backend još ne koristi. Potpuna shema definirana je u migracijama baze (V1–V3).
+
+Rezervacije se plaćaju isključivo online. Način online plaćanja (PayPal ili kartica) bilježi se u atributu `uplata.nacin`. Uplata može pripadati rezervaciji ili članarini. Integracija s pružateljem plaćanja još nije implementirana.
 
 ### 4.3.2 Reprezentativni UML dijagram razreda
 
