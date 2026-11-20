@@ -1,16 +1,16 @@
 @startuml
-!pragma layout smetana
+
 skinparam shadowing false
 skinparam defaultFontName DejaVu Sans
-skinparam defaultFontSize 14
+skinparam defaultFontSize 20
 skinparam linetype polyline
-skinparam nodesep 42
-skinparam ranksep 52
+skinparam nodesep 25
+skinparam ranksep 70
 skinparam backgroundColor #FFFFFF
 skinparam classBackgroundColor #F2F7FC
 skinparam classBorderColor #526981
 top to bottom direction
-title SpasiZalogaj — Ponuda, rezervacija i preuzimanje
+title SpasiZalogaj — model podataka (migracije V1–V3)
 entity "korisnik" {
   * id : bigint <<PK>>
   --
@@ -32,10 +32,12 @@ entity "ponuda" {
     vrsta : text
     namjena : text
     naziv : text
+    kategorija : text
     prodajna_cijena : numeric(12,2)
     raspolozivo : numeric(10,2)
     preuzimanje_od : timestamptz
     preuzimanje_do : timestamptz
+    rok_upotrebe: timestamptz
 }
 entity "rezervacija" {
   * id : bigint <<PK>>
@@ -61,11 +63,55 @@ entity "uplata" {
   * id : bigint <<PK>>
   --
     rezervacija_id : bigint <<FK>>
+    clanarina_id : bigint <<FK>>
+    izvorna_uplata_id : bigint <<FK>>
     vrsta : text
     nacin : text
     status : text
     iznos : numeric(12,2)
 }
+
+
+entity "recenzija"{
+    * rezervacija_id : bigint <<PK>> <<FK>> 
+    --
+    ocjena : smallint
+    komentar : text
+    odgovor : text
+
+}
+
+entity "zahtjev_donacije"{
+    * id : bigint <<PK>>
+    --
+    organizacija_id : bigint <<FK>>
+    ponuda_id : bigint <<FK>>
+
+}
+
+entity "akcija"{
+    * id : bigint <<PK>>
+    --
+    organizator_id : bigint <<FK>>
+    naziv : text
+}
+
+entity "clanarina"{
+    * id : bigint <<PK>>
+    --
+    prodavac_id : bigint <<FK>>
+    iznos : numeric(12,2)
+
+}
+
+entity "pretplata_obavijesti"{
+    * id : bigint <<PK>>
+    --
+    korisnik_id : bigint <<FK>>
+    prodajno_mjesto_id : bigint <<FK>>
+    kategorija : text
+}
+
 korisnik ||--o{ prodajno_mjesto : vlasnik
 korisnik ||--o{ rezervacija : kupac
 korisnik |o--o{ rezervacija : potvrđuje preuzimanje
@@ -74,4 +120,17 @@ prodajno_mjesto ||--o{ ponuda : objavljuje
 ponuda ||--o{ stavka_rezervacije : odabrana ponuda
 rezervacija ||--o{ stavka_rezervacije : sadrži
 rezervacija |o--o{ uplata : evidentira transakcije
+
+
+rezervacija ||--o| recenzija : ocjenjuje se
+korisnik ||--o{ akcija : organizator
+korisnik ||--o{ clanarina : prodavac
+clanarina |o--o{ uplata : plaćanje
+uplata |o--o{ uplata : povrat
+korisnik ||--o{ pretplata_obavijesti : pretplaćen
+prodajno_mjesto |o--o{ pretplata_obavijesti : prati mjesto
+korisnik ||--o{ zahtjev_donacije : organizacija
+ponuda ||--o{ zahtjev_donacije : tražena ponuda
+
+
 @enduml
