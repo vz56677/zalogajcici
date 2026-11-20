@@ -1,0 +1,89 @@
+@startuml ponude-v2
+!pragma layout smetana
+skinparam shadowing false
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 14
+skinparam linetype polyline
+skinparam nodesep 42
+skinparam ranksep 52
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #F2F7FC
+skinparam classBorderColor #526981
+top to bottom direction
+title SpasiZalogaj — Ponuda, rezervacija i preuzimanje
+entity "korisnik" {
+  * id : bigint <<PK>>
+  --
+    ime : text
+    uloga : text
+    aktivan : boolean
+}
+entity "prodajno_mjesto" {
+  * id : bigint <<PK>>
+  --
+    vlasnik_id : bigint <<FK>>
+    naziv : text
+    adresa : text
+}
+entity "ponuda" {
+  * id : bigint <<PK>>
+  --
+    prodajno_mjesto_id : bigint <<FK>>
+    vrsta : text
+    namjena : text
+    naziv : text
+    kategorija : text
+    opis : text
+    fotografija_url : text
+    redovna_cijena : numeric(12,2)
+    prodajna_cijena : numeric(12,2)
+    raspolozivo : numeric(10,2)
+    jedinica_mjere : text
+    objavljeno_u : timestamptz
+    preuzimanje_od : timestamptz
+    preuzimanje_do : timestamptz
+    rok_upotrebe : timestamptz
+    aktivna : boolean
+}
+note right of ponuda
+  raspolozivo = zaliha
+  Rezervacija je smanjuje,
+  otkazivanje je vraća.
+end note
+entity "rezervacija" {
+  * id : bigint <<PK>>
+  --
+    kupac_id : bigint <<FK>>
+    prodajno_mjesto_id : bigint <<FK>>
+    kod_preuzimanja : text
+    status : text
+    rok_preuzimanja : timestamptz
+    preuzeta_u : timestamptz
+    preuzimanje_potvrdio_id : bigint <<FK>>
+}
+entity "stavka_rezervacije" {
+  * rezervacija_id : bigint <<PK>> <<FK>>
+  * ponuda_id : bigint <<PK>> <<FK>>
+  --
+    prodajno_mjesto_id : bigint <<FK>>
+    kolicina : numeric(10,2)
+    jedinicna_cijena : numeric(12,2)
+}
+entity "uplata" {
+  * id : bigint <<PK>>
+  --
+    rezervacija_id : bigint <<FK>>
+    vrsta : text
+    nacin : text
+    status : text
+    iznos : numeric(12,2)
+}
+korisnik ||--o{ prodajno_mjesto : vlasnik
+korisnik ||--o{ rezervacija : kupac
+korisnik |o--o{ rezervacija : potvrđuje preuzimanje
+prodajno_mjesto ||--o{ rezervacija : mjesto preuzimanja
+prodajno_mjesto ||--o{ ponuda : objavljuje
+ponuda ||--o{ stavka_rezervacije : odabrana ponuda
+rezervacija ||--o{ stavka_rezervacije : sadrži
+rezervacija |o--o{ uplata : evidentira transakcije
+@enduml

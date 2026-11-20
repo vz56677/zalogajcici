@@ -12,8 +12,6 @@
 
 ---
 
-Za svaki UML dijagram čuvajte čitljivu sliku i PlantUML izvor, kako je opisano na stranici [Home](./Home.md). U dovršenoj stranici koristite vlastite projektne odluke i modele.
-
 ## 4.1 Ključne arhitekturne odluke
 
 | Odluka                                                                        | Razmatrana alternativa                                             | Projektno specifično obrazloženje i kompromis                                                                                                                                                 |
@@ -64,7 +62,7 @@ Započnite crtanjem granice oko predloženog sustava. Unutar nje prepoznajte dij
 
 **ER dijagram:**
 
-![ER dijagram ponude, rezervacije i preuzimanja hrane](assets/diagrams/4.3.1-spasizalogaj-ERD.svg)
+![ER dijagram ponude, rezervacije i preuzimanja hrane](assets/diagrams/4.3.1-spasizalogaj-ERD-V2.svg)
 
 **Izvor dijagrama:** [PlantUML](puml/4.3.1-spasizalogaj-ERD.puml)  
 **Implementacija:** [Flyway migracija V1__init.sql](../backend/src/main/resources/db/migration/V1__init.sql) (PostgreSQL)
