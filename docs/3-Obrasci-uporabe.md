@@ -45,11 +45,11 @@ Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prod
 
 | Element specifikacije | Opis |
 |:--|:--|
-| **Primarni akter** | A-01 Kupac; sekundarni akter: A-07 |
-| **Povezani zahtjevi** | F-002, F-007, F-027 |
+| **Primarni akter** | A-01 Kupac |
+| **Povezani zahtjevi** | F-002, F-027 |
 | **Preduvjeti** | Kupac je prijavljen. |
-| **Glavni uspješni tok** | 1. Kupac otvara početnu stranicu.<br>2. Aplikacija prikazuje aktivne ponude i pakete iznenađenja s nazivom, cijenom i rokom preuzimanja, ponude namijenjene isključivo donaciji ne prikazuju se.<br>3. Kupac filtrira i sortira ponude prema kategoriji, lokaciji, cijeni ili vremenu preuzimanja.<br>4. Kupac po želji odabire prikaz na karti, gdje se prikazuju oznake prodajnih mjesta i udaljenost od kupca.<br>5. Kupac otvara detalje ponude. |
-| **Alternativni tokovi / Iznimke** | **2a — Nema ponuda ili nijedna ne zadovoljava filtre:** aplikacija prikazuje odgovarajuću poruku.<br>**4a — Lokacija nije dostupna ili servis za karte ne radi:** kupac je odbio pristup lokaciji ili Google Maps nije dostupan; aplikacija prikazuje popis ponuda s adresama, bez karte ili udaljenosti (AS-02). |
+| **Glavni uspješni tok** | 1. Kupac otvara početnu stranicu.<br>2. Aplikacija prikazuje aktivne ponude i pakete iznenađenja s nazivom, cijenom i rokom preuzimanja, ponude namijenjene isključivo donaciji ne prikazuju se.<br>3. Kupac filtrira i sortira ponude prema kategoriji, lokaciji, cijeni ili vremenu preuzimanja.<br>4. Kupac po želji odabire prikaz ponuda na karti (proširenje UC-016).<br>5. Kupac otvara detalje ponude. |
+| **Alternativni tokovi / Iznimke** | **2a — Nema ponuda ili nijedna ne zadovoljava filtre:** aplikacija prikazuje odgovarajuću poruku. |
 | **Posljedice (ishod)** | Prikazuju se samo ponude kojima nije istekao rok i koje nisu rasprodane. Podaci se ne mijenjaju. |
 
 ---
@@ -61,8 +61,8 @@ Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prod
 | **Primarni akter** | A-01 Kupac; sekundarni akter: A-06 |
 | **Povezani zahtjevi** | F-008 |
 | **Preduvjeti** | Kupac je prijavljen; ponuda je aktivna, nije namijenjena donaciji i ima dostupnu količinu. |
-| **Glavni uspješni tok** | 1. Kupac odabire količinu proizvoda ili paketa i potvrđuje rezervaciju.<br>2. Aplikacija provjerava dostupnost i privremeno zadržava količinu.<br>3. Aplikacija nudi načine plaćanja: PayPal ili kreditna kartica.<br>4. Kupac odabire PayPal ili karticu i autorizira plaćanje kod vanjskog servisa.<br>5. Servis javlja uspjeh; aplikacija potvrđuje rezervaciju i generira jedinstveni kod za preuzimanje.<br>6. Aplikacija prikazuje potvrdu i šalje je s kodom na e-poštu kupca. |
-| **Alternativni tokovi / Iznimke** | **2a - Količina nije dostupna ili je ponuda istekla:** aplikacija ne prihvaća rezervaciju veću od raspoložive i prikazuje preostalu količinu.<br>**5a - Plaćanje nije uspjelo:** kupac odustane, plaćanje je odbijeno ili servis nije dostupan; aplikacija prikazuje poruku, ne generira kod i omogućuje novi pokušaj. Ako plaćanje nije dovršeno u zadanom roku (npr. 15 minuta), rezervacija se poništava, a količina vraća u zalihu (NF-06). |
+| **Glavni uspješni tok** | 1. Kupac odabire količinu proizvoda ili paketa i potvrđuje rezervaciju.<br>2. Aplikacija provjerava dostupnost i privremeno zadržava količinu.<br>3. Kupac plaća rezervaciju (uključuje UC-015).<br>4. Nakon uspješnog plaćanja aplikacija potvrđuje rezervaciju i generira jedinstveni kod za preuzimanje.<br>5. Aplikacija prikazuje potvrdu i šalje je s kodom na e-poštu kupca. |
+| **Alternativni tokovi / Iznimke** | **2a - Količina nije dostupna ili je ponuda istekla:** aplikacija ne prihvaća rezervaciju veću od raspoložive i prikazuje preostalu količinu.<br>**3a - Plaćanje nije uspjelo:** kupac odustane, plaćanje je odbijeno ili servis nije dostupan; aplikacija prikazuje poruku, ne generira kod i omogućuje novi pokušaj. Ako plaćanje nije dovršeno u zadanom roku (npr. 15 minuta), rezervacija se poništava, a količina vraća u zalihu (NF-06). |
 | **Posljedice (ishod)** | Rezervacija je potvrđena, količina ponude umanjena, a kupac ima potvrdu i kod za preuzimanje. |
 
 ---
@@ -113,8 +113,8 @@ Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prod
 | **Primarni akter** | A-02 Predstavnik prodajnog mjesta; sekundarni akter: A-06 |
 | **Povezani zahtjevi** | F-003, F-025 |
 | **Preduvjeti** | Predstavnik je prijavljen. |
-| **Glavni uspješni tok** | 1. Predstavnik otvara stranicu članarine; aplikacija prikazuje stanje članstva te cijene mjesečne i godišnje članarine.<br>2. Odabire razdoblje i način plaćanja (PayPal ili kreditna kartica).<br>3. Autorizira plaćanje kod vanjskog servisa.<br>4. Servis javlja uspjeh; aplikacija aktivira ili produljuje članstvo i prikazuje datum do kojeg vrijedi. |
-| **Alternativni tokovi / Iznimke** | **3a - Plaćanje nije uspjelo:** predstavnik odustane, plaćanje je odbijeno ili servis nije dostupan; aplikacija prikazuje poruku, članstvo ostaje nepromijenjeno i moguće je ponoviti pokušaj (NF-06). |
+| **Glavni uspješni tok** | 1. Predstavnik otvara stranicu članarine; aplikacija prikazuje stanje članstva te cijene mjesečne i godišnje članarine.<br>2. Odabire razdoblje članarine.<br>3. Predstavnik plaća članarinu (uključuje UC-015).<br>4. Nakon uspješnog plaćanja aplikacija aktivira ili produljuje članstvo i prikazuje datum do kojeg vrijedi. |
+| **Alternativni tokovi / Iznimke** | **3a - Plaćanje nije uspjelo (UC-015):** članstvo ostaje nepromijenjeno. |
 | **Posljedice (ishod)** | Članstvo je aktivno do isteka plaćenog razdoblja; bez aktivnog članstva prodajno mjesto ne može objavljivati ponude (UC-008). |
 
 ---
@@ -210,12 +210,38 @@ Oznake aktera odgovaraju odjeljku 2.3: **A-01** Kupac, **A-02** Predstavnik prod
 
 ---
 
+### UC-015: Plaćanje putem vanjskog servisa
+
+| Element specifikacije | Opis |
+|:--|:--|
+| **Primarni akter** | A-01 Kupac ili A-02 Predstavnik prodajnog mjesta; sekundarni akter: A-06 |
+| **Povezani zahtjevi** | F-003, F-008, NF-06 |
+| **Preduvjeti** | Korisnik je prijavljen; aplikacija je odredila iznos za plaćanje rezervacije (UC-003) ili članarine (UC-007). |
+| **Glavni uspješni tok** | 1. Aplikacija prikazuje iznos i nudi načine plaćanja: PayPal.<br>2. Korisnik odabire način plaćanja i preusmjerava se na vanjski servis.<br>3. Korisnik autorizira plaćanje kod vanjskog servisa.<br>4. Servis javlja uspjeh; aplikacija bilježi plaćanje i nastavlja obrazac uporabe iz kojeg je plaćanje pokrenuto. |
+| **Alternativni tokovi / Iznimke** | **3a - Plaćanje nije uspjelo:** korisnik odustane, plaćanje je odbijeno ili servis nije dostupan; aplikacija prikazuje poruku i omogućuje novi pokušaj. Daljnji tijek određuje obrazac iz kojeg je plaćanje pokrenuto (UC-003, UC-007). |
+| **Posljedice (ishod)** | Plaćanje je zabilježeno kao uspješno ili neuspješno. Podaci o kartici ne pohranjuju se u aplikaciji (NF-06). |
+
+---
+
+### UC-016: Prikaz ponuda na karti
+
+| Element specifikacije | Opis |
+|:--|:--|
+| **Primarni akter** | A-01 Kupac; sekundarni akter: A-07 |
+| **Povezani zahtjevi** | F-007 |
+| **Preduvjeti** | Kupac je prijavljen i pregledava ponude (UC-002). |
+| **Glavni uspješni tok** | 1. Kupac u pregledu ponuda odabire prikaz na karti.<br>2. Aplikacija traži pristup lokaciji kupca, a kupac ga dopušta.<br>3. Aplikacija na karti prikazuje oznake prodajnih mjesta čije su ponude prikazane u pregledu ponuda i udaljenost svakog od njih do kupca.<br>4. Kupac odabire oznaku; aplikacija prikazuje adresu prodajnog mjesta, udaljenost i njegove aktivne ponude.<br>5. Kupac otvara detalje ponude ili se vraća na popis ponuda (UC-002). |
+| **Alternativni tokovi / Iznimke** | **2a - Kupac ne dopušta pristup lokaciji:** aplikacija prikazuje kartu s oznakama prodajnih mjesta, bez udaljenosti (AS-02).<br>**3a - Servis za karte nije dostupan:** aplikacija prikazuje poruku i vraća kupca na popis ponuda s adresama prodajnih mjesta, bez karte (UC-002). |
+| **Posljedice (ishod)** | Kupac vidi lokacije prodajnih mjesta s ponudama i, ako je dopustio pristup lokaciji, udaljenost do njih. Podaci se ne mijenjaju. |
+
+---
+
 ## 3.3 Provjera dosljednosti obrazaca uporabe
 
 | Provjera | Pitanje za tim | Nalaz |
 |:--|:--|:--|
-| **Zahtjev** | Je li svaki važan obrazac uporabe povezan s postojećim zahtjevom? | Da. Svih 14 obrazaca uporabe (UC-001 do UC-014) u retku „Povezani zahtjevi” navodi samo zahtjeve definirane u odjeljku 2.1. Svi zahtjevi visokog i srednjeg prioriteta pokriveni su barem jednim obrascem uporabe, uz dva djelomična izuzetka: naknadno uređivanje javnog profila prodajnog mjesta iz F-004 nije zasebno opisano (izrada profila opisana je u UC-001), a UC-006 opisuje samo ostavljanje recenzije, ne i odgovor prodajnog mjesta iz F-011. |
-| **Akter** | Odgovara li akter naveden ovdje prethodno utvrđenoj ulozi i dopuštenoj interakciji? | Da. Primarni akteri (A-01 do A-04) i sekundarni akteri (A-05 do A-07) odgovaraju ulogama iz odjeljka 2.3. Ovlasti su razdvojene: samo A-02 objavljuje ponude i obrađuje zahtjeve humanitarnih organizacija, samo A-03 šalje zahtjeve za donacije, a samo A-04 odobrava profile i upravlja sustavom (C-01). Vanjski sustavi sudjeluju samo kao sekundarni akteri: OAuth pružatelj pri prijavi (UC-001), servis za plaćanje pri plaćanju i povratu (UC-003, UC-005, UC-007) te Google Maps pri prikazu karte (UC-002). |
+| **Zahtjev** | Je li svaki važan obrazac uporabe povezan s postojećim zahtjevom? | Da. Svih 16 obrazaca uporabe (UC-001 do UC-016) u retku „Povezani zahtjevi” navodi samo zahtjeve definirane u odjeljku 2.1. Svi zahtjevi visokog i srednjeg prioriteta pokriveni su barem jednim obrascem uporabe, uz dva djelomična izuzetka: naknadno uređivanje javnog profila prodajnog mjesta iz F-004 nije zasebno opisano (izrada profila opisana je u UC-001), a UC-006 opisuje samo ostavljanje recenzije, ne i odgovor prodajnog mjesta iz F-011. |
+| **Akter** | Odgovara li akter naveden ovdje prethodno utvrđenoj ulozi i dopuštenoj interakciji? | Da. Primarni akteri (A-01 do A-04) i sekundarni akteri (A-05 do A-07) odgovaraju ulogama iz odjeljka 2.3. Ovlasti su razdvojene: samo A-02 objavljuje ponude i obrađuje zahtjeve humanitarnih organizacija, samo A-03 šalje zahtjeve za donacije, a samo A-04 odobrava profile i upravlja sustavom (C-01). Vanjski sustavi sudjeluju samo kao sekundarni akteri: OAuth pružatelj pri prijavi (UC-001), servis za plaćanje pri plaćanju i povratu (UC-005, UC-015) te Google Maps pri prikazu karte (UC-016). |
 | **Aplikacija** | Može li tim demonstrirati opisani glavni rezultat i važnu alternativu ili je opis jasno označen kao trenutačno oblikovanje? | Opisi tokova odgovaraju trenutačnom oblikovanju aplikacije. |
 
 Povezivanje zahtjev -> obrazac uporabe -> ispitivanje vodi se **samo u [tablici sljedivosti zahtjeva](2-Analiza-zahtjeva.md#26-sljedivost-zahtjeva)**, ovdje se ne ponavlja.
