@@ -1,0 +1,136 @@
+@startuml
+skinparam defaultFontName DejaVu Sans
+skinparam defaultFontSize 13
+skinparam shadowing false
+skinparam classBackgroundColor #E7F0FF
+skinparam classBorderColor #7EA8EF
+skinparam packageBorderColor #30343B
+skinparam packageBackgroundColor #FFFFFF
+skinparam packageStyle rectangle
+skinparam packageTitleAlignment right
+skinparam ArrowColor #30343B
+skinparam NoteBackgroundColor #F5F7FA
+skinparam NoteBorderColor #9BA4AF
+skinparam classAttributeIconSize 10
+skinparam nodesep 45
+skinparam ranksep 85
+skinparam linetype polyline
+hide empty members
+
+title SpasiZalogaj — oblikovanje kreiranja i otkazivanja rezervacije
+
+package "Aplikacijski sloj" {
+  class RezervacijaService <<ApplicationService>> {
+    + kreiraj(kupacId: Long, zahtjev: KreirajRezervacijuZahtjev): RezervacijaOdgovor
+    + otkazi(rezervacijaId: Long, kupacId: Long): RezervacijaOdgovor
+  }
+}
+
+package "Domenski model i ugovori" {
+  interface RezervacijaRepository <<Repository>> {
+    + findById(id: Long): Optional<Rezervacija>
+    + save(entity: Rezervacija): Rezervacija
+  }
+
+  enum StatusRezervacije {
+    CEKA_UPLATU
+    AKTIVNA
+    PREUZETA
+    OTKAZANA
+    ISTEKLA
+  }
+
+  class Rezervacija <<Entity>> {
+    - id: Long
+    - kupacId: Long
+    - prodajnoMjestoId: Long
+    - status: StatusRezervacije = CEKA_UPLATU
+    - kreiranaU: OffsetDateTime
+    - rokPreuzimanja: OffsetDateTime
+    + dodajStavku(ponudaId: Long, kolicina: BigDecimal, jedinicnaCijena: BigDecimal): void
+    + otkazi(sada: OffsetDateTime): void
+    + ukupnaCijena(): BigDecimal
+  }
+
+  class StavkaRezervacije <<Entity>> {
+    - id: StavkaRezervacijeId
+    - kolicina: BigDecimal
+    - jedinicnaCijena: BigDecimal
+  }
+
+  interface PonudaRepository <<Repository>> {
+    + findAllById(ids: Iterable<Long>): List<Ponuda>
+  }
+
+  interface ZalihaService <<DomainService>> {
+    + rezerviraj(ponudaId: Long, kolicina: BigDecimal): void
+    + vrati(ponudaId: Long, kolicina: BigDecimal): void
+  }
+
+  class ZalihaServiceImpl <<Service>> {
+    + rezerviraj(ponudaId: Long, kolicina: BigDecimal): void
+    + vrati(ponudaId: Long, kolicina: BigDecimal): void
+  }
+}
+
+RezervacijaRepository -[hidden]right-> PonudaRepository
+Rezervacija -[hidden]right-> ZalihaServiceImpl
+PonudaRepository -[hidden]right-> ZalihaService
+PonudaRepository -[hidden]down-> ZalihaServiceImpl
+ZalihaService -[hidden]down-> ZalihaServiceImpl
+
+RezervacijaService ..> RezervacijaRepository : učitava / sprema
+RezervacijaService .down.> Rezervacija : stvara / mijenja
+RezervacijaService ..> PonudaRepository : dohvaća odabrane ponude
+RezervacijaService ..> ZalihaService : traži rezerviranje / povrat zalihe
+ZalihaServiceImpl .up.|> ZalihaService
+ZalihaServiceImpl .up.> PonudaRepository : uvjetno mijenja zalihu
+RezervacijaRepository ..> Rezervacija : vraća / sprema
+Rezervacija ..> StatusRezervacije
+Rezervacija "1\nrezervacija" *-- "0..*\nstavke" StavkaRezervacije : sadrži
+
+note left of RezervacijaService
+  Koordinira provjere, zalihu i pohranu.
+  kreiraj() i otkazi() izvode se transakcijski.
+  Pri kreiranju: najmanje jedna stavka,
+  bez ponavljanja ponude; sve ponude iz
+  istog prodajnog mjesta, namijenjene prodaji.
+  Pri otkazivanju: provjerava vlasništvo kupca.
+end note
+
+note bottom of StatusRezervacije
+  Nova rezervacija: CEKA_UPLATU.
+  Stavke se dodaju samo u tom statusu.
+  Ista ponuda smije se pojaviti samo jednom.
+
+  otkazi(): CEKA_UPLATU ili AKTIVNA → OTKAZANA.
+  Za AKTIVNU vrijedi:
+  sada ≤ rokPreuzimanja − 1 sat.
+  Nedopuštena promjena odbija se pogreškom.
+end note
+
+note bottom of StavkaRezervacije
+  kolicina > 0; jedinicnaCijena ≥ 0.
+  Jedinična cijena čuva se u trenutku rezerviranja.
+  Dio pripada točno jednoj rezervaciji;
+  životnim ciklusom upravlja rezervacija.
+  0..* uključuje privremeno praznu rezervaciju
+  tijekom izgradnje; servis pri kreiranju traži ≥ 1.
+end note
+
+note bottom of ZalihaServiceImpl
+  Ostvaruje ugovor ZalihaService.
+  Koristi PonudaRepository za uvjetno umanjenje:
+  ponuda je aktivna, nije istekla i ima dovoljno zalihe.
+  Umanjenje i stvaranje rezervacije ista su transakcija;
+  pri uspješnom otkazivanju zaliha se vraća.
+end note
+
+legend bottom
+  Specifikacijski prikaz odabranog područja; strelice ne određuju redoslijed koraka.
+  Isprekidana strelica: ovisnost. Puni romb: kompozicija; brojnosti su na oba kraja.
+  Isprekidana linija s praznim trokutom: realizacija; trokut je uz sučelje ZalihaService.
+  Sučelja su grupirana s domenskim modelom kao ugovori potrebni odabranom postupku.
+  U kodu repozitoriji proširuju JpaRepository; save je prikazan za tip Rezervacija.
+endlegend
+@enduml
