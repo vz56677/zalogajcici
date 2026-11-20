@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1840" height="1110" viewBox="0 0 1840 1110" role="img" aria-label="Rezervacije, plaćanje i preuzimanje">
+   <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#356988" stroke-width="1.7"/></marker><marker id="gen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 9 5 L 0 10 Z" fill="white" stroke="#7A899A" stroke-width="1.5"/></marker></defs>
+   <rect width="100%" height="100%" fill="#fff"/>
+   <rect x="250" y="35" width="1330" height="1025" rx="12" fill="#F8FAFC" stroke="#A9BACC" stroke-width="2"/>
+   <text x="274" y="75" font-family="Arial,sans-serif" font-size="27" font-weight="bold" fill="#1B354C">Rezervacije, plaćanje i preuzimanje</text>
+<path d="M 180,460 L 265,460 L 320,180 L 390,180" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 180,460 L 390,405" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 180,460 L 390,565" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 180,460 L 290,845 L 390,845" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 180,938 L 300,990 L 1210,990 L 1210,888" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1385,180 L 1570,180 L 1665,325" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1385,565 L 1570,565 L 1665,325" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 1385,405 L 1590,405 L 1590,848 L 1665,848" fill="none" stroke="#91A0AD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M 745,180 L 1035,180" fill="none" stroke="#356988" stroke-dasharray="8 6" stroke-width="2.6" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="776.4" y="134" width="233.3" height="24" rx="6" fill="white" opacity="0.96"/>
+<text x="893" y="153" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">&lt;&lt;include&gt;&gt;</text>
+<path d="M 1040,380 L 900,285 L 740,200" fill="none" stroke="#356988" stroke-dasharray="8 6" stroke-width="2.6" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="831.9" y="273" width="224.2" height="45" rx="6" fill="white" opacity="0.96"/>
+<text x="944" y="292" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+<text x="944" y="313" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">[plaćanje uspješno]</text>
+<path d="M 565,520 L 565,450" fill="none" stroke="#356988" stroke-dasharray="8 6" stroke-width="2.6" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="608.4" y="457" width="233.3" height="45" rx="6" fill="white" opacity="0.96"/>
+<text x="725" y="476" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+<text x="725" y="497" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">[otkazivanje zatraženo]</text>
+<path d="M 1040,565 L 745,565" fill="none" stroke="#356988" stroke-dasharray="8 6" stroke-width="2.6" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="782.9" y="517" width="224.2" height="45" rx="6" fill="white" opacity="0.96"/>
+<text x="895" y="536" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+<text x="895" y="557" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">[plaćena rezervacija]</text>
+<path d="M 740,845 L 1035,845" fill="none" stroke="#356988" stroke-dasharray="8 6" stroke-width="2.6" marker-end="url(#arr)" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="779.9" y="796" width="224.2" height="45" rx="6" fill="white" opacity="0.96"/>
+<text x="892" y="815" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">&lt;&lt;extend&gt;&gt;</text>
+<text x="892" y="836" font-family="Arial,sans-serif" font-size="18" fill="#285D80" text-anchor="middle">[rezervacija preuzeta]</text>
+<ellipse cx="565" cy="180" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="565" y="175" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-003</text>
+<text x="565" y="200" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Rezervacija i plaćanje</text>
+<text x="565" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">ponude</text>
+<ellipse cx="1210" cy="180" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="1210" y="175" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-015</text>
+<text x="1210" y="200" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Plaćanje putem</text>
+<text x="1210" y="220" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">vanjskog servisa</text>
+<ellipse cx="565" cy="405" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="565" y="400" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-021</text>
+<text x="565" y="425" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Pregled vlastitih rezervacija</text>
+<ellipse cx="1210" cy="405" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="1210" y="400" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-022</text>
+<text x="1210" y="425" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Potvrda rezervacije</text>
+<text x="1210" y="445" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">i slanje koda</text>
+<ellipse cx="565" cy="565" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="565" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-005</text>
+<text x="565" y="585" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Otkazivanje rezervacije</text>
+<ellipse cx="1210" cy="565" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="1210" y="560" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-023</text>
+<text x="1210" y="585" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Pokretanje povrata novca</text>
+<ellipse cx="565" cy="845" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="565" y="840" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-006</text>
+<text x="565" y="865" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Recenziranje prodajnog mjesta</text>
+<ellipse cx="1210" cy="845" rx="175.0" ry="48.0" fill="white" stroke="#476B83" stroke-width="2.1"/>
+<text x="1210" y="840" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="bold" fill="#1F3446">UC-004</text>
+<text x="1210" y="865" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" fill="#273947">Potvrda preuzimanja ponude</text>
+<g fill="none" stroke="#314E63" stroke-width="2.5" stroke-linecap="round"><circle cx="112" cy="426" r="10"/><path d="M112,436 V465 M92,448 L132,448 M112,465 L95,489 M112,465 L129,489"/></g>
+<text x="112" y="515" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#243746">Kupac</text>
+<g fill="none" stroke="#314E63" stroke-width="2.5" stroke-linecap="round"><circle cx="112" cy="904" r="10"/><path d="M112,914 V943 M92,926 L132,926 M112,943 L95,967 M112,943 L129,967"/></g>
+<text x="112" y="993" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#243746">Prodajno mjesto</text>
+<g fill="none" stroke="#314E63" stroke-width="2.5" stroke-linecap="round"><circle cx="1715" cy="291" r="10"/><path d="M1715,301 V330 M1695,313 L1735,313 M1715,330 L1698,354 M1715,330 L1732,354"/></g>
+<text x="1715" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#243746">PayPal / kartice</text>
+<g fill="none" stroke="#314E63" stroke-width="2.5" stroke-linecap="round"><circle cx="1715" cy="814" r="10"/><path d="M1715,824 V853 M1695,836 L1735,836 M1715,853 L1698,877 M1715,853 L1732,877"/></g>
+<text x="1715" y="903" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" fill="#243746">SendGrid</text>
+</svg>
