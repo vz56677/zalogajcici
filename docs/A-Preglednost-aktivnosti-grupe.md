@@ -49,6 +49,10 @@ Tijekom razvoja prioriteti su prilagođavani napretku projekta i problemima otkr
 ## A.4 Pregled promjena u repozitoriju
 
 **Prikaz aktivnosti repozitorija:** [GitHub Contributors – Spasi Zalogaj](https://github.com/vz56677/zalogajcici/graphs/contributors)
+![Doprinosi članova tima u repozitoriju](./assets/diagrams/Contributors_graph.png)
+**Slika A.1. Doprinosi članova tima (GitHub Contributors, grana master)**
+
+GitHub korisnička imena: enaspoler = ES, kferisak = FK, lp56885 = LP, vz56677 = VZ, dr54426 = DR, karlolist1 = KL, gabisir = GD.
 
 **Razdoblje prikaza:** Od početka projekta do 19. 11. 2026.
 
@@ -59,12 +63,6 @@ GitHubov graf prikazuje doprinose članova prema njihovim commitovima kroz vrije
 Broj commitova nije izravna mjera ukupnog doprinosa pojedinog člana jer ne obuhvaća sav rad na planiranju, sastancima, testiranju, pregledu koda i zajedničkoj izradi dokumentacije. Zbog toga se prikaz aktivnosti repozitorija promatra zajedno s evidencijom doprinosa iz poglavlja A.3.f.
 
 ## A.5 Ključni inženjerski izazovi i rješenja
-
-**Cilj:** Dokumentirati stvarne tehničke i organizacijske prepreke s kojima se tim suočio, poduzete korektivne inženjerske korake te konačni ishod. Odaberite konkretne izazove umjesto općenite pohvale timskog rada.
-
-
-Privremeno prazno, potrebno savjetovanje sa timom, koliko velik problem mora biti da bi ga zapisali.
-
 
 | Izazov | Poduzeta radnja | Ishod ili preostalo ograničenje |
 | --- | --- | --- |
